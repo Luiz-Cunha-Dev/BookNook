@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import userPicture from "../imgs/userPicture.png"
+import userPicture from "../imgs/userPicture.png";
 
 export function SignIn({status, setStatus}) {
   return (

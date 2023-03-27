@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { SignIn } from "../components/signin";
 import { SignUp } from "../components/signup";
 import { useNavigate, useParams } from "react-router-dom";
+import background from "../imgs/principal-wallpaper.jpg"
+import icone from "../imgs/icone.png";
 
 export function Auth() {
 
@@ -13,7 +15,10 @@ export function Auth() {
   return (
     <Container>
       <div className="header">
-        <h1 onClick={() => navigate("/")}>BookNook</h1>
+        <div  onClick={() => navigate("/")} className="icone">
+          <img src={icone} />
+          <h1>BookNook</h1>
+        </div>
       </div>
       <div className="box">
       <SignUp status={status} setStatus={setStatus}/>
@@ -27,7 +32,7 @@ const Container = styled.div`
   position: fixed;
   left: 0;
   top: 0;
-  background-image: url(https://cutewallpaper.org/22/4k-minimalist-blue-wallpapers/minimalist-forest-wallpapers-4k-hd-minimalist-forest-backgrounds-on-wallpaperbat.jpg);
+  background-image: url(${background});
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -35,15 +40,24 @@ const Container = styled.div`
   height: 100vh;
   .header {
     display: flex;
-    padding-left: 18.5%;
+    padding-left: 17.1%;
     align-items: center;
     h1{
         font-family: 'Chewy';
         color: darkblue;
         font-size: 55px;
-        position: fixed;
-        top: 0px;
         cursor: pointer;
+    }
+    .icone {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      img {
+        height: 50px;
+        margin-right: 20px;
+        cursor: pointer;
+      }
     }
 }
 .box{
@@ -52,5 +66,6 @@ const Container = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-top: -100px;
     }
 `;
