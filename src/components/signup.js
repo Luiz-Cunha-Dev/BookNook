@@ -7,6 +7,11 @@ export function SignUp({ status, setStatus }) {
       <div className="forms">
         <h2>CRIE UMA CONTA</h2>
         <form>
+        <div className="inputBox">
+            <input type="text" required="required" />
+            <span>Nome</span>
+            <i></i>
+          </div>
           <div className="inputBox">
             <input type="text" required="required" />
             <span>E-mail</span>
@@ -89,8 +94,8 @@ const Container = styled.div`
     h2 {
       color: darkblue;
       font-weight: bold;
-      margin-bottom: 60px;
-      margin-top: 50px;
+      margin-bottom: 30px;
+      margin-top: 30px;
     }
   }
   form {
@@ -108,7 +113,7 @@ const Container = styled.div`
   }
   .inputBox {
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     span {
       font-size: 1em;
       letter-spacing: 0.05em;
