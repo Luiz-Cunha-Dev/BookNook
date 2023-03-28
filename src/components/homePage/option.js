@@ -10,6 +10,7 @@ export function Option(props) {
 }
 
 const Container = styled.div`
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 300px;
   height: 250px;
   background-color: white;

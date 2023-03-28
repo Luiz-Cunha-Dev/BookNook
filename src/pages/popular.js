@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import background from "../imgs/w2.jpg";
 import { Header } from "../components/header";
-import { Option } from "../components/homePage/option";
+import { Option } from "../components/popular/option";
 import filme from "../imgs/entretenimentos/filmes.jpg";
 import serie from "../imgs/entretenimentos/series.jpg";
 import anime from "../imgs/entretenimentos/animes.jpg";
@@ -12,55 +13,49 @@ import jogo from "../imgs/entretenimentos/jogos.jpg";
 import entretenimento from "../imgs/entretenimentos/entretenimentos.jpg";
 import tudo from "../imgs/entretenimentos/tudo.png";
 
-export function InitialPage() {
+export function Popular() {
   const navigate = useNavigate();
 
   return (
     <Container>
       <Header />
       <div className="board">
+        <h2>Mais Populares</h2>
         <Option>
           <div className="img">
             <img src={filme} alt="filme" />
           </div>
-          Seus Filmes
+          Filmes
         </Option>
         <Option>
           <div className="img">
             <img src={serie} alt="serie" />
           </div>
-          Suas Séries
+          Séries
         </Option>
         <Option>
           <div className="img">
             <img src={anime} alt="anime" />
           </div>
-          Seus Animes
+          Animes
         </Option>
         <Option>
           <div className="img">
             <img src={desenho} alt="desenho" />
           </div>
-          Seus Desenhos
+          Desenhos
         </Option>
         <Option>
           <div className="img">
             <img src={livro} alt="livro" />
           </div>
-          Seus Livros
+          Livros
         </Option>
         <Option>
           <div className="img">
             <img src={jogo} alt="jogo" />
           </div>
-          Seus Jogos
-        </Option>
-        <Option>
-          <div className="img">
-            <img src={entretenimento} alt="entretenimento" />
-          </div>
-          Todos os Seus
-          <br /> Entretenimentos
+          Jogos
         </Option>
         <Option>
           <div className="img">
@@ -84,11 +79,20 @@ const Container = styled.div`
   width: 100vw;
   height: 100%;
   .board {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    background-color: white;
+    height: 78%;
+    border-radius: 50px;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 80%;
-    padding-left: 10%;
-    margin-top: 70px;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 35%;
+    margin-right: 35%;
+    padding-bottom: 10px;
+    h2 {
+      color: darkblue;
+      font-size: 30px;
+    }
   }
 `;

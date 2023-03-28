@@ -1,7 +1,7 @@
 import { useState} from "react";
 import styled from "styled-components";
-import { SignIn } from "../components/signin";
-import { SignUp } from "../components/signup";
+import { SignIn } from "../components/auth/signin";
+import { SignUp } from "../components/auth/signup";
 import { useNavigate, useParams } from "react-router-dom";
 import background from "../imgs/principal-wallpaper.jpg"
 import icone from "../imgs/icone.png";

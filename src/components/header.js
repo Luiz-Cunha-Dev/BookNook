@@ -4,6 +4,10 @@ import { HiOutlineMenu } from "react-icons/hi";
 import { useState } from "react";
 import icone from "../imgs/icone.png";
 import userPicture from "../imgs/userPicture.png";
+import { BsFillPersonFill, BsGearFill } from "react-icons/bs";
+import { FaHome } from "react-icons/fa";
+import { AiFillFire } from "react-icons/ai";
+import { ImExit } from "react-icons/im";
 
 export function Header() {
   const navigate = useNavigate();
@@ -23,16 +27,28 @@ export function Header() {
           <img src={userPicture} alt="userPicture" />
         </div>
         <span>User Name</span>
-        <div className="space"></div>
+
         <div className="options">
-        <p onClick={() => navigate("/about-me")}>Sobre Mim</p>
-        <div className="space"></div>
-        <p>Em Alta</p>
-        <div className="space"></div>
-        <p>Configurações</p>
-        <div className="space"></div>
-        <p>Sair</p>
-        <div className="space"></div>
+        <p onClick={() => navigate("/about-me")}>
+          <BsFillPersonFill className="icon"/>
+          Sobre Mim</p>
+
+        <p onClick={() => navigate("/initial")} >
+          <FaHome className="icon"/>
+          Inicio</p>
+
+        <p onClick={() => navigate("/popular")}>
+          <AiFillFire className="icon"/>
+          Mais populares</p>
+
+        <p onClick={() => navigate("/config")}>
+          <BsGearFill className="icon"/>
+          Configurações</p>
+
+        <p onClick={() => navigate("/")}>
+          <ImExit className="icon"/>
+          Sair</p>
+
       </div>
       </div>
       <div onClick={() => setMenu(!menu)} className="rigth-window"></div>
@@ -59,7 +75,7 @@ const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-left: 260px;
+      margin-left: 12%;
       cursor: pointer;
       img {
         height: 50px;
@@ -68,6 +84,7 @@ const Container = styled.div`
     }
   }
   .left-window {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     transition: linear 0.3s;
     display: flex;
     flex-direction: column;
@@ -101,14 +118,20 @@ const Container = styled.div`
         margin-bottom: 50px;
       }
     .options {
-      width: 100%;
+      width: 65%;
       display: flex;
       flex-direction: column;
-      align-items: center;
+
       font-size: 25px;
     font-weight: 400;
     p{
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      .icon{
+        font-size: 30px;
+        margin-right: 15px;
+      }
     }
     }
     .space{

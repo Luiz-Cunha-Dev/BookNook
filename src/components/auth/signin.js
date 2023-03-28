@@ -1,7 +1,11 @@
 import styled from "styled-components";
-import userPicture from "../imgs/userPicture.png";
+import userPicture from "../../imgs/userPicture.png";
+import { useNavigate } from "react-router-dom";
 
 export function SignIn({status, setStatus}) {
+
+  const navigate = useNavigate();
+
   return (
     <Back status={status}>
     <Container>
@@ -19,7 +23,7 @@ export function SignIn({status, setStatus}) {
             <i></i>
           </div>
           <div className="buttons">
-            <button>Cadastre-se</button>
+            <button onClick={() => navigate("/initial")}>Entrar</button>
             <span onClick={() => setStatus("signup")} >Ainda Não Tenho Uma Conta</span>
           </div>
         </form>
@@ -33,6 +37,7 @@ export function SignIn({status, setStatus}) {
 }
 
 const Container = styled.div`
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 500px;
   height: 620px;
   background-color: transparent;
@@ -137,7 +142,7 @@ const Container = styled.div`
     margin-top: 20px;
     button {
       margin-right: 20px;
-      width: 160px;
+      width: 120px;
       height: 42px;
       border-radius: 20px;
       border: thin;
@@ -147,7 +152,7 @@ const Container = styled.div`
       cursor: pointer;
       transition: linear 0.1s;
       :hover{
-        width: 170px;
+        width: 135px;
         height: 45px;
         font-weight: bold;
         font-size: 20px;

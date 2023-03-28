@@ -50,6 +50,7 @@ const Container = styled.div`
   width: 100vw;
   height: 100%;
   .board {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     background-color: white;
     height: 75%;
@@ -57,11 +58,11 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px;
     margin-left: 35%;
     margin-right: 35%;
     h2 {
       color: darkblue;
+      font-size: 30px;
     }
     form {
       display: flex;
