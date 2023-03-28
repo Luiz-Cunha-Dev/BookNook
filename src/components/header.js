@@ -25,11 +25,13 @@ export function Header() {
         <span>User Name</span>
         <div className="space"></div>
         <div className="options">
-        <p>Sobre Mim</p>
+        <p onClick={() => navigate("/about-me")}>Sobre Mim</p>
         <div className="space"></div>
         <p>Em Alta</p>
         <div className="space"></div>
         <p>Configurações</p>
+        <div className="space"></div>
+        <p>Sair</p>
         <div className="space"></div>
       </div>
       </div>

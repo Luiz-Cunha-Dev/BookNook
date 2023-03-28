@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import background from "../imgs/w2.jpg";
 import { Header } from "../components/header";
 import { Option } from "../components/option";
@@ -15,7 +14,6 @@ import tudo from "../imgs/entretenimentos/tudo.png";
 
 export function InitialPage() {
   const navigate = useNavigate();
-  const [menu, setMenu] = useState(false);
 
   return (
     <Container>
