@@ -175,17 +175,14 @@ const Container = styled.div`
         cursor: pointer;
         display: flex;
         align-items: center;
+        margin-bottom: 40px;
         .icon {
           font-size: 30px;
           margin-right: 15px;
         }
       }
     }
-    .space {
-      height: 2px;
-      width: 80%;
-      background-color: white;
-    }
+
   }
   .rigth-window {
     position: fixed;

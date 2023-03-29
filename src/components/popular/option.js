@@ -1,16 +1,11 @@
-import { Children } from "react";
 import styled from "styled-components";
 
 export function Option(props) {
-  return (
-    <Container>
-      {props.children}
-    </Container>
-  );
+  return <Container>{props.children}</Container>;
 }
 
 const Container = styled.div`
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 90%;
   height: 50%;
   background-color: white;
@@ -26,7 +21,7 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   img {
     width: 120px;
   }
-  .img{
+  .img {
     overflow: hidden;
     width: 60px;
     height: 60px;
@@ -36,16 +31,23 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     justify-content: center;
     margin-right: 20px;
   }
-  :hover{
-    background-color: #EEEEEE;
+  :hover {
+    background-color: #eeeeee;
     font-size: 22px;
     font-weight: 500;
     img {
-    width: 160px;
+      width: 160px;
+    }
+    .img {
+      width: 70px;
+      height: 70px;
+    }
   }
-  .img{
-    width: 70px;
-    height: 70px;
-  }
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
   }
 `;

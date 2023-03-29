@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import background from "../imgs/w2.jpg";
 import { Header } from "../components/header";
 import { Option } from "../components/popular/option";
@@ -10,7 +9,6 @@ import anime from "../imgs/entretenimentos/animes.jpg";
 import desenho from "../imgs/entretenimentos/desenhos.webp";
 import livro from "../imgs/entretenimentos/livros.jpg";
 import jogo from "../imgs/entretenimentos/jogos.jpg";
-import entretenimento from "../imgs/entretenimentos/entretenimentos.jpg";
 import tudo from "../imgs/entretenimentos/tudo.png";
 
 export function Popular() {
@@ -22,46 +20,60 @@ export function Popular() {
       <div className="board">
         <h2>Mais Populares</h2>
         <Option>
-          <div className="img">
-            <img src={filme} alt="filme" />
+          <div onClick={() => navigate("/popular/ranking/Filmes")}>
+            <div className="img">
+              <img src={filme} alt="filme" />
+            </div>
+            Filmes
           </div>
-          Filmes
         </Option>
         <Option>
-          <div className="img">
-            <img src={serie} alt="serie" />
+          <div onClick={() => navigate("/popular/ranking/Séries")}>
+            <div className="img">
+              <img src={serie} alt="serie" />
+            </div>
+            Séries
           </div>
-          Séries
         </Option>
         <Option>
-          <div className="img">
-            <img src={anime} alt="anime" />
+          <div onClick={() => navigate("/popular/ranking/Animes")}>
+            <div className="img">
+              <img src={anime} alt="anime" />
+            </div>
+            Animes
           </div>
-          Animes
         </Option>
         <Option>
-          <div className="img">
-            <img src={desenho} alt="desenho" />
+          <div onClick={() => navigate("/popular/ranking/Desenhos")}>
+            <div className="img">
+              <img src={desenho} alt="desenho" />
+            </div>
+            Desenhos
           </div>
-          Desenhos
         </Option>
         <Option>
-          <div className="img">
-            <img src={livro} alt="livro" />
+          <div onClick={() => navigate("/popular/ranking/Livros")}>
+            <div className="img">
+              <img src={livro} alt="livro" />
+            </div>
+            Livros
           </div>
-          Livros
         </Option>
         <Option>
-          <div className="img">
-            <img src={jogo} alt="jogo" />
+          <div onClick={() => navigate("/popular/ranking/Jogos")}>
+            <div className="img">
+              <img src={jogo} alt="jogo" />
+            </div>
+            Jogos
           </div>
-          Jogos
         </Option>
         <Option>
-          <div className="img">
-            <img src={tudo} alt="tudo" />
+          <div onClick={() => navigate("/popular/ranking/Os")}>
+            <div className="img">
+              <img src={tudo} alt="tudo" />
+            </div>
+            Tudo
           </div>
-          Tudo
         </Option>
       </div>
     </Container>
@@ -82,6 +94,7 @@ const Container = styled.div`
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     background-color: white;
+    width: 600px;
     height: 78%;
     border-radius: 50px;
     display: flex;
