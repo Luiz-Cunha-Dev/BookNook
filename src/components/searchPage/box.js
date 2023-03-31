@@ -11,8 +11,6 @@ export function Box(props) {
 const Container = styled.div`
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 510px;
-  min-height: 200px;
-  height: 200px;
   background-color: white;
   border-radius: 10px;
   display: flex;
@@ -36,13 +34,14 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   .img{
     overflow: hidden;
     min-width: 110px;
-    width: 200px;
+    width: 250px;
     height: 100%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     display: flex;
     justify-content: center;
     margin-right: 20px;
+    overflow: hidden;
   }
   :hover{
     background-color: #EEEEEE;

@@ -8,6 +8,7 @@ import { BsFillPersonFill, BsGearFill } from "react-icons/bs";
 import { FaHome } from "react-icons/fa";
 import { AiFillFire } from "react-icons/ai";
 import { ImExit } from "react-icons/im";
+import { RiBookletLine } from "react-icons/ri";
 
 export function Header() {
   const navigate = useNavigate();
@@ -43,6 +44,11 @@ export function Header() {
           <p onClick={() => navigate("/popular")}>
             <AiFillFire className="icon" />
             Mais populares
+          </p>
+
+          <p onClick={() => navigate("/popular")}>
+            <RiBookletLine className="icon" />
+            Metas
           </p>
 
           <p onClick={() => navigate("/config")}>
@@ -175,10 +181,13 @@ const Container = styled.div`
         cursor: pointer;
         display: flex;
         align-items: center;
-        margin-bottom: 2vw;
+        margin-bottom: 1.5vw;
+        color: white;
+        font-size: 2.5vh;
         .icon {
           font-size: 30px;
           margin-right: 15px;
+          color: white;
         }
       }
     }
