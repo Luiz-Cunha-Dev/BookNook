@@ -6,6 +6,7 @@ import { AboutMe } from "./pages/aboutMe";
 import { Config } from "./pages/config";
 import { Popular } from "./pages/popular";
 import { Ranking } from "./pages/ranking";
+import { SearchPage } from "./pages/searchPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
     <Route path="/" element={<HomePage/>}/>
     <Route path="/auth/:name" element={<Auth/>}/>
     <Route path="/initial" element={<InitialPage/>}/>
+    <Route path="/search-page/:categoryName" element={<SearchPage/>}/>
     <Route path="/about-me" element={<AboutMe/>}/>
     <Route path="/popular" element={<Popular/>}/>
     <Route path="/popular/ranking/:categoryName" element={<Ranking/>}/>

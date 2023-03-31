@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export function RankingItem(props) {
+export function Box(props) {
   return (
     <Container>
       {props.children}
@@ -10,21 +10,18 @@ export function RankingItem(props) {
 
 const Container = styled.div`
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  width: 95%;
-  min-height: 180px;
+  width: 510px;
+  min-height: 200px;
+  height: 200px;
   background-color: white;
   border-radius: 10px;
   display: flex;
   align-items: center;
   font-family: "Courier New", Courier, monospace;
   font-size: 20px;
-  margin-bottom: 12px;
+  margin-bottom: 30px;
+  margin-left: 10px;
   position: relative;
-  span{
-    color: #4b5669;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
   img {
     width: 200px;
   }
@@ -39,9 +36,10 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   .img{
     overflow: hidden;
     min-width: 110px;
-    width: 100px;
-    height: 150px;
-    border-radius: 10px;
+    width: 200px;
+    height: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
     display: flex;
     justify-content: center;
     margin-right: 20px;
@@ -58,16 +56,6 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     h3{
       font-size: 1vw; 
     }
-    p{
-    border: solid 2px;
-    border-radius: 10px;
-    padding: 4px;
-    right: 10px;
-    bottom: 0px;
-    font-size: 0.8vw;
-    color: black;
-    margin-left: 6%;
-  }
     .categories{
       display: flex;
       .category{

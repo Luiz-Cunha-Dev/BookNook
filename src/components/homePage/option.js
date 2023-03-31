@@ -11,7 +11,9 @@ export function Option(props) {
 
 const Container = styled.div`
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  width: 300px;
+  min-width: 200px;
+  max-width: 300px;
+  width: 18vw;
   height: 250px;
   background-color: white;
   border-radius: 30px;
@@ -49,5 +51,13 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     width: 110px;
     height: 110px;
   }
+  }
+  div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 `;

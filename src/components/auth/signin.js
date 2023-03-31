@@ -94,6 +94,10 @@ const Container = styled.div`
       font-weight: bold;
       margin-bottom: 60px;
       margin-top: 130px;
+      transition: linear 0.5s;
+      @media (max-width: 1675px) {
+      margin-top: 160px;
+    }
     }
   }
   form {
@@ -180,8 +184,20 @@ right: ${props => props.status === "signup" ? "-500px" : "36%"};
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: linear 0.5s;
+    @media (max-width: 1675px) {
+      width: 110px;
+      height: 110px;
+      left: 195px;
+      top: 20px;
+      margin-bottom: 30px;
+    }
   }
   img{
     width: 320px;
+    transition: linear 0.5s;
+    @media (max-width: 1675px) {
+      width: 200px;
+    }
   }
 `

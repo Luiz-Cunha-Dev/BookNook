@@ -51,13 +51,16 @@ const Container = styled.div`
       font-size: 30px;
     }
     .items{
+      width: 100%;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       span{
         margin-top: 20px;
         background-color: #EEEEEE;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        width: 400px;
+        width: 19vw;
         height: 60px;
         display: flex;
         justify-content: space-between;

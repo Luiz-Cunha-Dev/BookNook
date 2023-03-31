@@ -160,10 +160,10 @@ const Container = styled.div`
       height: 180px;
       width: 180px;
       border-radius: 120px;
-      margin-bottom: 25px;
+      margin-bottom: 2vw;
     }
     span {
-      margin-bottom: 50px;
+      margin-bottom: 3vw;
     }
     .options {
       width: 65%;
@@ -175,7 +175,7 @@ const Container = styled.div`
         cursor: pointer;
         display: flex;
         align-items: center;
-        margin-bottom: 40px;
+        margin-bottom: 2vw;
         .icon {
           font-size: 30px;
           margin-right: 15px;

@@ -20,53 +20,70 @@ export function InitialPage() {
       <Header />
       <div className="board">
         <Option>
-          <div className="img">
-            <img src={filme} alt="filme" />
+          <div onClick={() => navigate("/search-page/Seus Filmes")}>
+            <div className="img">
+              <img src={filme} alt="filme" />
+            </div>
+            Seus Filmes
           </div>
-          Seus Filmes
         </Option>
         <Option>
-          <div className="img">
-            <img src={serie} alt="serie" />
+          <div onClick={() => navigate("/search-page/Seus Séries")}>
+            <div className="img">
+              <img src={serie} alt="serie" />
+            </div>
+            Suas Séries
           </div>
-          Suas Séries
         </Option>
         <Option>
-          <div className="img">
-            <img src={anime} alt="anime" />
+          <div onClick={() => navigate("/search-page/Seus Animes")}>
+            <div className="img">
+              <img src={anime} alt="anime" />
+            </div>
+            Seus Animes
           </div>
-          Seus Animes
         </Option>
         <Option>
-          <div className="img">
-            <img src={desenho} alt="desenho" />
+          <div onClick={() => navigate("/search-page/Seus Desenhos")}>
+            <div className="img">
+              <img src={desenho} alt="desenho" />
+            </div>
+            Seus Desenhos
           </div>
-          Seus Desenhos
         </Option>
         <Option>
-          <div className="img">
-            <img src={livro} alt="livro" />
+          <div onClick={() => navigate("/search-page/Seus Livros")}>
+            <div className="img">
+              <img src={livro} alt="livro" />
+            </div>
+            Seus Livros
           </div>
-          Seus Livros
         </Option>
         <Option>
-          <div className="img">
-            <img src={jogo} alt="jogo" />
+          <div onClick={() => navigate("/search-page/Seus Jogos")}>
+            <div className="img">
+              <img src={jogo} alt="jogo" />
+            </div>
+            Seus Jogos
           </div>
-          Seus Jogos
         </Option>
         <Option>
-          <div className="img">
-            <img src={entretenimento} alt="entretenimento" />
+          <div onClick={() => navigate("/search-page/Seus Entretenimentos")}>
+            <div className="img">
+              <img src={entretenimento} alt="entretenimento" />
+            </div>
+            Seus
+            <br />
+            Entretenimentos
           </div>
-          Todos os Seus
-          <br /> Entretenimentos
         </Option>
         <Option>
-          <div className="img">
-            <img src={tudo} alt="tudo" />
+          <div onClick={() => navigate("/search-page/Tudo")}>
+            <div className="img">
+              <img src={tudo} alt="tudo" />
+            </div>
+            Tudo
           </div>
-          Tudo
         </Option>
       </div>
     </Container>
@@ -89,6 +106,6 @@ const Container = styled.div`
     flex-wrap: wrap;
     width: 80%;
     padding-left: 10%;
-    margin-top: 70px;
+    margin-top: 2%;
   }
 `;

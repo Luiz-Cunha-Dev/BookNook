@@ -69,8 +69,8 @@ const Container = styled.div`
       flex-direction: column;
       align-items: center;
       input {
-        height: 50px;
-        width: 420px;
+        height: 6%;
+        width: 22vw;
         border: none;
         outline: none;
         padding: 20px 10px 0px;
@@ -84,7 +84,6 @@ const Container = styled.div`
         background-color: darkblue;
         color: white;
         font-size: 18px;
-        margin-top: 20px;
         cursor: pointer;
         transition: linear 0.1s;
         :hover {
@@ -96,7 +95,7 @@ const Container = styled.div`
       }
     }
     img {
-      height: 200px;
+      height:12vw;
     }
     .back-image {
       margin-top: 30px;
@@ -104,14 +103,15 @@ const Container = styled.div`
       justify-content: center;
       align-items: center;
       background-color: white;
-      height: 180px;
-      width: 180px;
+      height: 9vw;
+      width: 9vw;
       border-radius: 120px;
-      margin-bottom: 25px;
+      margin-bottom: 15%;
     }
     .inputBox {
       position: relative;
-      margin-bottom: 30px;
+      width: 100%;
+      margin-bottom: 2vw;
       span {
         font-size: 1em;
         letter-spacing: 0.05em;

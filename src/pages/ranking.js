@@ -39,206 +39,8 @@ export function Ranking() {
               <FaStar className="star3"/>
               <FaStar className="star4"/>
               <FaStar className="star5" />
+              <p>Views: 10000</p>
             </Stars>
-            <p>Views: 10000</p>
-          </div>
-        </RankingItem>
-        <RankingItem>
-          <span>2°</span>
-          <div className="img">
-            <img src={filme} alt="filme" />
-          </div>
-          <div className="informations">
-            <h3>Vingadores: Ultimato</h3>
-            <div className="categories">
-              <div className="category">Ação</div>
-              <div className="category">Heroi</div>
-              <div className="category">Ficção Cientifica</div>
-            </div>
-            <Stars>
-              <FaStar className="star1" />
-              <FaStar className="star2" />
-              <FaStar className="star3" />
-              <FaStar className="star4" />
-              <FaStar className="star5" />
-            </Stars>
-            <p>Views: 10000</p>
-          </div>
-        </RankingItem>
-        <RankingItem>
-          <span>3°</span>
-          <div className="img">
-            <img src={filme} alt="filme" />
-          </div>
-          <div className="informations">
-            <h3>Vingadores: Ultimato</h3>
-            <div className="categories">
-              <div className="category">Ação</div>
-              <div className="category">Heroi</div>
-              <div className="category">Ficção Cientifica</div>
-            </div>
-            <Stars>
-              <FaStar className="star1" />
-              <FaStar className="star2" />
-              <FaStar className="star3" />
-              <FaStar className="star4" />
-              <FaStar className="star5" />
-            </Stars>
-            <p>Views: 10000</p>
-          </div>
-        </RankingItem>
-        <RankingItem>
-          <span>4°</span>
-          <div className="img">
-            <img src={filme} alt="filme" />
-          </div>
-          <div className="informations">
-            <h3>Vingadores: Ultimato</h3>
-            <div className="categories">
-              <div className="category">Ação</div>
-              <div className="category">Heroi</div>
-              <div className="category">Ficção Cientifica</div>
-            </div>
-            <Stars>
-              <FaStar className="star1" />
-              <FaStar className="star2" />
-              <FaStar className="star3" />
-              <FaStar className="star4" />
-              <FaStar className="star5" />
-            </Stars>
-            <p>Views: 10000</p>
-          </div>
-        </RankingItem>
-        <RankingItem>
-          <span>5°</span>
-          <div className="img">
-            <img src={filme} alt="filme" />
-          </div>
-          <div className="informations">
-            <h3>Vingadores: Ultimato</h3>
-            <div className="categories">
-              <div className="category">Ação</div>
-              <div className="category">Heroi</div>
-              <div className="category">Ficção Cientifica</div>
-            </div>
-            <Stars>
-              <FaStar className="star1" />
-              <FaStar className="star2" />
-              <FaStar className="star3" />
-              <FaStar className="star4" />
-              <FaStar className="star5" />
-            </Stars>
-            <p>Views: 10000</p>
-          </div>
-        </RankingItem>
-        <RankingItem>
-          <span>6°</span>
-          <div className="img">
-            <img src={filme} alt="filme" />
-          </div>
-          <div className="informations">
-            <h3>Vingadores: Ultimato</h3>
-            <div className="categories">
-              <div className="category">Ação</div>
-              <div className="category">Heroi</div>
-              <div className="category">Ficção Cientifica</div>
-            </div>
-            <Stars>
-              <FaStar className="star1" />
-              <FaStar className="star2" />
-              <FaStar className="star3" />
-              <FaStar className="star4" />
-              <FaStar className="star5" />
-            </Stars>
-            <p>Views: 10000</p>
-          </div>
-        </RankingItem>
-        <RankingItem>
-          <span>7°</span>
-          <div className="img">
-            <img src={filme} alt="filme" />
-          </div>
-          <div className="informations">
-            <h3>Vingadores: Ultimato</h3>
-            <div className="categories">
-              <div className="category">Ação</div>
-              <div className="category">Heroi</div>
-              <div className="category">Ficção Cientifica</div>
-            </div>
-            <Stars>
-              <FaStar className="star1" />
-              <FaStar className="star2" />
-              <FaStar className="star3" />
-              <FaStar className="star4" />
-              <FaStar className="star5" />
-            </Stars>
-            <p>Views: 10000</p>
-          </div>
-        </RankingItem>
-        <RankingItem>
-          <span>8°</span>
-          <div className="img">
-            <img src={filme} alt="filme" />
-          </div>
-          <div className="informations">
-            <h3>Vingadores: Ultimato</h3>
-            <div className="categories">
-              <div className="category">Ação</div>
-              <div className="category">Heroi</div>
-              <div className="category">Ficção Cientifica</div>
-            </div>
-            <Stars>
-              <FaStar className="star1" />
-              <FaStar className="star2" />
-              <FaStar className="star3" />
-              <FaStar className="star4" />
-              <FaStar className="star5" />
-            </Stars>
-            <p>Views: 10000</p>
-          </div>
-        </RankingItem>
-        <RankingItem>
-          <span>9°</span>
-          <div className="img">
-            <img src={filme} alt="filme" />
-          </div>
-          <div className="informations">
-            <h3>Vingadores: Ultimato</h3>
-            <div className="categories">
-              <div className="category">Ação</div>
-              <div className="category">Heroi</div>
-              <div className="category">Ficção Cientifica</div>
-            </div>
-            <Stars>
-              <FaStar className="star1" />
-              <FaStar className="star2" />
-              <FaStar className="star3" />
-              <FaStar className="star4" />
-              <FaStar className="star5" />
-            </Stars>
-            <p>Views: 10000</p>
-          </div>
-        </RankingItem>
-        <RankingItem>
-          <span>10°</span>
-          <div className="img">
-            <img src={filme} alt="filme" />
-          </div>
-          <div className="informations">
-            <h3>Vingadores: Ultimato</h3>
-            <div className="categories">
-              <div className="category">Ação</div>
-              <div className="category">Heroi</div>
-              <div className="category">Ficção Cientifica</div>
-            </div>
-            <Stars>
-              <FaStar className="star1" />
-              <FaStar className="star2" />
-              <FaStar className="star3" />
-              <FaStar className="star4" />
-              <FaStar className="star5" />
-            </Stars>
-            <p>Views: 10000</p>
           </div>
         </RankingItem>
         </div>
@@ -257,19 +59,21 @@ const Container = styled.div`
   background-position: center;
   width: 100vw;
   height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   .board {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background-color: white;
-    width: 600px;
-    height: 750px;
+    width: 35%;
+    height: 78%;
     border-radius: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-left: 35%;
     margin-right: 35%;
-
+    margin-bottom: 1%;
     .list{
       width: 95%;
       overflow: auto;
@@ -329,8 +133,10 @@ border-radius: 50px;
 `;
 
 const Stars = styled.div`
-  font-size: 30px;
+  font-size: 2vw;
   color: grey;
+  display: flex;
+  align-items: center;
   .star1{
     color: #faab00;
   }

@@ -94,7 +94,7 @@ const Container = styled.div`
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     background-color: white;
-    width: 600px;
+    width: 35%;
     height: 78%;
     border-radius: 50px;
     display: flex;
@@ -102,6 +102,7 @@ const Container = styled.div`
     align-items: center;
     margin-left: 35%;
     margin-right: 35%;
+    margin-bottom: 1%;
     padding-bottom: 10px;
     h2 {
       color: darkblue;
