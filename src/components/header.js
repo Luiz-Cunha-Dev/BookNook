@@ -46,7 +46,7 @@ export function Header() {
             Mais populares
           </p>
 
-          <p onClick={() => navigate("/popular")}>
+          <p onClick={() => navigate("/goals")}>
             <RiBookletLine className="icon" />
             Metas
           </p>
@@ -127,6 +127,7 @@ const Container = styled.div`
       margin-left: 50px;
     }
     .icone {
+      height: 12vh;
       display: flex;
       align-items: center;
       justify-content: center;

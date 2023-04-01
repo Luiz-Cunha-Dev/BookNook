@@ -10,7 +10,7 @@ export function Box(props) {
 
 const Container = styled.div`
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  width: 510px;
+  width: 32%;
   background-color: white;
   border-radius: 10px;
   display: flex;
@@ -58,11 +58,15 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     .categories{
       display: flex;
       .category{
-        margin-right: 10px;
+        margin-right: 3%;
         padding: 3px;
         color: white;
         border-radius: 5px;
         font-size: 0.8vw;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       .category:nth-child(1){
         border: solid 2px darkred;

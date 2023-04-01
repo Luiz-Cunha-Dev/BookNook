@@ -7,6 +7,7 @@ import { Config } from "./pages/config";
 import { Popular } from "./pages/popular";
 import { Ranking } from "./pages/ranking";
 import { SearchPage } from "./pages/searchPage";
+import { Goals } from "./pages/goals";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
     <Route path="/search-page/:categoryName" element={<SearchPage/>}/>
     <Route path="/about-me" element={<AboutMe/>}/>
     <Route path="/popular" element={<Popular/>}/>
+    <Route path="/goals" element={<Goals/>}/>
     <Route path="/popular/ranking/:categoryName" element={<Ranking/>}/>
     <Route path="/config" element={<Config/>}/>
     </Routes>

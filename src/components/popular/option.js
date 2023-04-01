@@ -7,7 +7,7 @@ export function Option(props) {
 const Container = styled.div`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 90%;
-  height: 50%;
+  height: 40%;
   background-color: white;
   border-radius: 30px;
   display: flex;

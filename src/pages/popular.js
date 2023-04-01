@@ -19,6 +19,7 @@ export function Popular() {
       <Header />
       <div className="board">
         <h2>Mais Populares</h2>
+        <div className="options">
         <Option>
           <div onClick={() => navigate("/popular/ranking/Filmes")}>
             <div className="img">
@@ -75,6 +76,7 @@ export function Popular() {
             Tudo
           </div>
         </Option>
+        </div>
       </div>
     </Container>
   );
@@ -107,6 +109,35 @@ const Container = styled.div`
     h2 {
       color: darkblue;
       font-size: 30px;
+    }
+    .options{
+      box-sizing: border-box;
+    background-color: white;
+    width: 93%;
+    height: 100%;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-bottom: 1%;
+    padding-bottom: 10px;
+    overflow: auto;
+    overflow-x: hidden;
+    ::-webkit-scrollbar {
+      border-radius: 50px;
+    width: 10px;
+    background: transparent;
+    border-top-right-radius: 50px;
+}
+::-webkit-scrollbar-thumb{
+background-color: darkblue;
+border-radius: 50px;
+}   
+::-webkit-scrollbar-track-piece{
+  height: 80%;
+}  
     }
   }
 `;
