@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import background from "../imgs/w2.jpg";
 import { Header } from "../components/header";
 import calendar from "../imgs/calendario.png";
+import { Option } from "../components/goals/option";
 
 export function Goals() {
   const navigate = useNavigate();
@@ -13,7 +14,98 @@ export function Goals() {
       <div className="board">
         <h2>Metas</h2>
         <div className="back">
-          <div className="left"></div>
+          <div className="left">
+            <Option>
+              <span className="title">FILMES</span>
+              <div className="goal">
+              <span>META</span>
+              <button>-</button>
+              <p>00</p>
+              <button>+</button>
+              </div>
+              <div className="qtd">
+              <span>QTDE ATUAL</span>
+              <button>-</button>
+              <p>00</p>
+              <button>+</button>
+              </div>
+            </Option>
+            <Option>
+              <span className="title">SÈRIES</span>
+              <div className="goal">
+              <span>META</span>
+              <button>-</button>
+              <p>00</p>
+              <button>+</button>
+              </div>
+              <div className="qtd">
+              <span>QTDE ATUAL</span>
+              <button>-</button>
+              <p>00</p>
+              <button>+</button>
+              </div>
+            </Option>
+            <Option>
+              <span className="title">ANIMES</span>
+              <div className="goal">
+              <span>META</span>
+              <button>-</button>
+              <p>00</p>
+              <button>+</button>
+              </div>
+              <div className="qtd">
+              <span>QTDE ATUAL</span>
+              <button>-</button>
+              <p>00</p>
+              <button>+</button>
+              </div>
+            </Option>
+            <Option>
+              <span className="title">DESENHOS</span>
+              <div className="goal">
+              <span>META</span>
+              <button>-</button>
+              <p>00</p>
+              <button>+</button>
+              </div>
+              <div className="qtd">
+              <span>QTDE ATUAL</span>
+              <button>-</button>
+              <p>00</p>
+              <button>+</button>
+              </div>
+            </Option>
+            <Option>
+              <span className="title">LIVROS</span>
+              <div className="goal">
+              <span>META</span>
+              <button>-</button>
+              <p>00</p>
+              <button>+</button>
+              </div>
+              <div className="qtd">
+              <span>QTDE ATUAL</span>
+              <button>-</button>
+              <p>00</p>
+              <button>+</button>
+              </div>
+            </Option>
+            <Option>
+              <span className="title">JOGOS</span>
+              <div className="goal">
+              <span>META</span>
+              <button>-</button>
+              <p>00</p>
+              <button>+</button>
+              </div>
+              <div className="qtd">
+              <span>QTDE ATUAL</span>
+              <button>-</button>
+              <p>00</p>
+              <button>+</button>
+              </div>
+            </Option>
+          </div>
           <div className="rigth">
             <select>
               <option value="2023">2023</option>
@@ -119,6 +211,9 @@ const Container = styled.div`
     .left {
       width: 50%;
       height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .rigth {
       box-sizing: border-box;

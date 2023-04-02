@@ -28,7 +28,7 @@ export function InitialPage() {
           </div>
         </Option>
         <Option>
-          <div onClick={() => navigate("/search-page/Seus Séries")}>
+          <div onClick={() => navigate("/search-page/Suas Séries")}>
             <div className="img">
               <img src={serie} alt="serie" />
             </div>
