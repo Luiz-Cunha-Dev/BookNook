@@ -1,35 +1,56 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import background from "../imgs/w2.jpg";
-import { Header } from "../components/header";
-import userPicture from "../imgs/userPicture.png";
+import { IoIosCloseCircle } from "react-icons/io";
 
-export function AboutMe() {
+export function Edit({setEdit, edit, categoryName}) {
   const navigate = useNavigate();
 
+  function Name(categoryName){
+    if(categoryName === "Seus Filmes"){
+      return "Editar um Filme"
+    }
+  }
+
   return (
-    <Container>
-      <Header />
+    <Container edit={edit}>
       <div className="board">
-        <h2>Sobre Mim</h2>
-        <div className="back-image">
-          <img src={userPicture} alt="userPicture" />
-        </div>
+      <IoIosCloseCircle onClick={() => setEdit(true)} className="close" />
+        <h2>{Name(categoryName)}</h2>
         <form>
           <div className="inputBox">
             <input type="text" required="required" />
-            <span>Inserir/Alterar URL da Imagem de Perfil</span>
-            <i></i>
-          </div>
-          <div className="inputBox">
-            <input type="text" required="required" />
-            <span>E-mail</span>
+            <span>Inserir URL da Imagem</span>
             <i></i>
           </div>
           <div className="inputBox">
             <input type="text" required="required" />
             <span>Nome</span>
+            <i></i>
+          </div>
+          <div className="inputBox">
+            <input type="text" required="required" />
+            <span>Categoria 1</span>
+            <i></i>
+          </div>
+          <div className="inputBox">
+            <input type="text" required="required" />
+            <span>Categoria 2</span>
+            <i></i>
+          </div>
+          <div className="inputBox">
+            <input type="text" required="required" />
+            <span>Categoria 3</span>
+            <i></i>
+          </div>
+          <div className="inputBox">
+            <input type="number" required="required" />
+            <span>Avaliação de 0 a 10</span>
+            <i></i>
+          </div>
+          <div className="inputBox">
+            <input type="text" required="required" />
+            <span>Comentario</span>
             <i></i>
           </div>
           <button>Salvar</button>
@@ -40,27 +61,28 @@ export function AboutMe() {
 }
 
 const Container = styled.div`
+z-index: 1;
   position: fixed;
   left: 0;
   top: 0;
-  background-image: url(${background});
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
   width: 100vw;
   height: 100%;
-
+  background-color: rgba(10, 23, 55, 0.5);
+  padding-top: 6%;
+  display: ${(props) => (props.edit === true ? "none" : "flex")};
   .board {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     background-color: white;
     height: 75%;
+    width: 50%;
     border-radius: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-left: 35%;
     margin-right: 35%;
+    position: relative;
     animation-duration: 1s;
     animation-name: fadeInDown;
     @keyframes fadeInDown {
@@ -73,24 +95,36 @@ const Container = styled.div`
       transform: none;
     }
   }
+  .close {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      font-size: 50px;
+      color: red;
+      cursor: pointer;
+    }
     h2 {
       color: darkblue;
       font-size: 30px;
+      margin-bottom: 35px;
     }
     form {
+      width: 70%;
+      height: 100%;
       display: flex;
       flex-direction: column;
+      justify-content: start;
       align-items: center;
       input {
-        box-sizing: border-box;
         height: 6%;
-        width: 22vw;
+        width: 70%;
         border: none;
         outline: none;
-        padding: 10px 10px 10px;
+        padding: 10px 10px 10px ;
         font-size: 20px;
       }
       button {
+        position: initial;
         width: 160px;
         height: 42px;
         border-radius: 20px;
@@ -98,6 +132,7 @@ const Container = styled.div`
         background-color: darkblue;
         color: white;
         font-size: 18px;
+        margin-top: -10px;
         cursor: pointer;
         transition: linear 0.1s;
         :hover {
@@ -108,24 +143,10 @@ const Container = styled.div`
         }
       }
     }
-    img {
-      height:12vw;
-    }
-    .back-image {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: white;
-      height: 9vw;
-      width: 9vw;
-      border-radius: 120px;
-      margin-bottom: 15%;
-    }
     .inputBox {
       position: relative;
       width: 100%;
-      margin-bottom: 3vw;
+      margin-bottom: 2vw;
       span {
         font-size: 1em;
         letter-spacing: 0.05em;

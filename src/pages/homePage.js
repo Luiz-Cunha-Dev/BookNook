@@ -61,6 +61,18 @@ const Container = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
+    animation-duration: 1s;
+    animation-name: fadeInLeft;
+    @keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      transform: translate3d(-100%, 0, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
     h1 {
       font-family: "Chewy";
       color: darkblue;
@@ -108,6 +120,18 @@ const Container = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
+    animation-duration: 2s;
+    animation-name: fadeInRigth;
+    @keyframes fadeInRigth {
+    0% {
+      opacity: 0;
+      transform: translate3d(100%, 0, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
     img {
       width: 600px;
       height: 100%;

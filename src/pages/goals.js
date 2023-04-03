@@ -4,6 +4,7 @@ import background from "../imgs/w2.jpg";
 import { Header } from "../components/header";
 import calendar from "../imgs/calendario.png";
 import { Option } from "../components/goals/option";
+import { BsFillPatchCheckFill } from "react-icons/bs";
 
 export function Goals() {
   const navigate = useNavigate();
@@ -18,91 +19,109 @@ export function Goals() {
             <Option>
               <span className="title">FILMES</span>
               <div className="goal">
-              <span>META</span>
-              <button>-</button>
-              <p>00</p>
-              <button>+</button>
+                <span>META</span>
+                <button>-</button>
+                <p>00</p>
+                <button>+</button>
               </div>
               <div className="qtd">
-              <span>QTDE ATUAL</span>
-              <button>-</button>
-              <p>00</p>
-              <button>+</button>
+                <span>QUANTIDADE ATUAL</span>
+                <button>-</button>
+                <p>00</p>
+                <button>+</button>
+              </div>
+              <div className="check">
+                <BsFillPatchCheckFill className="icon" />
               </div>
             </Option>
             <Option>
               <span className="title">SÈRIES</span>
               <div className="goal">
-              <span>META</span>
-              <button>-</button>
-              <p>00</p>
-              <button>+</button>
+                <span>META</span>
+                <button>-</button>
+                <p>00</p>
+                <button>+</button>
               </div>
               <div className="qtd">
-              <span>QTDE ATUAL</span>
-              <button>-</button>
-              <p>00</p>
-              <button>+</button>
+                <span>QUANTIDADE ATUAL</span>
+                <button>-</button>
+                <p>00</p>
+                <button>+</button>
+              </div>
+              <div className="check">
+                <BsFillPatchCheckFill className="icon" />
               </div>
             </Option>
             <Option>
               <span className="title">ANIMES</span>
               <div className="goal">
-              <span>META</span>
-              <button>-</button>
-              <p>00</p>
-              <button>+</button>
+                <span>META</span>
+                <button>-</button>
+                <p>00</p>
+                <button>+</button>
               </div>
               <div className="qtd">
-              <span>QTDE ATUAL</span>
-              <button>-</button>
-              <p>00</p>
-              <button>+</button>
+                <span>QUANTIDADE ATUAL</span>
+                <button>-</button>
+                <p>00</p>
+                <button>+</button>
+              </div>
+              <div className="check">
+                <BsFillPatchCheckFill className="icon" />
               </div>
             </Option>
             <Option>
               <span className="title">DESENHOS</span>
               <div className="goal">
-              <span>META</span>
-              <button>-</button>
-              <p>00</p>
-              <button>+</button>
+                <span>META</span>
+                <button>-</button>
+                <p>00</p>
+                <button>+</button>
               </div>
               <div className="qtd">
-              <span>QTDE ATUAL</span>
-              <button>-</button>
-              <p>00</p>
-              <button>+</button>
+                <span>QUANTIDADE ATUAL</span>
+                <button>-</button>
+                <p>00</p>
+                <button>+</button>
+              </div>
+              <div className="check">
+                <BsFillPatchCheckFill className="icon" />
               </div>
             </Option>
             <Option>
               <span className="title">LIVROS</span>
               <div className="goal">
-              <span>META</span>
-              <button>-</button>
-              <p>00</p>
-              <button>+</button>
+                <span>META</span>
+                <button>-</button>
+                <p>00</p>
+                <button>+</button>
               </div>
               <div className="qtd">
-              <span>QTDE ATUAL</span>
-              <button>-</button>
-              <p>00</p>
-              <button>+</button>
+                <span>QUANTIDADE ATUAL</span>
+                <button>-</button>
+                <p>00</p>
+                <button>+</button>
+              </div>
+              <div className="check">
+                <BsFillPatchCheckFill className="icon" />
               </div>
             </Option>
             <Option>
               <span className="title">JOGOS</span>
               <div className="goal">
-              <span>META</span>
-              <button>-</button>
-              <p>00</p>
-              <button>+</button>
+                <span>META</span>
+                <button>-</button>
+                <p>00</p>
+                <button>+</button>
               </div>
               <div className="qtd">
-              <span>QTDE ATUAL</span>
-              <button>-</button>
-              <p>00</p>
-              <button>+</button>
+                <span>QUANTIDADE ATUAL</span>
+                <button>-</button>
+                <p>00</p>
+                <button>+</button>
+              </div>
+              <div className="check">
+                <BsFillPatchCheckFill className="icon" />
               </div>
             </Option>
           </div>
@@ -197,6 +216,18 @@ const Container = styled.div`
     margin-left: 5%;
     margin-right: 5%;
     position: relative;
+    animation-duration: 1s;
+    animation-name: fadeInDown;
+    @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
     h2 {
       color: darkblue;
       font-size: 30px;

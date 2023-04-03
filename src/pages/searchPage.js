@@ -8,176 +8,220 @@ import { MdOutlineAdd } from "react-icons/md";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import filme from "../imgs/entretenimentos/filmes.jpg";
 import { Box } from "../components/searchPage/box";
+import { Window } from "../components/searchPage/window";
+import { Add } from "../components/searchPage/add";
 
 export function SearchPage() {
   const navigate = useNavigate();
   const { categoryName } = useParams();
+  const [close, setClose] = useState(true);
+  const [add, setAdd] = useState(true);
 
   return (
-    <Container>
-      <Header />
-      <div className="board">
-        <h2>{categoryName}</h2>
-        <form>
-          <div className="inputBox">
-            <input type="text" required="required" />
-            <span>Busque pelo nome que procura</span>
-            <i></i>
+    <>
+      <Container>
+        <Header />
+        <Add add={add} setAdd={setAdd} categoryName={categoryName}/>
+        <Window close={close} setClose={setClose} categoryName={categoryName}/>
+        <div className="board">
+          <h2>{categoryName}</h2>
+          <form>
+            <div className="inputBox">
+              <input type="text" required="required" />
+              <span>Busque pelo nome que procura</span>
+              <i></i>
+            </div>
+            <button>
+              <FaSearch />
+            </button>
+            <div onClick={() => setAdd(false)} className="add">
+              <span>Adicionar</span>
+              <div className="rigth">
+                <MdOutlineAdd className="plus" />
+              </div>
+            </div>
+          </form>
+          <div className="list">
+            <Box>
+              <div onClick={() => setClose(false)} className="back">
+              <div className="img">
+                <img src={filme} alt="filme" />
+              </div>
+              <div className="informations">
+                <h3>Vingadores: Ultimato</h3>
+                <div className="categories">
+                  <div className="category">Ação</div>
+                  <div className="category">Heroi</div>
+                  <div className="category">Ficção Cientifica</div>
+                </div>
+                <Stars>
+                  <FaStar className="star1" />
+                  <FaStar className="star2" />
+                  <FaStar className="star3" />
+                  <FaStar className="star4" />
+                  <FaStar className="star5" />
+                </Stars>
+              </div>
+              </div>
+            </Box>
+            <Box>
+              <div  onClick={() => setClose(false)} className="back">
+              <div className="img">
+                <img src={filme} alt="filme" />
+              </div>
+              <div className="informations">
+                <h3>Vingadores: Ultimato</h3>
+                <div className="categories">
+                  <div className="category">Ação</div>
+                  <div className="category">Heroi</div>
+                  <div className="category">Ficção Cientifica</div>
+                </div>
+                <Stars>
+                  <FaStar className="star1" />
+                  <FaStar className="star2" />
+                  <FaStar className="star3" />
+                  <FaStar className="star4" />
+                  <FaStar className="star5" />
+                </Stars>
+              </div>
+              </div>
+            </Box>
+            <Box>
+              <div  onClick={() => setClose(false)} className="back">
+              <div className="img">
+                <img src={filme} alt="filme" />
+              </div>
+              <div className="informations">
+                <h3>Vingadores: Ultimato</h3>
+                <div className="categories">
+                  <div className="category">Ação</div>
+                  <div className="category">Heroi</div>
+                  <div className="category">Ficção Cientifica</div>
+                </div>
+                <Stars>
+                  <FaStar className="star1" />
+                  <FaStar className="star2" />
+                  <FaStar className="star3" />
+                  <FaStar className="star4" />
+                  <FaStar className="star5" />
+                </Stars>
+              </div>
+              </div>
+            </Box>
+            <Box>
+              <div  onClick={() => setClose(false)} className="back">
+              <div className="img">
+                <img src={filme} alt="filme" />
+              </div>
+              <div className="informations">
+                <h3>Vingadores: Ultimato</h3>
+                <div className="categories">
+                  <div className="category">Ação</div>
+                  <div className="category">Heroi</div>
+                  <div className="category">Ficção Cientifica</div>
+                </div>
+                <Stars>
+                  <FaStar className="star1" />
+                  <FaStar className="star2" />
+                  <FaStar className="star3" />
+                  <FaStar className="star4" />
+                  <FaStar className="star5" />
+                </Stars>
+              </div>
+              </div>
+            </Box>
+            <Box>
+              <div  onClick={() => setClose(false)} className="back">
+              <div className="img">
+                <img src={filme} alt="filme" />
+              </div>
+              <div className="informations">
+                <h3>Vingadores: Ultimato</h3>
+                <div className="categories">
+                  <div className="category">Ação</div>
+                  <div className="category">Heroi</div>
+                  <div className="category">Ficção Cientifica</div>
+                </div>
+                <Stars>
+                  <FaStar className="star1" />
+                  <FaStar className="star2" />
+                  <FaStar className="star3" />
+                  <FaStar className="star4" />
+                  <FaStar className="star5" />
+                </Stars>
+              </div>
+              </div>
+            </Box>
+            <Box>
+              <div  onClick={() => setClose(false)} className="back">
+              <div className="img">
+                <img src={filme} alt="filme" />
+              </div>
+              <div className="informations">
+                <h3>Vingadores: Ultimato</h3>
+                <div className="categories">
+                  <div className="category">Ação</div>
+                  <div className="category">Heroi</div>
+                  <div className="category">Ficção Cientifica</div>
+                </div>
+                <Stars>
+                  <FaStar className="star1" />
+                  <FaStar className="star2" />
+                  <FaStar className="star3" />
+                  <FaStar className="star4" />
+                  <FaStar className="star5" />
+                </Stars>
+              </div>
+              </div>
+            </Box>
+            <Box>
+              <div  onClick={() => setClose(false)} className="back">
+              <div className="img">
+                <img src={filme} alt="filme" />
+              </div>
+              <div className="informations">
+                <h3>Vingadores: Ultimato</h3>
+                <div className="categories">
+                  <div className="category">Ação</div>
+                  <div className="category">Heroi</div>
+                  <div className="category">Ficção Cientifica</div>
+                </div>
+                <Stars>
+                  <FaStar className="star1" />
+                  <FaStar className="star2" />
+                  <FaStar className="star3" />
+                  <FaStar className="star4" />
+                  <FaStar className="star5" />
+                </Stars>
+              </div>
+              </div>
+            </Box>
+            <Box>
+              <div  onClick={() => setClose(false)} className="back">
+              <div className="img">
+                <img src={filme} alt="filme" />
+              </div>
+              <div className="informations">
+                <h3>Vingadores: Ultimato</h3>
+                <div className="categories">
+                  <div className="category">Ação</div>
+                  <div className="category">Heroi</div>
+                  <div className="category">Ficção Cientifica</div>
+                </div>
+                <Stars>
+                  <FaStar className="star1" />
+                  <FaStar className="star2" />
+                  <FaStar className="star3" />
+                  <FaStar className="star4" />
+                  <FaStar className="star5" />
+                </Stars>
+              </div>
+              </div>
+            </Box>
           </div>
-          <button>
-            <FaSearch />
-          </button>
-          <div className="add">
-            <span>Adicionar</span>
-            <div className="rigth">
-              <MdOutlineAdd className="plus" />
-            </div>
-          </div>
-        </form>
-        <div className="list">
-          <Box>
-            <div className="img">
-              <img src={filme} alt="filme" />
-            </div>
-            <div className="informations">
-              <h3>Vingadores: Ultimato</h3>
-              <div className="categories">
-                <div className="category">Ação</div>
-                <div className="category">Heroi</div>
-                <div className="category">Ficção Cientifica</div>
-              </div>
-              <Stars>
-                <FaStar className="star1" />
-                <FaStar className="star2" />
-                <FaStar className="star3" />
-                <FaStar className="star4" />
-                <FaStar className="star5" />
-              </Stars>
-            </div>
-          </Box>
-          <Box>
-            <div className="img">
-              <img src={filme} alt="filme" />
-            </div>
-            <div className="informations">
-              <h3>Vingadores: Ultimato</h3>
-              <div className="categories">
-                <div className="category">Ação</div>
-                <div className="category">Heroi</div>
-                <div className="category">Ficção Cientifica</div>
-              </div>
-              <Stars>
-                <FaStar className="star1" />
-                <FaStar className="star2" />
-                <FaStar className="star3" />
-                <FaStar className="star4" />
-                <FaStar className="star5" />
-              </Stars>
-            </div>
-          </Box>
-          <Box>
-            <div className="img">
-              <img src={filme} alt="filme" />
-            </div>
-            <div className="informations">
-              <h3>Vingadores: Ultimato</h3>
-              <div className="categories">
-                <div className="category">Ação</div>
-                <div className="category">Heroi</div>
-                <div className="category">Ficção Cientifica</div>
-              </div>
-              <Stars>
-                <FaStar className="star1" />
-                <FaStar className="star2" />
-                <FaStar className="star3" />
-                <FaStar className="star4" />
-                <FaStar className="star5" />
-              </Stars>
-            </div>
-          </Box>
-          <Box>
-            <div className="img">
-              <img src={filme} alt="filme" />
-            </div>
-            <div className="informations">
-              <h3>Vingadores: Ultimato</h3>
-              <div className="categories">
-                <div className="category">Ação</div>
-                <div className="category">Heroi</div>
-                <div className="category">Ficção Cientifica</div>
-              </div>
-              <Stars>
-                <FaStar className="star1" />
-                <FaStar className="star2" />
-                <FaStar className="star3" />
-                <FaStar className="star4" />
-                <FaStar className="star5" />
-              </Stars>
-            </div>
-          </Box>
-          <Box>
-            <div className="img">
-              <img src={filme} alt="filme" />
-            </div>
-            <div className="informations">
-              <h3>Vingadores: Ultimato</h3>
-              <div className="categories">
-                <div className="category">Ação</div>
-                <div className="category">Heroi</div>
-                <div className="category">Ficção Cientifica</div>
-              </div>
-              <Stars>
-                <FaStar className="star1" />
-                <FaStar className="star2" />
-                <FaStar className="star3" />
-                <FaStar className="star4" />
-                <FaStar className="star5" />
-              </Stars>
-            </div>
-          </Box>
-          <Box>
-            <div className="img">
-              <img src={filme} alt="filme" />
-            </div>
-            <div className="informations">
-              <h3>Vingadores: Ultimato</h3>
-              <div className="categories">
-                <div className="category">Ação</div>
-                <div className="category">Heroi</div>
-                <div className="category">Ficção Cientifica</div>
-              </div>
-              <Stars>
-                <FaStar className="star1" />
-                <FaStar className="star2" />
-                <FaStar className="star3" />
-                <FaStar className="star4" />
-                <FaStar className="star5" />
-              </Stars>
-            </div>
-          </Box>
-          <Box>
-            <div className="img">
-              <img src={filme} alt="filme" />
-            </div>
-            <div className="informations">
-              <h3>Vingadores: Ultimato</h3>
-              <div className="categories">
-                <div className="category">Ação</div>
-                <div className="category">Heroi</div>
-                <div className="category">Ficção Cientifica</div>
-              </div>
-              <Stars>
-                <FaStar className="star1" />
-                <FaStar className="star2" />
-                <FaStar className="star3" />
-                <FaStar className="star4" />
-                <FaStar className="star5" />
-              </Stars>
-            </div>
-          </Box>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </>
   );
 }
 
@@ -203,6 +247,18 @@ const Container = styled.div`
     margin-top: 2%;
     margin-left: 5%;
     margin-right: 5%;
+    animation-duration: 1s;
+    animation-name: fadeInDown;
+    @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
     h2 {
       color: darkblue;
       font-size: 30px;
@@ -233,9 +289,9 @@ const Container = styled.div`
         :hover {
           font-size: 50px;
           span {
-          font-size: 20px;
-          width: 110px;
-        }
+            font-size: 20px;
+            width: 110px;
+          }
         }
         span {
           width: 90px;
@@ -338,7 +394,6 @@ const Container = styled.div`
     width: 98%;
     height: 100%;
     display: flex;
-    justify-content: space-between;
     padding-left: 2%;
     padding-right: 2%;
     flex-wrap: wrap;

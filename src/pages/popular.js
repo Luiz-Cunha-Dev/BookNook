@@ -106,6 +106,18 @@ const Container = styled.div`
     margin-right: 35%;
     margin-bottom: 1%;
     padding-bottom: 10px;
+    animation-duration: 1s;
+    animation-name: fadeInDown;
+    @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
     h2 {
       color: darkblue;
       font-size: 30px;

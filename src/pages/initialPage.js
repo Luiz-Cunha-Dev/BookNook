@@ -107,5 +107,17 @@ const Container = styled.div`
     width: 80%;
     padding-left: 10%;
     margin-top: 2%;
+    animation-duration: 1s;
+    animation-name: fadeInDown;
+    @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
   }
 `;

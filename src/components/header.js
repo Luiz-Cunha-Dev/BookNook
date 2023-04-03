@@ -75,6 +75,18 @@ export function Header() {
 
 const Container = styled.div`
     font-family: "Courier New", Courier, monospace;
+    animation-duration: 1s;
+    animation-name: fadeInLeft;
+    @keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      transform: translate3d(-100%, 0, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
   .exit-window{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     z-index: 11;

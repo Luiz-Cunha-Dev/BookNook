@@ -11,15 +11,19 @@ export function Box(props) {
 const Container = styled.div`
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 32%;
+  height: 12vw;
   background-color: white;
   border-radius: 10px;
-  display: flex;
-  align-items: center;
   font-family: "Courier New", Courier, monospace;
   font-size: 20px;
   margin-bottom: 30px;
   margin-left: 10px;
   position: relative;
+  cursor: pointer;
+  .back{
+    display: flex;
+  align-items: center;
+  }
   img {
     width: 200px;
   }

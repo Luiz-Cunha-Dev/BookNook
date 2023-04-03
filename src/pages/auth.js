@@ -42,6 +42,18 @@ const Container = styled.div`
     display: flex;
     padding-left: 17.1%;
     align-items: center;
+    animation-duration: 1s;
+    animation-name: fadeInLeft;
+    @keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      transform: translate3d(-100%, 0, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
     h1{
         font-family: 'Chewy';
         color: darkblue;
@@ -67,5 +79,17 @@ const Container = styled.div`
         justify-content: center;
         align-items: center;
         margin-top: -100px;
+        animation-duration: 2s;
+    animation-name: fadeInRigth;
+    @keyframes fadeInRigth {
+    0% {
+      opacity: 0;
+      transform: translate3d(100%, 0, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
     }
 `;

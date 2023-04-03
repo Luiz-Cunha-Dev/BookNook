@@ -19,7 +19,18 @@ box-sizing: border-box;
   text-align: center;
   margin-bottom: 7px;
   padding-left: 5%;
-  padding-right: 15%;
+  padding-right: 2.5%;
+  .check{
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .icon{
+      display: initial;
+      font-size: 40px;
+    color: green;
+    }
+  }
   .title{
     box-sizing: border-box;
     width: 12%;
@@ -44,7 +55,7 @@ box-sizing: border-box;
   .qtd{
     box-sizing: border-box;
     padding-top: 3%;
-    width: 25%;
+    width: 40%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -53,7 +64,7 @@ box-sizing: border-box;
     span{
       font-size: 1.1vw;
       position: absolute;
-      left: 15%;
+      left: 11%;
       top: 5px;
     }
   }

@@ -74,6 +74,18 @@ const Container = styled.div`
     margin-left: 35%;
     margin-right: 35%;
     margin-bottom: 1%;
+    animation-duration: 1s;
+    animation-name: fadeInDown;
+    @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
     .list{
       width: 95%;
       overflow: auto;
