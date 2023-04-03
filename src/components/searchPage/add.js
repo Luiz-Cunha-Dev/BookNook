@@ -70,6 +70,7 @@ z-index: 1;
   background-color: rgba(10, 23, 55, 0.5);
   padding-top: 6%;
   display: ${(props) => (props.add === true ? "none" : "flex")};
+  justify-content: center;
   .board {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
