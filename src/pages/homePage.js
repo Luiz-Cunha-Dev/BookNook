@@ -22,23 +22,27 @@ export function HomePage() {
         <div className="text">
           <h2>Bem-vindo ao melhor site de gerenciamento de entretenimento! </h2>
           <p>
-            Aqui você pode manter um registro completo de todos os filmes que
-            assistiu, livros que leu e jogos que jogou. Com nosso sistema de
-            classificação, você pode avaliar cada um deles em uma escala de
-            estrelas e escrever um breve comentário para lembrar como se sentiu
-            sobre a experiência.
+            Registre todos os filmes, livros e jogos que você já assistiu ou
+            jogou
           </p>
           <p>
-            Além disso, você pode ver quais são os entretenimentos mais
-            populares entre os usuários do site e até mesmo definir metas
-            pessoais para ler mais livros, assistir mais filmes ou jogar mais
-            jogos em um determinado período de tempo.
+            Avalie cada um deles em uma escala de estrelas e escreva um breve
+            comentário
           </p>
           <p>
-            Nosso site é perfeito para quem quer ter um controle completo sobre
-            suas atividades de entretenimento e compartilhar suas opiniões com
-            amigos e familiares. Então, junte-se a nós hoje e comece a registrar
-            suas aventuras!
+            Veja quais são os entretenimentos mais populares entre os usuários
+            do site
+          </p>
+          <p>
+            Defina metas pessoais para ler mais livros, assistir mais filmes ou
+            jogar mais jogos
+          </p>
+          <p>Compartilhe suas opiniões com amigos e familiares</p>
+          <p>
+            Com o nosso site, você pode manter um controle completo sobre suas
+            atividades de entretenimento e descobrir novas recomendações com
+            base nas avaliações de outros usuários. Junte-se a nós hoje e comece
+            a registrar suas aventuras de entretenimento!
           </p>
         </div>
         <img src="https://files.tecnoblog.net/wp-content/uploads/2018/12/apps-android-facebook-google-plus-700x394.jpg" />
@@ -64,19 +68,22 @@ const Container = styled.div`
     animation-duration: 1s;
     animation-name: fadeInLeft;
     @keyframes fadeInLeft {
-    0% {
-      opacity: 0;
-      transform: translate3d(-100%, 0, 0);
+      0% {
+        opacity: 0;
+        transform: translate3d(-100%, 0, 0);
+      }
+      100% {
+        opacity: 1;
+        transform: none;
+      }
     }
-    100% {
-      opacity: 1;
-      transform: none;
-    }
-  }
     h1 {
       font-family: "Chewy";
       color: darkblue;
       font-size: 55px;
+    }
+    .buttons{
+      width: 17vw;
     }
     button {
       height: 40px;
@@ -114,8 +121,8 @@ const Container = styled.div`
     }
   }
   .principal {
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
     margin-top: 15vh;
     display: flex;
     justify-content: space-around;
@@ -123,15 +130,15 @@ const Container = styled.div`
     animation-duration: 2s;
     animation-name: fadeInRigth;
     @keyframes fadeInRigth {
-    0% {
-      opacity: 0;
-      transform: translate3d(100%, 0, 0);
+      0% {
+        opacity: 0;
+        transform: translate3d(100%, 0, 0);
+      }
+      100% {
+        opacity: 1;
+        transform: none;
+      }
     }
-    100% {
-      opacity: 1;
-      transform: none;
-    }
-  }
     img {
       width: 600px;
       height: 100%;
@@ -149,7 +156,7 @@ const Container = styled.div`
   }
   .text {
     padding: 0px 0px 20px 20px;
-    width: 600px;
+    width: 40vw;
     background-color: white;
     border-radius: 20px;
     h2 {

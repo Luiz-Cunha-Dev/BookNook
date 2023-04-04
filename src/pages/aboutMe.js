@@ -125,14 +125,14 @@ const Container = styled.div`
     .inputBox {
       position: relative;
       width: 100%;
-      margin-bottom: 3vw;
+      margin-bottom: 2.5vw;
       span {
         font-size: 1em;
         letter-spacing: 0.05em;
         position: absolute;
         left: 0;
         bottom: 0;
-        padding: 20px 10px 20px;
+        padding: 10px 10px 20px;
         pointer-events: none;
         transition: 0.5s;
       }

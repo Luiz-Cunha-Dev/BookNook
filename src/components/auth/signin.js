@@ -146,20 +146,17 @@ const Container = styled.div`
     margin-top: 20px;
     button {
       margin-right: 20px;
-      width: 120px;
-      height: 42px;
+      width: 125px;
+      height: 45px;
       border-radius: 20px;
       border: thin;
       background-color: darkblue;
       color: white;
-      font-size: 18px;
+      font-size: 19px;
       cursor: pointer;
       transition: linear 0.1s;
       :hover{
-        width: 135px;
-        height: 45px;
         font-weight: bold;
-        font-size: 20px;
       }
     }
     span{

@@ -1,14 +1,29 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
+import { useState } from "react";
 
 export function Add({setAdd, add, categoryName}) {
-  const navigate = useNavigate();
 
-  function Name(categoryName){
+  const [grade, setGrade] = useState([])
+
+  function Name(){
     if(categoryName === "Seus Filmes"){
       return "Adicionar um Filme"
+    }
+    if(categoryName === "Suas Séries"){
+      return "Adicionar uma Série"
+    }
+    if(categoryName === "Seus Animes"){
+      return "Adicionar um Anime"
+    }
+    if(categoryName === "Seus Desenhos"){
+      return "Adicionar um Desenho"
+    }
+    if(categoryName === "Seus Livros"){
+      return "Adicionar um Livro"
+    }
+    if(categoryName === "Seus Jogos"){
+      return "Adicionar um Jogo"
     }
   }
 
@@ -16,7 +31,7 @@ export function Add({setAdd, add, categoryName}) {
     <Container add={add}>
       <div className="board">
       <IoIosCloseCircle onClick={() => setAdd(true)} className="close" />
-        <h2>{Name(categoryName)}</h2>
+        <h2>{Name()}</h2>
         <form>
           <div className="inputBox">
             <input type="text" required="required" />
@@ -28,29 +43,54 @@ export function Add({setAdd, add, categoryName}) {
             <span>Nome</span>
             <i></i>
           </div>
-          <div className="inputBox">
-            <input type="text" required="required" />
-            <span>Categoria 1</span>
-            <i></i>
+          <div className="categories">
+          <select>
+              <option value="2023">Categoria 1</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+              <option value="2027">2027</option>
+              <option value="2028">2028</option>
+              <option value="2029">2029</option>
+              <option value="2030">2030</option>
+            </select>
+            <select>
+              <option value="2023">Categoria 2</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+              <option value="2027">2027</option>
+              <option value="2028">2028</option>
+              <option value="2029">2029</option>
+              <option value="2030">2030</option>
+            </select>
+            <select>
+              <option value="2023">categoria 3</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+              <option value="2027">2027</option>
+              <option value="2028">2028</option>
+              <option value="2029">2029</option>
+              <option value="2030">2030</option>
+            </select>
           </div>
-          <div className="inputBox">
-            <input type="text" required="required" />
-            <span>Categoria 2</span>
-            <i></i>
+          <span>De uma Nota</span>
+          <div className="grades">
+            <Grade select={grade.includes(1) === true ? true : false} onClick={() => setGrade([1])}>1</Grade>
+            <Grade select={grade.includes(2) === true ? true : false} onClick={() => setGrade([2])}>2</Grade>
+            <Grade select={grade.includes(3) === true ? true : false} onClick={() => setGrade([3])}>3</Grade>
+            <Grade select={grade.includes(4) === true ? true : false} onClick={() => setGrade([4])}>4</Grade>
+            <Grade select={grade.includes(5) === true ? true : false} onClick={() => setGrade([5])}>5</Grade>
+            <Grade select={grade.includes(6) === true ? true : false} onClick={() => setGrade([6])}>6</Grade>
+            <Grade select={grade.includes(7) === true ? true : false} onClick={() => setGrade([7])}>7</Grade>
+            <Grade select={grade.includes(8) === true ? true : false} onClick={() => setGrade([8])}>8</Grade>
+            <Grade select={grade.includes(9) === true ? true : false} onClick={() => setGrade([9])}>9</Grade>
+            <Grade select={grade.includes(10) === true ? true : false} onClick={() => setGrade([10])}>10</Grade>
           </div>
-          <div className="inputBox">
-            <input type="text" required="required" />
-            <span>Categoria 3</span>
-            <i></i>
-          </div>
-          <div className="inputBox">
-            <input type="number" required="required" />
-            <span>Avaliação de 0 a 10</span>
-            <i></i>
-          </div>
-          <div className="inputBox">
-            <input type="text" required="required" />
-            <span>Comentario</span>
+          <div className="comment">
+          <span>Comentario</span>
+          <textarea  wrap="hard" className="big-input" type="text" />
             <i></i>
           </div>
           <button>Salvar</button>
@@ -76,7 +116,7 @@ z-index: 1;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     background-color: white;
     height: 75%;
-    width: 50%;
+    width: 40%;
     border-radius: 50px;
     display: flex;
     flex-direction: column;
@@ -107,18 +147,93 @@ z-index: 1;
     h2 {
       color: darkblue;
       font-size: 30px;
-      margin-bottom: 35px;
+      margin-bottom: 10%;
     }
     form {
-      width: 70%;
+      width: 90%;
       height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: start;
       align-items: center;
+      .categories{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 1vh;
+        select{
+          width: 10vw;
+          height: 4vh;
+          font-size: 20px;
+                  padding-left: 2%;
+        padding-right: 2%;
+        border-radius: 10px;
+        color: darkblue;
+        margin-left: 4%;
+        margin-right: 4%;
+        }
+      }
+
+      span {
+        font-size: 1em;
+        letter-spacing: 0.05em;
+        padding: 20px 10px 20px;
+      }
+      .grades{
+        box-sizing: border-box;
+        width: 18.5vw;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 5%;
+        div:nth-child(1){
+          border-top-left-radius: 10px;
+        }
+        div:nth-child(5){
+          border-top-right-radius: 10px;
+        }
+      }
+      div:nth-child(6){
+          border-bottom-left-radius: 10px;
+        }
+        div:nth-child(10){
+          border-bottom-right-radius: 10px;
+        }
+      .comment{
+        width: 100%;
+      }
+      textarea{
+    background: transparent;
+    height: 9vh;
+    width: 95%;
+    max-width: 95%;
+    max-height: 9vh;
+    border: solid 1px #878787;
+    border-radius: 10px;
+    font-size: 0.8vw;
+    line-height: 20px;
+    font-weight: 300;
+    padding: 7px 15px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 30px;
+    ::-webkit-scrollbar {
+      border-radius: 50px;
+      width: 10px;
+      background: transparent;
+      border-top-right-radius: 50px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: darkblue;
+      border-radius: 50px;
+    }
+    ::-webkit-scrollbar-track-piece {
+      height: 80%;
+    }
+}
       input {
         height: 6%;
-        width: 70%;
+        width: 95%;
         border: none;
         outline: none;
         padding: 10px 10px 10px ;
@@ -147,7 +262,7 @@ z-index: 1;
     .inputBox {
       position: relative;
       width: 100%;
-      margin-bottom: 2vw;
+      margin-bottom: 3.5vh;
       span {
         font-size: 1em;
         letter-spacing: 0.05em;
@@ -168,11 +283,23 @@ z-index: 1;
         border-radius: 4px;
       }
     }
-    .inputBox input:valid ~ span,
-    .inputBox input:focus ~ span {
-      color: darkblue;
-      transform: translateY(-34px);
-      font-size: 0.75em;
-    }
   }
 `;
+
+const Grade = styled.div`
+    box-shadow: rgba(0, 0, 0, 0.35) 5px 5px 5px;
+    width:3.5vw;
+    height: 2.8vw;
+    font-size: 0.9vw;
+    border: solid 1px ${props => props.select === true ? "darkred" : "darkblue"};
+    background-color: ${props => props.select === true ? "red" : "blue"};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    :hover{
+      font-size: 1.2vw;
+      font-weight: bold;
+    }
+`

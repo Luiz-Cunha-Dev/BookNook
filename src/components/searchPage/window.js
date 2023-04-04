@@ -11,7 +11,7 @@ export function Window({close, setClose, categoryName}) {
   const [edit, setEdit] = useState(true);
 
   return (
-    <Container close={close}>
+    <Container close={close} categoryName={categoryName}>
       <Edit edit={edit} setEdit={setEdit} categoryName={categoryName}/>
       <div className="window">
         <IoIosCloseCircle onClick={() => setClose(true)} className="close" />
@@ -33,7 +33,9 @@ export function Window({close, setClose, categoryName}) {
               <FaStar className="star4" />
               <FaStar className="star5" />
             </Stars>
-            <MdEditSquare onClick={() => setEdit(false)} className="edit" />
+            <div onClick={() => setEdit(false)} className="options">
+            <MdEditSquare/>
+            </div>
           </div>
         </div>
         <div className="down">
@@ -112,7 +114,8 @@ z-index: 1;
     align-items: center;
     justify-content: center;
     position: relative;
-    .edit {
+    .options {
+      display: ${props => props.categoryName === "Seus Entretenimentos" || props.categoryName === "Tudo" ? "none" : "initial"};
       margin-top: 13%;
       font-size: 2.2vw;
       color: darkblue;

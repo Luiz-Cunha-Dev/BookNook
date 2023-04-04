@@ -19,13 +19,13 @@ export function SearchPage() {
 
   return (
     <>
-      <Container>
+      <Container option={categoryName}>
         <Header />
         <Add add={add} setAdd={setAdd} categoryName={categoryName}/>
         <Window close={close} setClose={setClose} categoryName={categoryName}/>
         <div className="board">
           <h2>{categoryName}</h2>
-          <form>
+          <form className="principalForm">
             <div className="inputBox">
               <input type="text" required="required" />
               <span>Busque pelo nome que procura</span>
@@ -264,7 +264,7 @@ const Container = styled.div`
       font-size: 30px;
       margin-bottom: 5vh;
     }
-    form {
+    .principalForm {
       width: 35%;
       display: flex;
       justify-content: center;
@@ -278,7 +278,7 @@ const Container = styled.div`
         bottom: 0px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         height: 60px;
-        display: flex;
+        display: ${props => props.option === "Seus Entretenimentos" || props.option === "Tudo" ? "none" : "flex"};
         justify-content: center;
         align-items: center;
         border-radius: 20px;

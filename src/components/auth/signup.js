@@ -151,14 +151,11 @@ const Container = styled.div`
       border: thin;
       background-color: darkblue;
       color: white;
-      font-size: 18px;
+      font-size: 19px;
       cursor: pointer;
       transition: linear 0.1s;
       :hover{
-        width: 170px;
-        height: 45px;
         font-weight: bold;
-        font-size: 20px;
       }
     }
     span {

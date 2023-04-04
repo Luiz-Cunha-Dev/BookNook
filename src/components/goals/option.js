@@ -20,21 +20,24 @@ box-sizing: border-box;
   margin-bottom: 7px;
   padding-left: 5%;
   padding-right: 2.5%;
-  .check{
-    width: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .icon{
-      display: initial;
-      font-size: 40px;
-    color: green;
-    }
+  .save{
+    border-radius: 15px;
+    font-size: 1vw;
+    width: 5vw;
+    margin-left: 0px;
+    margin-right: 0px;
+    border: solid 2px green;
+    background-color: #099900;;
+    :hover{
+        font-size: 1.1vw;
+      }
   }
   .title{
     box-sizing: border-box;
     width: 12%;
     text-align: start;
+    font-size: 1.1vw;
+    margin-right: 3%;
   }
   .goal{
     box-sizing: border-box;
@@ -51,11 +54,19 @@ box-sizing: border-box;
       left: 35%;
       top: 5px;
     }
+    button:nth-child(2){
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+  }
+  button:nth-child(4){
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+  }
   }
   .qtd{
     box-sizing: border-box;
     padding-top: 3%;
-    width: 40%;
+    width: 35%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -67,25 +78,31 @@ box-sizing: border-box;
       left: 11%;
       top: 5px;
     }
+    button:nth-child(2){
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
   }
+  button:nth-child(4){
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+  }
+
   button{
     box-sizing: border-box;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-      min-width: 40px;
-      min-height: 40px;
-      border-radius: 100%;
+      width: 2vw;
+      height: 2vw;
       border: none;
       background-color: darkblue;
       color: white;
-      font-size: 30px;
+      font-size: 1.8vw;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-left: 5%;
-      margin-right: 5%;
       cursor: pointer;
       :hover{
-        font-size: 33px;
+        font-size: 2.2vw;
       }
     }
     p{
@@ -94,12 +111,11 @@ box-sizing: border-box;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 60px;
-      height: 35px;
+      width: 3vw;
+      height: 2vw;
       font-size: 23px;
       background-color: #EEEEEE;
-      border-radius: 10px;
-      padding-left: 10px;
-      padding-right: 10px;
+      padding-left: 2%;
+      padding-right: 2%;
     }
 `;

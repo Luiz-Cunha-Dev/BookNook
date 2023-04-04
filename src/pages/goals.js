@@ -30,9 +30,7 @@ export function Goals() {
                 <p>00</p>
                 <button>+</button>
               </div>
-              <div className="check">
-                <BsFillPatchCheckFill className="icon" />
-              </div>
+              <button className="save">Salvar</button>
             </Option>
             <Option>
               <span className="title">SÈRIES</span>
@@ -48,9 +46,7 @@ export function Goals() {
                 <p>00</p>
                 <button>+</button>
               </div>
-              <div className="check">
-                <BsFillPatchCheckFill className="icon" />
-              </div>
+              <button className="save">Salvar</button>
             </Option>
             <Option>
               <span className="title">ANIMES</span>
@@ -66,9 +62,7 @@ export function Goals() {
                 <p>00</p>
                 <button>+</button>
               </div>
-              <div className="check">
-                <BsFillPatchCheckFill className="icon" />
-              </div>
+              <button className="save">Salvar</button>
             </Option>
             <Option>
               <span className="title">DESENHOS</span>
@@ -84,9 +78,7 @@ export function Goals() {
                 <p>00</p>
                 <button>+</button>
               </div>
-              <div className="check">
-                <BsFillPatchCheckFill className="icon" />
-              </div>
+              <button className="save">Salvar</button>
             </Option>
             <Option>
               <span className="title">LIVROS</span>
@@ -102,9 +94,7 @@ export function Goals() {
                 <p>00</p>
                 <button>+</button>
               </div>
-              <div className="check">
-                <BsFillPatchCheckFill className="icon" />
-              </div>
+              <button className="save">Salvar</button>
             </Option>
             <Option>
               <span className="title">JOGOS</span>
@@ -120,9 +110,7 @@ export function Goals() {
                 <p>00</p>
                 <button>+</button>
               </div>
-              <div className="check">
-                <BsFillPatchCheckFill className="icon" />
-              </div>
+              <button className="save">Salvar</button>
             </Option>
           </div>
           <div className="rigth">
@@ -137,54 +125,90 @@ export function Goals() {
               <option value="2030">2030</option>
             </select>
             <div className="months">
-              <div className="month">
+              <Month>
                 <img src={calendar} alt="calendar" />
                 <span>Janeiro</span>
-              </div>
-              <div className="month">
+                <div className="check">
+                  <BsFillPatchCheckFill className="icon" />
+                </div>
+              </Month>
+              <Month>
                 <img src={calendar} alt="calendar" />
                 <span>Fevereiro</span>
-              </div>
-              <div className="month">
+                <div className="check">
+                  <BsFillPatchCheckFill className="icon" />
+                </div>
+              </Month>
+              <Month>
                 <img src={calendar} alt="calendar" />
                 <span>Março</span>
-              </div>
-              <div className="month">
+                <div className="check">
+                  <BsFillPatchCheckFill className="icon" />
+                </div>
+              </Month>
+              <Month>
                 <img src={calendar} alt="calendar" />
                 <span>Abril</span>
-              </div>
-              <div className="month">
+                <div className="check">
+                  <BsFillPatchCheckFill className="icon" />
+                </div>
+              </Month>
+              <Month>
                 <img src={calendar} alt="calendar" />
                 <span>Maio</span>
-              </div>
-              <div className="month">
+                <div className="check">
+                  <BsFillPatchCheckFill className="icon" />
+                </div>
+              </Month>
+              <Month>
                 <img src={calendar} alt="calendar" />
                 <span>Junho</span>
-              </div>
-              <div className="month">
+                <div className="check">
+                  <BsFillPatchCheckFill className="icon" />
+                </div>
+              </Month>
+              <Month>
                 <img src={calendar} alt="calendar" />
                 <span>Julho</span>
-              </div>
-              <div className="month">
+                <div className="check">
+                  <BsFillPatchCheckFill className="icon" />
+                </div>
+              </Month>
+              <Month>
                 <img src={calendar} alt="calendar" />
                 <span>Agosto</span>
-              </div>
-              <div className="month">
+                <div className="check">
+                  <BsFillPatchCheckFill className="icon" />
+                </div>
+              </Month>
+              <Month>
                 <img src={calendar} alt="calendar" />
                 <span>Setembro</span>
-              </div>
-              <div className="month">
+                <div className="check">
+                  <BsFillPatchCheckFill className="icon" />
+                </div>
+              </Month>
+              <Month>
                 <img src={calendar} alt="calendar" />
                 <span>Outubro</span>
-              </div>
-              <div className="month">
+                <div className="check">
+                  <BsFillPatchCheckFill className="icon" />
+                </div>
+              </Month>
+              <Month>
                 <img src={calendar} alt="calendar" />
                 <span>Novembro</span>
-              </div>
-              <div className="month">
+                <div className="check">
+                  <BsFillPatchCheckFill className="icon" />
+                </div>
+              </Month>
+              <Month>
                 <img src={calendar} alt="calendar" />
                 <span>Dezembro</span>
-              </div>
+                <div className="check">
+                  <BsFillPatchCheckFill className="icon" />
+                </div>
+              </Month>
             </div>
           </div>
         </div>
@@ -219,15 +243,15 @@ const Container = styled.div`
     animation-duration: 1s;
     animation-name: fadeInDown;
     @keyframes fadeInDown {
-    0% {
-      opacity: 0;
-      transform: translate3d(0, 100%, 0);
+      0% {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+      }
+      100% {
+        opacity: 1;
+        transform: none;
+      }
     }
-    100% {
-      opacity: 1;
-      transform: none;
-    }
-  }
     h2 {
       color: darkblue;
       font-size: 30px;
@@ -289,46 +313,72 @@ const Container = styled.div`
           height: 80%;
         }
       }
-      .month {
-        transition: linear 0.1s;
-        box-sizing: border-box;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-left: 8px;
-        width: 9vw;
-        height: 9vw;
-        position: relative;
-        border-radius: 15px;
-        margin-right: 15px;
-        margin-bottom: 15px;
-        font-size: 0.8vw;
-        overflow: hidden;
-        cursor: pointer;
-        :hover {
-          background-color: #eeeeee;
-          font-size: 1vw;
-          img {
-            width: 15vw;
-          }
-          span {
-            top: 13%;
-          }
-        }
-        span {
-          text-align: center;
-          width: 56%;
-          position: absolute;
-          left: 22%;
-          top: 16%;
-          color: white;
-          font-weight: bold;
-        }
+    }
+  }
+`;
+
+const Month = styled.div`
+  transition: linear 0.1s;
+  position: relative;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 8px;
+  width: 9vw;
+  height: 9vw;
+  position: relative;
+  border-radius: 15px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  font-size: 0.8vw;
+  overflow: hidden;
+  cursor: pointer;
+  :hover {
+    background-color: #eeeeee;
+    font-size: 1vw;
+    img {
+      width: 15vw;
+    }
+    span {
+      top: 13%;
+    }
+    .check {
+      width: 8vh;
+      height: 8vh;
+      .icon {
+        font-size: 9vh;
       }
-      img {
-        width: 14vw;
-      }
+    }
+  }
+  span {
+    text-align: center;
+    width: 56%;
+    position: absolute;
+    left: 22%;
+    top: 16%;
+    color: white;
+    font-weight: bold;
+  }
+  img {
+    width: 14vw;
+  }
+  .check {
+    position: absolute;
+    width: 7vh;
+    height: 7vh;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 17%;
+    margin-right: 5%;
+    background-color: white;
+    .icon {
+      display: initial;
+      font-size: 8vh;
+      color: #099900;
     }
   }
 `;
