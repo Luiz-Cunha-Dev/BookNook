@@ -44,6 +44,9 @@ const Container = styled.div`
     align-items: center;
     animation-duration: 1s;
     animation-name: fadeInLeft;
+    @media (max-width: 614px) {
+      padding-left: 6%;
+      }
     @keyframes fadeInLeft {
     0% {
       opacity: 0;
@@ -86,7 +89,7 @@ const Container = styled.div`
         align-items: center;
         margin-top: -100px;
         @media (max-width: 614px) {
-        margin-top: -50px;
+        margin-top: -15%;
       }
         animation-duration: 2s;
     animation-name: fadeInRigth;

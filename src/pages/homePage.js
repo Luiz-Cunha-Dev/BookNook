@@ -112,7 +112,7 @@ const Container = styled.div`
       cursor: pointer;
       @media (max-width: 614px) {
         height: 40px;
-        font-size: 13px;
+        font-size: 3vw;
         margin-right: 0px;
         margin-top: 10px;
       }
@@ -143,7 +143,7 @@ const Container = styled.div`
   .principal {
     padding-left: 5%;
     padding-right: 5%;
-    margin-top: 15vh;
+    margin-top: 10vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -183,8 +183,9 @@ const Container = styled.div`
     }
   }
   .text {
-    padding: 0px 0px 20px 20px;
-    width: 40vw;
+    padding: 5%;
+    padding-top: 3% ;
+    width: 90%;
     background-color: white;
     border-radius: 20px;
     @media (max-width: 614px) {
@@ -199,7 +200,7 @@ const Container = styled.div`
       font-size: 30px;
       font-weight: bold;
       @media (max-width: 614px) {
-        font-size: 5vw;
+        font-size: 3vh;
       }
     }
     p {
@@ -207,7 +208,7 @@ const Container = styled.div`
       font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
       font-size: 20px;
       @media (max-width: 614px) {
-        font-size: 3vw;
+        font-size: 2vh;
       }
     }
   }
