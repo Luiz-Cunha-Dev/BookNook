@@ -59,6 +59,9 @@ const Container = styled.div`
         color: darkblue;
         font-size: 55px;
         cursor: pointer;
+        @media (max-width: 614px) {
+        font-size: 30px;
+      }
     }
     .icone {
       display: flex;
@@ -69,6 +72,9 @@ const Container = styled.div`
         height: 50px;
         margin-right: 20px;
         cursor: pointer;
+        @media (max-width: 614px) {
+        height: 30px;
+      }
       }
     }
 }
@@ -79,6 +85,9 @@ const Container = styled.div`
         justify-content: center;
         align-items: center;
         margin-top: -100px;
+        @media (max-width: 614px) {
+        margin-top: -50px;
+      }
         animation-duration: 2s;
     animation-name: fadeInRigth;
     @keyframes fadeInRigth {

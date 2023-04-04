@@ -61,6 +61,9 @@ const Container = styled.div`
   background-position: center;
   width: 100vw;
   height: 100vh;
+  @media (max-width: 614px) {
+        overflow: auto;
+      }
   .header {
     display: flex;
     justify-content: space-around;
@@ -81,9 +84,17 @@ const Container = styled.div`
       font-family: "Chewy";
       color: darkblue;
       font-size: 55px;
+      @media (max-width: 614px) {
+        font-size: 30px;
+      }
     }
     .buttons{
       width: 17vw;
+      @media (max-width: 614px) {
+        width: 35%;
+        display: flex;
+        flex-direction: column;
+      }
     }
     button {
       height: 40px;
@@ -99,6 +110,12 @@ const Container = styled.div`
       margin-right: 20px;
       transition: 500ms;
       cursor: pointer;
+      @media (max-width: 614px) {
+        height: 40px;
+        font-size: 13px;
+        margin-right: 0px;
+        margin-top: 10px;
+      }
       :hover {
         background-color: white;
         font-weight: 900;
@@ -117,6 +134,9 @@ const Container = styled.div`
       img {
         height: 50px;
         margin-right: 20px;
+        @media (max-width: 614px) {
+        height: 30px;
+      }
       }
     }
   }
@@ -129,6 +149,10 @@ const Container = styled.div`
     align-items: center;
     animation-duration: 2s;
     animation-name: fadeInRigth;
+    @media (max-width: 614px) {
+      flex-direction: column;
+      margin-top: 5vh;
+      }
     @keyframes fadeInRigth {
       0% {
         opacity: 0;
@@ -144,6 +168,10 @@ const Container = styled.div`
       height: 100%;
       border-radius: 10px;
       animation: up-down 3s infinite alternate;
+      @media (max-width: 614px) {
+      width: 90%;
+      margin-bottom: 100px;
+      }
     }
     @keyframes up-down {
       from {
@@ -159,6 +187,10 @@ const Container = styled.div`
     width: 40vw;
     background-color: white;
     border-radius: 20px;
+    @media (max-width: 614px) {
+        width: 90%;
+        margin-bottom: 60px;
+      }
     h2 {
       width: 100%;
       text-align: center;
@@ -166,11 +198,17 @@ const Container = styled.div`
       font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
       font-size: 30px;
       font-weight: bold;
+      @media (max-width: 614px) {
+        font-size: 5vw;
+      }
     }
     p {
       color: #4c4c66;
       font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
       font-size: 20px;
+      @media (max-width: 614px) {
+        font-size: 3vw;
+      }
     }
   }
 `;

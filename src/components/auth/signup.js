@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 export function SignUp({ status, setStatus }) {
-
   return (
     <Container status={status}>
       <div className="forms">
         <h2>CRIE UMA CONTA</h2>
         <form>
-        <div className="inputBox">
+          <div className="inputBox">
             <input type="text" required="required" />
             <span>Nome</span>
             <i></i>
@@ -29,7 +28,7 @@ export function SignUp({ status, setStatus }) {
           </div>
           <div className="buttons">
             <button>Cadastre-se</button>
-            <span onClick={() => setStatus("signin")} >Já Tenho Uma Conta</span>
+            <span onClick={() => setStatus("signin")}>Já Tenho Uma Conta</span>
           </div>
         </form>
       </div>
@@ -38,7 +37,7 @@ export function SignUp({ status, setStatus }) {
 }
 
 const Container = styled.div`
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 500px;
   height: 620px;
   background-color: transparent;
@@ -50,8 +49,13 @@ const Container = styled.div`
   background-color: white;
   overflow: hidden;
   position: fixed;
-  right: ${props => props.status === "signin" ? "-500px" : "36%"};
-  transition: linear 1s ${props => props.status === "signup" ? "1s" : "0s"};
+  right: ${(props) => (props.status === "signin" ? "-40%" : "36%")};
+  transition: linear 1s ${(props) => (props.status === "signup" ? "1s" : "0s")};
+  @media (max-width: 614px) {
+    width: 90%;
+    height: 80%;
+    right: ${(props) => (props.status === "signin" ? "-90%" : "5%")};
+  }
   ::before {
     content: "";
     position: absolute;
@@ -97,6 +101,9 @@ const Container = styled.div`
       font-weight: bold;
       margin-bottom: 30px;
       margin-top: 30px;
+      @media (max-width: 614px) {
+        font-weight: 1px;
+      }
     }
   }
   form {
@@ -110,20 +117,28 @@ const Container = styled.div`
       outline: none;
       padding: 20px 10px 0px;
       font-size: 20px;
+      @media (max-width: 614px) {
+        height: 50px;
+        width: 60%;
+      }
     }
   }
   .inputBox {
     position: relative;
     margin-bottom: 30px;
+    @media (max-width: 614px) {
+      margin-bottom: 1vh;
+    }
     span {
-      font-size: 1em;
-      letter-spacing: 0.05em;
       position: absolute;
       left: 0;
       bottom: 0;
       padding: 20px 10px 20px;
       pointer-events: none;
       transition: 0.5s;
+      @media (max-width: 614px) {
+        font-weight: 10px;
+      }
     }
     i {
       position: absolute;
@@ -143,6 +158,12 @@ const Container = styled.div`
   }
   .buttons {
     margin-top: 20px;
+    @media (max-width: 614px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
     button {
       margin-right: 20px;
       width: 160px;
@@ -154,7 +175,11 @@ const Container = styled.div`
       font-size: 19px;
       cursor: pointer;
       transition: linear 0.1s;
-      :hover{
+      @media (max-width: 614px) {
+        margin-right: 0;
+        margin-bottom: 10%;
+      }
+      :hover {
         font-weight: bold;
       }
     }
