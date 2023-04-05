@@ -297,7 +297,8 @@ const Container = styled.div`
           max-width: 90%;
           min-width: 90%;
           min-height: 9vh;
-        }
+          font-size: 3.2vw;
+      }
         ::-webkit-scrollbar {
           border-radius: 50px;
           width: 10px;

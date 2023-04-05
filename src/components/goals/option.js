@@ -8,7 +8,7 @@ const Container = styled.div`
 box-sizing: border-box;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 90%;
-  height: 15%;
+  height: 13.1%;
   background-color: white;
   border-radius: 15px;
   display: flex;
@@ -17,9 +17,15 @@ box-sizing: border-box;
   font-family: "Courier New", Courier, monospace;
   font-size: 20px;
   text-align: center;
-  margin-bottom: 7px;
+  margin-bottom: 8px;
   padding-left: 5%;
   padding-right: 2.5%;
+  @media (max-width: 614px) {
+    width: 90%;
+  height: 17vw;
+  padding-left: 2%;
+  padding-right: 2%
+      }
   .save{
     border-radius: 15px;
     font-size: 1vw;
@@ -28,16 +34,24 @@ box-sizing: border-box;
     margin-right: 0px;
     border: solid 2px green;
     background-color: #099900;;
+    @media (max-width: 614px) {
+     width: 12vw;
+     font-size: 3vw;
+      }
     :hover{
         font-size: 1.1vw;
       }
   }
   .title{
     box-sizing: border-box;
-    width: 12%;
+    width: 10%;
     text-align: start;
     font-size: 1.1vw;
     margin-right: 3%;
+    @media (max-width: 614px) {
+      font-size: 3vw;
+      margin-right: 9%;
+      }
   }
   .goal{
     box-sizing: border-box;
@@ -53,6 +67,9 @@ box-sizing: border-box;
       position: absolute;
       left: 35%;
       top: 5px;
+      @media (max-width: 614px) {
+      font-size: 2.5vw;
+      }
     }
     button:nth-child(2){
     border-bottom-left-radius: 15px;
@@ -77,6 +94,9 @@ box-sizing: border-box;
       position: absolute;
       left: 11%;
       top: 5px;
+      @media (max-width: 614px) {
+      font-size: 2.5vw;
+      }
     }
     button:nth-child(2){
     border-bottom-left-radius: 15px;
@@ -101,8 +121,19 @@ box-sizing: border-box;
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      @media (max-width: 614px) {
+      width: 6vw;
+      height: 6vw;
+      font-size: 4vw;
+      }
       :hover{
         font-size: 2.2vw;
+        @media (max-width: 614px) {
+      width: 6vw;
+      height: 6vw;
+      font-size: 4vw;
+      font-size: 4.3vw;
+      }
       }
     }
     p{
@@ -117,5 +148,10 @@ box-sizing: border-box;
       background-color: #EEEEEE;
       padding-left: 2%;
       padding-right: 2%;
+      @media (max-width: 614px) {
+      width: 7vw;
+      height: 6vw;
+      font-size: 3vw;
+      }
     }
 `;

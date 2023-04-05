@@ -19,7 +19,7 @@ export function Header() {
     <Container menu={menu === true ? "0px" : "-20vw"} exit={exit}>
       <div className="header">
         <HiOutlineMenu onClick={() => setMenu(!menu)} className="menu" />
-        <div onClick={() => navigate("/")} className="icone">
+        <div onClick={() => navigate("/initial")} className="icone">
           <img src={icone} />
           <h1>BookNook</h1>
         </div>
@@ -229,6 +229,7 @@ const Container = styled.div`
       margin-bottom: 3vw;
       @media (max-width: 614px) {
       margin-bottom: 6vw;
+      font-size: 6vw;
       }
     }
     .options {

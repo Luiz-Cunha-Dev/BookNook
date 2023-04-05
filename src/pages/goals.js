@@ -3,118 +3,26 @@ import { useNavigate } from "react-router-dom";
 import background from "../imgs/w2.jpg";
 import { Header } from "../components/header";
 import calendar from "../imgs/calendario.png";
-import { Option } from "../components/goals/option";
 import { BsFillPatchCheckFill } from "react-icons/bs";
+import { Window } from "../components/goals/window";
+import { useState } from "react";
 
 export function Goals() {
   const navigate = useNavigate();
+  const [close, setClose] = useState(true);
+  const [month, setMonth] = useState("")
+  const [year, setYear] = useState("")
 
   return (
     <Container>
       <Header />
+      <Window close={close} setClose={setClose} month={month} year={year}/>
       <div className="board">
         <h2>Metas</h2>
         <div className="back">
-          <div className="left">
-            <Option>
-              <span className="title">FILMES</span>
-              <div className="goal">
-                <span>META</span>
-                <button>-</button>
-                <p>00</p>
-                <button>+</button>
-              </div>
-              <div className="qtd">
-                <span>QUANTIDADE ATUAL</span>
-                <button>-</button>
-                <p>00</p>
-                <button>+</button>
-              </div>
-              <button className="save">Salvar</button>
-            </Option>
-            <Option>
-              <span className="title">SÈRIES</span>
-              <div className="goal">
-                <span>META</span>
-                <button>-</button>
-                <p>00</p>
-                <button>+</button>
-              </div>
-              <div className="qtd">
-                <span>QUANTIDADE ATUAL</span>
-                <button>-</button>
-                <p>00</p>
-                <button>+</button>
-              </div>
-              <button className="save">Salvar</button>
-            </Option>
-            <Option>
-              <span className="title">ANIMES</span>
-              <div className="goal">
-                <span>META</span>
-                <button>-</button>
-                <p>00</p>
-                <button>+</button>
-              </div>
-              <div className="qtd">
-                <span>QUANTIDADE ATUAL</span>
-                <button>-</button>
-                <p>00</p>
-                <button>+</button>
-              </div>
-              <button className="save">Salvar</button>
-            </Option>
-            <Option>
-              <span className="title">DESENHOS</span>
-              <div className="goal">
-                <span>META</span>
-                <button>-</button>
-                <p>00</p>
-                <button>+</button>
-              </div>
-              <div className="qtd">
-                <span>QUANTIDADE ATUAL</span>
-                <button>-</button>
-                <p>00</p>
-                <button>+</button>
-              </div>
-              <button className="save">Salvar</button>
-            </Option>
-            <Option>
-              <span className="title">LIVROS</span>
-              <div className="goal">
-                <span>META</span>
-                <button>-</button>
-                <p>00</p>
-                <button>+</button>
-              </div>
-              <div className="qtd">
-                <span>QUANTIDADE ATUAL</span>
-                <button>-</button>
-                <p>00</p>
-                <button>+</button>
-              </div>
-              <button className="save">Salvar</button>
-            </Option>
-            <Option>
-              <span className="title">JOGOS</span>
-              <div className="goal">
-                <span>META</span>
-                <button>-</button>
-                <p>00</p>
-                <button>+</button>
-              </div>
-              <div className="qtd">
-                <span>QUANTIDADE ATUAL</span>
-                <button>-</button>
-                <p>00</p>
-                <button>+</button>
-              </div>
-              <button className="save">Salvar</button>
-            </Option>
-          </div>
           <div className="rigth">
-            <select>
+            <select onChange={(e) => setYear(e.target.value)}>
+              <option value="">Selecione o Ano</option>
               <option value="2023">2023</option>
               <option value="2024">2024</option>
               <option value="2025">2025</option>
@@ -126,86 +34,86 @@ export function Goals() {
             </select>
             <div className="months">
               <Month>
-                <img src={calendar} alt="calendar" />
+                <img onClick={() => {if(year === "")return; setMonth("Janeiro"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Janeiro</span>
-                <div className="check">
+                <div onClick={() => {if(year === "")return; setMonth("Janeiro"); setClose(false)}} className="check">
                   <BsFillPatchCheckFill className="icon" />
                 </div>
               </Month>
               <Month>
-                <img src={calendar} alt="calendar" />
+                <img onClick={() => {if(year === "")return; setMonth("Fevereiro"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Fevereiro</span>
-                <div className="check">
+                <div onClick={() => {if(year === "")return; setMonth("Fevereiro"); setClose(false)}} className="check">
                   <BsFillPatchCheckFill className="icon" />
                 </div>
               </Month>
               <Month>
-                <img src={calendar} alt="calendar" />
+                <img onClick={() => {if(year === "")return; setMonth("Março"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Março</span>
-                <div className="check">
+                <div onClick={() => {if(year === "")return; setMonth("Março"); setClose(false)}} className="check">
                   <BsFillPatchCheckFill className="icon" />
                 </div>
               </Month>
               <Month>
-                <img src={calendar} alt="calendar" />
+                <img onClick={() => {if(year === "")return; setMonth("Abril"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Abril</span>
-                <div className="check">
+                <div onClick={() => {if(year === "")return; setMonth("Abril"); setClose(false)}} className="check">
                   <BsFillPatchCheckFill className="icon" />
                 </div>
               </Month>
               <Month>
-                <img src={calendar} alt="calendar" />
+                <img onClick={() => {if(year === "")return; setMonth("Maio"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Maio</span>
-                <div className="check">
+                <div onClick={() => {if(year === "")return; setMonth("Maio"); setClose(false)}} className="check">
                   <BsFillPatchCheckFill className="icon" />
                 </div>
               </Month>
               <Month>
-                <img src={calendar} alt="calendar" />
+                <img onClick={() => {if(year === "")return; setMonth("Junho"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Junho</span>
-                <div className="check">
+                <div onClick={() => {if(year === "")return; setMonth("Junho"); setClose(false)}} className="check">
                   <BsFillPatchCheckFill className="icon" />
                 </div>
               </Month>
               <Month>
-                <img src={calendar} alt="calendar" />
+                <img onClick={() => {if(year === "")return; setMonth("Julho"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Julho</span>
-                <div className="check">
+                <div onClick={() => {if(year === "")return; setMonth("Julho"); setClose(false)}} className="check">
                   <BsFillPatchCheckFill className="icon" />
                 </div>
               </Month>
               <Month>
-                <img src={calendar} alt="calendar" />
+                <img onClick={() => {if(year === "")return; setMonth("Agosto"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Agosto</span>
-                <div className="check">
+                <div onClick={() => {if(year === "")return; setMonth("Agosto"); setClose(false)}} className="check">
                   <BsFillPatchCheckFill className="icon" />
                 </div>
               </Month>
               <Month>
-                <img src={calendar} alt="calendar" />
+                <img onClick={() => {if(year === "")return; setMonth("Setembro"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Setembro</span>
-                <div className="check">
+                <div onClick={() => {if(year === "")return; setMonth("Setembro"); setClose(false)}} className="check">
                   <BsFillPatchCheckFill className="icon" />
                 </div>
               </Month>
               <Month>
-                <img src={calendar} alt="calendar" />
+                <img onClick={() => {if(year === "")return; setMonth("Outubro"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Outubro</span>
-                <div className="check">
+                <div onClick={() => {if(year === "")return; setMonth("Outubro"); setClose(false)}} className="check">
                   <BsFillPatchCheckFill className="icon" />
                 </div>
               </Month>
               <Month>
-                <img src={calendar} alt="calendar" />
+                <img onClick={() => {if(year === "")return; setMonth("Novembro"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Novembro</span>
-                <div className="check">
+                <div onClick={() => {if(year === "")return; setMonth("Novembro"); setClose(false)}} className="check">
                   <BsFillPatchCheckFill className="icon" />
                 </div>
               </Month>
               <Month>
-                <img src={calendar} alt="calendar" />
+                <img onClick={() => {if(year === "")return; setMonth("Dezembro"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Dezembro</span>
-                <div className="check">
+                <div onClick={() => {if(year === "")return; setMonth("Dezembro"); setClose(false)}} className="check">
                   <BsFillPatchCheckFill className="icon" />
                 </div>
               </Month>
@@ -228,17 +136,18 @@ const Container = styled.div`
   width: 100vw;
   height: 100%;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  overflow: auto;
   .board {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background-color: white;
-    height: 75vh;
+    height: 80%;
     border-radius: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 2%;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 23%;
+    margin-right: 23%;
     position: relative;
     animation-duration: 1s;
     animation-name: fadeInDown;
@@ -249,7 +158,8 @@ const Container = styled.div`
       margin-right: 5%;
       margin-left: 5%;
       margin-top: 12%;
-      }
+      padding-bottom: 5%;
+    }
     @keyframes fadeInDown {
       0% {
         opacity: 0;
@@ -265,7 +175,7 @@ const Container = styled.div`
       font-size: 30px;
       margin-bottom: 5vh;
       @media (max-width: 614px) {
-       font-size: 6vw;
+        font-size: 6vw;
       }
     }
   }
@@ -275,30 +185,29 @@ const Container = styled.div`
     display: flex;
     overflow: hidden;
     @media (max-width: 614px) {
-      flex-direction: column;
+      margin-top: 10%;
+      flex-direction: column-reverse;
       justify-content: center;
       align-items: center;
-      }
-    .left {
-      width: 50%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
+ 
     .rigth {
       box-sizing: border-box;
-      width: 50%;
+      width: 100%;
       height: 97%;
-      border-left: solid 3px darkblue;
+      @media (max-width: 614px) {
+        width: 100%;
+        height: 50%;
+        border-left: none;
+      }
       select {
         overflow: visible;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         position: absolute;
-        height: 30px;
-        width: 100px;
-        right: 23%;
-        top: 6%;
+        height: 40px;
+        width: fit-content;
+        right: 16%;
+        top: 4%;
         border: none;
         border-radius: 10px;
         padding-left: 10px;
@@ -306,11 +215,21 @@ const Container = styled.div`
         background-color: white;
         font-size: 22px;
         color: darkblue;
+        @media (max-width: 614px) {
+          font-size: 3.4vw;
+          height: 30px;
+          width: 40%;
+          right: 30%;
+          top: 12%;
+        }
       }
       .months {
         box-sizing: border-box;
         width: 98%;
         height: 98%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         flex-wrap: wrap;
         display: flex;
         padding-left: 5%;
@@ -342,29 +261,47 @@ const Month = styled.div`
   justify-content: center;
   align-items: center;
   padding-left: 8px;
-  width: 9vw;
+  width: 10vw;
   height: 9vw;
   position: relative;
   border-radius: 15px;
-  margin-right: 15px;
-  margin-bottom: 15px;
+  margin-right: 18px;
+  margin-bottom: 8px;
   font-size: 0.8vw;
   overflow: hidden;
   cursor: pointer;
+  @media (max-width: 614px) {
+    width: 22vw;
+    height: 22vw;
+  }
   :hover {
     background-color: #eeeeee;
     font-size: 1vw;
     img {
       width: 15vw;
+      @media (max-width: 614px) {
+        width: 34vw;
+      }
     }
     span {
       top: 13%;
+      @media (max-width: 614px) {
+        font-size: 2vw;
+        top: 16%;
+      }
     }
     .check {
       width: 8vh;
       height: 8vh;
+      @media (max-width: 614px) {
+        width: 10vw;
+        height: 10vw;
+      }
       .icon {
         font-size: 9vh;
+        @media (max-width: 614px) {
+        width: 10vw;
+      }
       }
     }
   }
@@ -376,9 +313,16 @@ const Month = styled.div`
     top: 16%;
     color: white;
     font-weight: bold;
+    @media (max-width: 614px) {
+        font-size: 2vw;
+        top: 16.5%;
+      }
   }
   img {
     width: 14vw;
+    @media (max-width: 614px) {
+        width: 33vw;
+      }
   }
   .check {
     position: absolute;
@@ -391,10 +335,17 @@ const Month = styled.div`
     margin-top: 17%;
     margin-right: 5%;
     background-color: white;
+    @media (max-width: 614px) {
+        width: 9vw;
+        height: 9vw;
+      }
     .icon {
       display: initial;
       font-size: 8vh;
       color: #099900;
+      @media (max-width: 614px) {
+        width: 9vw;
+      }
     }
   }
 `;

@@ -19,7 +19,7 @@ const Container = styled.div`
   margin-bottom: 10px;
   @media (max-width: 614px) {
        width: 95%;
-       height: 14vw;
+       height: 16vw;
        font-size: 4vw;
       }
   cursor: pointer;
