@@ -7,7 +7,7 @@ export function Option(props) {
 const Container = styled.div`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 90%;
-  height: 40%;
+  height: 5vw;
   background-color: white;
   border-radius: 30px;
   display: flex;
@@ -19,12 +19,15 @@ const Container = styled.div`
   margin-bottom: 10px;
   @media (max-width: 614px) {
        width: 95%;
-       height: 20vw;
+       height: 14vw;
        font-size: 4vw;
       }
   cursor: pointer;
   img {
     width: 120px;
+    @media (max-width: 614px) {
+       width: 100px;
+      }
   }
   .img {
     overflow: hidden;
@@ -35,6 +38,11 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     margin-right: 20px;
+    @media (max-width: 614px) {
+       width: 12vw;
+       height: 12vw;
+       font-size: 4vw;
+      }
   }
   :hover {
     background-color: #eeeeee;
@@ -45,10 +53,18 @@ const Container = styled.div`
       }
     img {
       width: 160px;
+      @media (max-width: 614px) {
+       width: 110px;
+      }
     }
     .img {
       width: 70px;
       height: 70px;
+      @media (max-width: 614px) {
+       width: 13vw;
+       height: 13vw;
+       font-size: 4vw;
+      }
     }
   }
   div {

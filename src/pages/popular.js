@@ -110,13 +110,15 @@ const Container = styled.div`
     animation-duration: 1s;
     animation-name: fadeInDown;
     margin-bottom: 15%;
+    overflow: auto;
+    overflow-x: hidden;
     @media (max-width: 614px) {
       width: 90%;
-      height: 70%;
-      height: fit-content;
+      height: 77%;
       margin-right: 5%;
       margin-left: 5%;
       margin-top: 5%;
+      margin-bottom: 5%;
       }
     @keyframes fadeInDown {
     0% {
@@ -158,6 +160,9 @@ const Container = styled.div`
     width: 10px;
     background: transparent;
     border-top-right-radius: 50px;
+    @media (max-width: 614px) {
+       width: 6px;
+      }
 }
 ::-webkit-scrollbar-thumb{
 background-color: darkblue;

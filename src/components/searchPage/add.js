@@ -29,7 +29,7 @@ export function Add({setAdd, add, categoryName}) {
 
   return (
     <Container add={add}>
-      <div className="board">
+      <div className="board2">
       <IoIosCloseCircle onClick={() => setAdd(true)} className="close" />
         <h2>{Name()}</h2>
         <form>
@@ -111,7 +111,8 @@ z-index: 1;
   padding-top: 6%;
   display: ${(props) => (props.add === true ? "none" : "flex")};
   justify-content: center;
-  .board {
+  overflow: auto;
+  .board2 {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     background-color: white;
@@ -126,6 +127,14 @@ z-index: 1;
     position: relative;
     animation-duration: 1s;
     animation-name: fadeInDown;
+    @media (max-width: 614px) {
+      margin-left: 5%;
+      margin-right: 5%;
+    height: fit-content;
+    width: 90%;
+    margin-top: 12%;
+    margin-bottom: 10%;
+  }
     @keyframes fadeInDown {
     0% {
       opacity: 0;
@@ -137,17 +146,25 @@ z-index: 1;
     }
   }
   .close {
+    z-index: 1;
       position: absolute;
       right: 15px;
       top: 15px;
       font-size: 50px;
       color: red;
       cursor: pointer;
+      @media (max-width: 614px) {
+        font-size: 10vw;
+  }
     }
     h2 {
       color: darkblue;
       font-size: 30px;
       margin-bottom: 10%;
+      @media (max-width: 614px) {
+       font-size: 6vw;
+       margin-bottom: 5vh;
+      }
     }
     form {
       width: 90%;
@@ -170,6 +187,12 @@ z-index: 1;
         color: darkblue;
         margin-left: 4%;
         margin-right: 4%;
+        @media (max-width: 614px) {
+          width: 25vw;
+          margin-left: 1.5%;
+          margin-right: 1.5%;
+          font-size: 3.1vw;
+      }
         }
       }
 
@@ -185,6 +208,9 @@ z-index: 1;
         flex-wrap: wrap;
         justify-content: center;
         margin-bottom: 5%;
+        @media (max-width: 614px) {
+          width: 90%;
+      }
         div:nth-child(1){
           border-top-left-radius: 10px;
         }
@@ -217,6 +243,15 @@ z-index: 1;
     margin-bottom: 20px;
     transition: all 0.3s ease-in-out;
     margin-bottom: 30px;
+    @media (max-width: 614px) {
+          margin-bottom: 5%;
+          margin-top: 2%;
+          width: 90%;
+          max-width: 90%;
+          min-width: 90%;
+          min-height: 9vh;
+          font-size: 3.2vw;
+      }
     ::-webkit-scrollbar {
       border-radius: 50px;
       width: 10px;
@@ -240,7 +275,6 @@ z-index: 1;
         font-size: 20px;
       }
       button {
-        position: initial;
         width: 160px;
         height: 42px;
         border-radius: 20px;
@@ -248,14 +282,25 @@ z-index: 1;
         background-color: darkblue;
         color: white;
         font-size: 18px;
-        margin-top: -10px;
         cursor: pointer;
         transition: linear 0.1s;
+        margin-bottom: 10%;
+        @media (max-width: 614px) {
+          width: 50%;
+        height: 12vw;
+        font-size: 4.5vw;
+        margin-bottom: 5%;
+      }
         :hover {
           width: 170px;
           height: 45px;
           font-weight: bold;
           font-size: 20px;
+          @media (max-width: 614px) {
+          width: 51%;
+        height: 12.5vw;
+        font-size: 4.7vw;
+      }
         }
       }
     }
@@ -272,6 +317,9 @@ z-index: 1;
         padding: 20px 10px 20px;
         pointer-events: none;
         transition: 0.5s;
+        @media (max-width: 614px) {
+          font-size: 3.3vw;
+      }
       }
       i {
         position: absolute;
@@ -281,6 +329,15 @@ z-index: 1;
         height: 2px;
         background-color: darkblue;
         border-radius: 4px;
+      }
+    }
+    .inputBox input:valid ~ span,
+    .inputBox input:focus ~ span {
+      color: darkblue;
+      transform: translateY(-28px);
+      font-size: 0.75em;
+      @media (max-width: 614px) {
+          font-size: 2.5vw;
       }
     }
   }
@@ -298,8 +355,16 @@ const Grade = styled.div`
     align-items: center;
     color: white;
     cursor: pointer;
+    @media (max-width: 614px) {
+      width: 12vw;
+      height: 10vw;
+      font-size: 3vw;
+      }
     :hover{
       font-size: 1.2vw;
       font-weight: bold;
+      @media (max-width: 614px) {
+      font-size: 3vw;
+      }
     }
 `

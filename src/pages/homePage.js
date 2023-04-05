@@ -183,14 +183,16 @@ const Container = styled.div`
     }
   }
   .text {
-    padding: 5%;
-    padding-top: 3% ;
-    width: 90%;
+    padding: 2%;
+    padding-top: 1% ;
+    width: 40%;
     background-color: white;
     border-radius: 20px;
     @media (max-width: 614px) {
         width: 90%;
         margin-bottom: 60px;
+        padding: 5%;
+    padding-top: 3% ;
       }
     h2 {
       width: 100%;

@@ -1,15 +1,11 @@
 import styled from "styled-components";
 
 export function Box(props) {
-  return (
-    <Container>
-      {props.children}
-    </Container>
-  );
+  return <Container>{props.children}</Container>;
 }
 
 const Container = styled.div`
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 32%;
   height: 12vw;
   background-color: white;
@@ -19,15 +15,22 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin-bottom: 30px;
   margin-left: 10px;
   position: relative;
+  @media (max-width: 614px) {
+    width: 95%;
+    height: 40vw;
+    margin-bottom: 4%;
+  }
   cursor: pointer;
-  .back{
+  .back {
+    width: 100%;
+    height: 100%;
     display: flex;
-  align-items: center;
+    align-items: center;
   }
   img {
     width: 200px;
   }
-  h3{
+  h3 {
     padding: 0px;
     width: 100%;
     font-size: 21px;
@@ -35,8 +38,8 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     margin-top: 0px;
   }
 
-  .img{
-    overflow: hidden;
+  .img {
+    box-sizing: border-box;
     min-width: 110px;
     width: 250px;
     height: 100%;
@@ -46,22 +49,33 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     justify-content: center;
     margin-right: 20px;
     overflow: hidden;
+    @media (max-width: 614px) {
+      width: 200px;
+      margin-right: 3%;
+    }
   }
-  :hover{
-    background-color: #EEEEEE;
+  :hover {
+    background-color: #eeeeee;
   }
-  .informations{
+  .informations {
     width: 100%;
     height: 150px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    h3{
-      font-size: 1vw; 
+    justify-content: center;
+    h3 {
+      font-size: 1vw;
+      @media (max-width: 614px) {
+        margin-bottom: 6%;
+        font-size: 3vw;
+      }
     }
-    .categories{
+    .categories {
       display: flex;
-      .category{
+      @media (max-width: 614px) {
+        margin-bottom: 6%;
+      }
+      .category {
         margin-right: 3%;
         padding: 3px;
         color: white;
@@ -71,21 +85,23 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         display: flex;
         align-items: center;
         justify-content: center;
+        @media (max-width: 614px) {
+          font-size: 2.2vw;
+          margin-right: 2%;
+        }
       }
-      .category:nth-child(1){
+      .category:nth-child(1) {
         border: solid 2px darkred;
         background-color: #eb3d34;
       }
-      .category:nth-child(2){
+      .category:nth-child(2) {
         border: solid 2px darkgreen;
         background-color: #28b019;
       }
-      .category:nth-child(3){
+      .category:nth-child(3) {
         border: solid 2px darkblue;
         background-color: #345eeb;
       }
     }
   }
 `;
-
-

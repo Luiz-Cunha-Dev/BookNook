@@ -249,6 +249,14 @@ const Container = styled.div`
     margin-right: 5%;
     animation-duration: 1s;
     animation-name: fadeInDown;
+    @media (max-width: 614px) {
+      width: 90%;
+      height: 77%;
+      margin-right: 5%;
+      margin-left: 5%;
+      margin-top: 5%;
+      margin-bottom: 5%;
+      }
     @keyframes fadeInDown {
     0% {
       opacity: 0;
@@ -263,14 +271,20 @@ const Container = styled.div`
       color: darkblue;
       font-size: 30px;
       margin-bottom: 5vh;
+      @media (max-width: 614px) {
+       font-size: 6vw;
+       margin-bottom: 3vh;
+      }
     }
     .principalForm {
       width: 35%;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
       position: relative;
       margin-bottom: 2vw;
+      @media (max-width: 614px) {
+       width: 65%;
+       margin-left: -20%;
+      }
       .add {
         transition: linear 0.5s;
         position: absolute;
@@ -286,6 +300,13 @@ const Container = styled.div`
         color: darkblue;
         margin-right: 20px;
         cursor: pointer;
+        @media (max-width: 614px) {
+          height: 10vw;
+          width: 10vw;
+          font-size: 6vw;
+          right: -40%;
+          bottom: 10%;
+      }
         :hover {
           font-size: 50px;
           span {
@@ -300,6 +321,9 @@ const Container = styled.div`
           padding-left: 10px;
           padding-right: 10px;
           font-weight: 600;
+          @media (max-width: 614px) {
+            display: none;
+      }
         }
         .rigth {
           background-color: darkblue;
@@ -310,6 +334,11 @@ const Container = styled.div`
           width: 50px;
           border-top-right-radius: 20px;
           border-bottom-right-radius: 20px;
+          @media (max-width: 614px) {
+          width: 10vw;
+          height: 10vw;
+          border-radius: 10px;
+      }
           .plus {
             transition: linear 0.1;
             color: white;
@@ -318,11 +347,14 @@ const Container = styled.div`
       }
       input {
         height: 6%;
-        width: 50%;
+        width: 40%;
         border: none;
         outline: none;
         padding: 20px 10px 10px 10px;
         font-size: 20px;
+        @media (max-width: 614px) {
+          font-size: 3.5vw;
+      }
       }
       button {
         position: absolute;
@@ -339,14 +371,17 @@ const Container = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
+        @media (max-width: 614px) {
+          width: 8vw;
+          min-width: 8vw;
+          height: 8vw;
+          top: 20%;
+      }
         :hover {
           font-weight: bold;
           font-size: 22px;
         }
       }
-    }
-    img {
-      height: 12vw;
     }
     .back-image {
       margin-top: 30px;
@@ -371,6 +406,9 @@ const Container = styled.div`
         padding: 20px 10px 20px;
         pointer-events: none;
         transition: 0.5s;
+        @media (max-width: 614px) {
+          font-size: 2.8vw;
+      }
       }
       i {
         position: absolute;
@@ -385,8 +423,11 @@ const Container = styled.div`
     .inputBox input:valid ~ span,
     .inputBox input:focus ~ span {
       color: darkblue;
-      transform: translateY(-34px);
+      transform: translateY(-30px);
       font-size: 0.75em;
+      @media (max-width: 614px) {
+          font-size: 2vw;
+      }
     }
   }
   .list {
@@ -400,11 +441,17 @@ const Container = styled.div`
     overflow: auto;
     overflow-x: hidden;
     margin-bottom: 30px;
+    @media (max-width: 614px) {
+      margin-top: 4%;
+      }
     ::-webkit-scrollbar {
       border-radius: 50px;
       width: 10px;
       background: transparent;
       border-top-right-radius: 50px;
+      @media (max-width: 614px) {
+      width: 6px;
+      }
     }
     ::-webkit-scrollbar-thumb {
       background-color: darkblue;
@@ -421,6 +468,9 @@ const Stars = styled.div`
   color: grey;
   display: flex;
   align-items: center;
+  @media (max-width: 614px) {
+       font-size: 6vw;
+      }
   .star1 {
     color: #faab00;
   }

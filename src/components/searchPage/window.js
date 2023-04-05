@@ -41,7 +41,7 @@ export function Window({close, setClose, categoryName}) {
         <div className="down">
           <h3>Comentarios</h3>
           <p>
-            ggfgggfg fewfyw gfywrgf wf bwfbwgfwrb wb bbrb r rw hih wh irh irt r
+            Filme muito bom, gostei demais queria que ouvesse mais ggfgggfg fewfyw gfywrgf wf bwfbwgfwrb wb bbrb r rw hih wh irh irt r
             h thwritgbwrigbr r wtwrgbr grghghsjhg wrrhgiergi rr rherh
             wfgwbgbrgbwbnwbvw fijwgifib bibfgdivbgisdbvibs s
             ijnibgvijfbgfgjnfgjnfn nfngfngnfsgnfsln gnflknglfngn ownrgonron
@@ -74,6 +74,7 @@ z-index: 1;
   font-size: 20px;
   padding-top: 8%;
   background-color: rgba(10, 23, 55, 0.5);
+  overflow: auto;
   .window {
     padding: 2%;
     box-sizing: border-box;
@@ -87,6 +88,14 @@ z-index: 1;
     position: relative;
     animation-duration: 1s;
     animation-name: fadeInDown;
+    @media (max-width: 614px) {
+      margin-left: 5%;
+      margin-right: 5%;
+    height: 80%;
+    width: 90%;
+    margin-top: 12%;
+    margin-bottom: 10%;
+  }
     @keyframes fadeInDown {
     0% {
       opacity: 0;
@@ -98,12 +107,16 @@ z-index: 1;
     }
   }
     .close {
+      z-index: 1;
       position: absolute;
       right: 15px;
       top: 15px;
       font-size: 50px;
       color: red;
       cursor: pointer;
+      @media (max-width: 614px) {
+        font-size: 10vw;
+  }
     }
   }
   .top {
@@ -120,8 +133,15 @@ z-index: 1;
       font-size: 2.2vw;
       color: darkblue;
       cursor: pointer;
+      @media (max-width: 614px) {
+        margin-top: 20%;
+        font-size: 8vw;
+  }
       :hover {
         font-size: 2.4vw;
+        @media (max-width: 614px) {
+        font-size: 8vw;
+  }
       }
     }
   }
@@ -130,6 +150,13 @@ z-index: 1;
     margin-top: 5%;
     overflow: auto;
     overflow-x: hidden;
+    @media (max-width: 614px) {
+      box-sizing: border-box;
+      height: 50%;
+      padding-left: 2%;
+      padding-right: 2%;
+      padding-bottom: 2%;
+  }
     ::-webkit-scrollbar {
       border-radius: 50px;
       width: 10px;
@@ -143,9 +170,18 @@ z-index: 1;
     ::-webkit-scrollbar-track-piece {
       height: 80%;
     }
+    p{
+      @media (max-width: 614px) {
+      font-size: 3.5vw;
+      line-height: 20px;
+    }
+    }
   }
   img {
     width: 400px;
+    @media (max-width: 614px) {
+      width: 300vw;
+    }
   }
   h3 {
     padding: 0px;
@@ -153,6 +189,9 @@ z-index: 1;
     font-size: 21px;
     margin-bottom: 0px;
     margin-top: 0px;
+    @media (max-width: 614px) {
+      font-size: 4vw;
+    }
   }
 
   .img {
@@ -164,20 +203,42 @@ z-index: 1;
     justify-content: center;
     margin-right: 40px;
     overflow: hidden;
+    border-radius: 10px;
+    @media (max-width: 614px) {
+      width: 50%;
+      height: 60vw;
+      margin-left: 2%;
+      margin-right: 2%;
+    }
   }
   .informations {
     box-sizing: border-box;
-    width: 80%;
+    width: 40%;
     height: 100%;
     display: flex;
     flex-direction: column;
+    overflow: auto;
+    @media (max-width: 614px) {
+      margin-top: 6%;
+      width: 50%;
+      height: 75%;
+      padding-right: 2%;
+      justify-content: center;
+    }
     h3 {
       font-size: 1.5vw;
       margin-bottom: 6%;
+      @media (max-width: 614px) {
+        margin-bottom: 6%;
+        font-size: 3vw;
+      }
     }
     .categories {
       display: flex;
       margin-bottom: 6%;
+      @media (max-width: 614px) {
+        margin-bottom: 6%;
+      }
       .category {
         margin-right: 4%;
         padding: 3px;
@@ -188,6 +249,10 @@ z-index: 1;
         display: flex;
         align-items: center;
         justify-content: center;
+        @media (max-width: 614px) {
+          font-size: 2.2vw;
+          margin-right: 2%;
+        }
       }
       .category:nth-child(1) {
         border: solid 2px darkred;
@@ -210,6 +275,9 @@ const Stars = styled.div`
   color: grey;
   display: flex;
   align-items: center;
+  @media (max-width: 614px) {
+       font-size: 6vw;
+      }
   .star1 {
     color: #faab00;
   }
