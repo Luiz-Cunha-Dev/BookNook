@@ -242,6 +242,14 @@ const Container = styled.div`
     position: relative;
     animation-duration: 1s;
     animation-name: fadeInDown;
+    margin-bottom: 5%;
+    @media (max-width: 614px) {
+      width: 90%;
+      height: fit-content;
+      margin-right: 5%;
+      margin-left: 5%;
+      margin-top: 12%;
+      }
     @keyframes fadeInDown {
       0% {
         opacity: 0;
@@ -256,6 +264,9 @@ const Container = styled.div`
       color: darkblue;
       font-size: 30px;
       margin-bottom: 5vh;
+      @media (max-width: 614px) {
+       font-size: 6vw;
+      }
     }
   }
   .back {
@@ -263,6 +274,11 @@ const Container = styled.div`
     height: 100%;
     display: flex;
     overflow: hidden;
+    @media (max-width: 614px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      }
     .left {
       width: 50%;
       height: 100%;

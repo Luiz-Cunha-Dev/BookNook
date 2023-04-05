@@ -76,6 +76,14 @@ const Container = styled.div`
     margin-bottom: 1%;
     animation-duration: 1s;
     animation-name: fadeInDown;
+    margin-bottom: 10%;
+    @media (max-width: 614px) {
+      width: 90%;
+      height: 75%;
+      margin-right: 5%;
+      margin-left: 5%;
+      margin-top: 6%;
+      }
     @keyframes fadeInDown {
     0% {
       opacity: 0;
@@ -108,6 +116,9 @@ border-radius: 50px;
     h2 {
       color: darkblue;
       font-size: 30px;
+      @media (max-width: 614px) {
+       font-size: 6vw;
+      }
     }
     .filter {
       width: 70%;
@@ -115,6 +126,10 @@ border-radius: 50px;
       align-items: center;
       justify-content: space-around;
       margin-bottom: 30px;
+      @media (max-width: 614px) {
+       width: 80%;
+       margin-bottom: 5%;
+      }
       button {
         transition: 1s;
         display: flex;
@@ -129,6 +144,9 @@ border-radius: 50px;
         font-size: 18px;
         font-weight: 600;
         cursor: pointer;
+        @media (max-width: 614px) {
+       font-size: 3.8vw;
+      }
         :nth-child(1) {
           background-color: ${(props) =>
             props.filter === "score" ? "darkblue" : "ligthblue"};
@@ -149,6 +167,9 @@ const Stars = styled.div`
   color: grey;
   display: flex;
   align-items: center;
+  @media (max-width: 614px) {
+       font-size: 6vw;
+      }
   .star1{
     color: #faab00;
   }

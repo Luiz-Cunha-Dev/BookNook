@@ -89,7 +89,6 @@ const Container = styled.div`
   }
   .exit-window{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    z-index: 11;
     position: fixed;
     width: 400px;
     height: 350px;
@@ -101,6 +100,25 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     cursor: default;
+    animation-duration: 1s;
+    animation-name: fadeInDown;
+    @media (max-width: 614px) {
+        width: 80%;
+        height: 50%;
+        h2{
+          font-size: 5vw;
+        }
+      }
+    @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
     button {
       width: 160px;
       height: 42px;
@@ -182,7 +200,7 @@ const Container = styled.div`
     font-weight: bold;
     @media (max-width: 614px) {
       width: 85%;
-      left: ${(props) => props.menu === "-20vw" ? "-85%" : "0%"};
+      left: ${(props) => props.menu === "-20vw" || props.exit === true ? "-85%" : "0%"};
       }
     img {
       height: 200px;

@@ -92,6 +92,7 @@ const Container = styled.div`
   background-position: center;
   width: 100vw;
   height: 100%;
+  overflow: auto;
   .board {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -108,6 +109,15 @@ const Container = styled.div`
     padding-bottom: 10px;
     animation-duration: 1s;
     animation-name: fadeInDown;
+    margin-bottom: 15%;
+    @media (max-width: 614px) {
+      width: 90%;
+      height: 70%;
+      height: fit-content;
+      margin-right: 5%;
+      margin-left: 5%;
+      margin-top: 5%;
+      }
     @keyframes fadeInDown {
     0% {
       opacity: 0;
@@ -121,6 +131,9 @@ const Container = styled.div`
     h2 {
       color: darkblue;
       font-size: 30px;
+      @media (max-width: 614px) {
+       font-size: 6vw;
+      }
     }
     .options{
       box-sizing: border-box;
@@ -137,6 +150,9 @@ const Container = styled.div`
     padding-bottom: 10px;
     overflow: auto;
     overflow-x: hidden;
+    @media (max-width: 614px) {
+       width: 95%;
+      }
     ::-webkit-scrollbar {
       border-radius: 50px;
     width: 10px;

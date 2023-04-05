@@ -48,6 +48,14 @@ const Container = styled.div`
     padding-bottom: 10px;
     animation-duration: 1s;
     animation-name: fadeInDown;
+    margin-bottom: 5%;
+    @media (max-width: 614px) {
+      width: 90%;
+      height: 70%;
+      margin-right: 5%;
+      margin-left: 5%;
+      margin-top: 6%;
+      }
     @keyframes fadeInDown {
     0% {
       opacity: 0;
@@ -61,14 +69,19 @@ const Container = styled.div`
     h2 {
       color: darkblue;
       font-size: 30px;
+      @media (max-width: 614px) {
+       font-size: 6vw;
+      }
     }
     .items{
+      box-sizing: border-box;
       width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       span{
+        box-sizing: border-box;
         margin-top: 20px;
         background-color: #EEEEEE;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -81,6 +94,12 @@ const Container = styled.div`
         padding: 30px 60px 30px 60px;
         color: darkblue;
         font-size: 22px;
+        @media (max-width: 614px) {
+          padding: 30px 30px 30px 30px;
+      width: 90%;
+      height: 8vw;
+      font-size: 4vw;
+      }
         .switch{
           transition: linear 0.2s 0.1s;
           box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -89,6 +108,11 @@ const Container = styled.div`
           width: 70px;
           height: 35px;
           position: relative;
+          @media (max-width: 614px) {
+              width: 14vw;
+              height: 7vw;
+              margin-left: 10vw;
+            }
           button{
             position: absolute;
             right: ${props => props.darkMode};
@@ -100,6 +124,12 @@ const Container = styled.div`
             border: none;
             background-color: white;
             cursor: pointer;
+            @media (max-width: 614px) {
+              right: ${props => props.darkMode === "35px" ? "7vw" : "0px"};
+              width: 7vw;
+              height: 7vw;
+
+      }
           }
         }
       }

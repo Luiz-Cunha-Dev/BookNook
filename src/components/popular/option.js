@@ -17,6 +17,11 @@ const Container = styled.div`
   font-size: 20px;
   text-align: center;
   margin-bottom: 10px;
+  @media (max-width: 614px) {
+       width: 95%;
+       height: 20vw;
+       font-size: 4vw;
+      }
   cursor: pointer;
   img {
     width: 120px;
@@ -35,6 +40,9 @@ const Container = styled.div`
     background-color: #eeeeee;
     font-size: 22px;
     font-weight: 500;
+    @media (max-width: 614px) {
+       font-size: 5vw;
+      }
     img {
       width: 160px;
     }
