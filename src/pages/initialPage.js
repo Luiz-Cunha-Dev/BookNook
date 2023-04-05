@@ -99,7 +99,10 @@ const Container = styled.div`
   background-attachment: fixed;
   background-position: center;
   width: 100vw;
-  height: 100%;
+  height: 100%; 
+  @media (max-width: 614px) {
+        overflow: auto;
+      }
   .board {
     display: flex;
     justify-content: center;
@@ -109,6 +112,12 @@ const Container = styled.div`
     margin-top: 2%;
     animation-duration: 1s;
     animation-name: fadeInDown;
+    @media (max-width: 614px) {
+      width: 96%;
+      padding-left: 3%;
+      margin-top:5%;
+      margin-bottom: 10%;
+      }
     @keyframes fadeInDown {
     0% {
       opacity: 0;

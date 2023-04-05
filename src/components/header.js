@@ -16,7 +16,7 @@ export function Header() {
   const [exit, setExit] = useState(false);
 
   return (
-    <Container menu={menu === true ? "0px" : "-400px"} exit={exit}>
+    <Container menu={menu === true ? "0px" : "-20vw"} exit={exit}>
       <div className="header">
         <HiOutlineMenu onClick={() => setMenu(!menu)} className="menu" />
         <div onClick={() => navigate("/")} className="icone">
@@ -131,12 +131,19 @@ const Container = styled.div`
       font-family: "Chewy";
       color: darkblue;
       font-size: 55px;
+      @media (max-width: 614px) {
+        font-size: 5vh;
+      }
     }
     .menu {
       font-size: 45px;
       color: darkblue;
       cursor: pointer;
       margin-left: 50px;
+      @media (max-width: 614px) {
+        font-size: 6vh;
+        margin-left: 3%;
+      }
     }
     .icone {
       height: 12vh;
@@ -145,9 +152,15 @@ const Container = styled.div`
       justify-content: center;
       margin-left: 12%;
       cursor: pointer;
+      @media (max-width: 614px) {
+      }
       img {
         height: 50px;
         margin-right: 20px;
+        @media (max-width: 614px) {
+        height: 6vh;
+        margin-right: 4%;
+      }
       }
     }
   }
@@ -160,15 +173,22 @@ const Container = styled.div`
     position: fixed;
     left: ${(props) => props.menu};
     top: 0px;
-    width: 400px;
+    width: 20vw;
     height: 100vh;
     background-color: darkblue;
     z-index: 2;
     color: white;
     font-size: 30px;
     font-weight: bold;
+    @media (max-width: 614px) {
+      width: 85%;
+      left: ${(props) => props.menu === "-20vw" ? "-85%" : "0%"};
+      }
     img {
       height: 200px;
+      @media (max-width: 614px) {
+      height: 44vw;
+      }
     }
     .back-image {
       margin-top: 30px;
@@ -180,9 +200,18 @@ const Container = styled.div`
       width: 180px;
       border-radius: 120px;
       margin-bottom: 2vw;
+      @media (max-width: 614px) {
+      width: 40vw;
+      height: 40vw;
+      margin-bottom: 4vw;
+      margin-top: 8%;
+      }
     }
     span {
       margin-bottom: 3vw;
+      @media (max-width: 614px) {
+      margin-bottom: 6vw;
+      }
     }
     .options {
       width: 65%;
@@ -197,6 +226,9 @@ const Container = styled.div`
         margin-bottom: 1.5vw;
         color: white;
         font-size: 2.5vh;
+        @media (max-width: 614px) {
+      margin-bottom: 4vw;
+      }
         .icon {
           font-size: 30px;
           margin-right: 15px;

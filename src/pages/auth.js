@@ -89,7 +89,7 @@ const Container = styled.div`
         align-items: center;
         margin-top: -100px;
         @media (max-width: 614px) {
-        margin-top: -15%;
+        margin-top: -17%;
       }
         animation-duration: 2s;
     animation-name: fadeInRigth;

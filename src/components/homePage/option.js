@@ -1,4 +1,3 @@
-import { Children } from "react";
 import styled from "styled-components";
 
 export function Option(props) {
@@ -11,8 +10,8 @@ export function Option(props) {
 
 const Container = styled.div`
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  min-width: 200px;
-  max-width: 300px;
+  width: 200px;
+  width: 300px;
   width: 18vw;
   height: 250px;
   background-color: white;
@@ -26,9 +25,18 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   font-family: "Courier New", Courier, monospace;
   font-size: 20px;
   text-align: center;
+  @media (max-width: 614px) {
+      width: 42.5vw;
+      height: 43vw;
+      margin-right: 3%;
+      font-size: 4vw;
+      }
   cursor: pointer;
   img {
     width: 180px;
+    @media (max-width: 614px) {
+      width: 40vw
+      }
   }
   .img{
     overflow: hidden;
@@ -39,6 +47,10 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 614px) {
+      width: 20vw;
+      height: 20vw;
+      }
   }
   :hover{
     background-color: #EEEEEE;

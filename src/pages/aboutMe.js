@@ -49,12 +49,12 @@ const Container = styled.div`
   background-position: center;
   width: 100vw;
   height: 100%;
-
+  overflow: auto;
   .board {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     background-color: white;
-    height: 75%;
+    height: fit-content;
     border-radius: 50px;
     display: flex;
     flex-direction: column;
@@ -63,6 +63,14 @@ const Container = styled.div`
     margin-right: 35%;
     animation-duration: 1s;
     animation-name: fadeInDown;
+    margin-bottom: 5%;
+    @media (max-width: 614px) {
+      width: 90%;
+      height: fit-content;
+      margin-right: 5%;
+      margin-left: 5%;
+      margin-top: 12%;
+      }
     @keyframes fadeInDown {
     0% {
       opacity: 0;
@@ -76,15 +84,22 @@ const Container = styled.div`
     h2 {
       color: darkblue;
       font-size: 30px;
+      @media (max-width: 614px) {
+       font-size: 6vw;
+      }
     }
     form {
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 70%;
+      @media (max-width: 614px) {
+        width: 80%;
+      }
       input {
         box-sizing: border-box;
         height: 6%;
-        width: 22vw;
+        width: 98%;
         border: none;
         outline: none;
         padding: 10px 10px 10px;
@@ -100,16 +115,30 @@ const Container = styled.div`
         font-size: 18px;
         cursor: pointer;
         transition: linear 0.1s;
+        margin-bottom: 10%;
+        @media (max-width: 614px) {
+          width: 50%;
+        height: 12vw;
+        font-size: 4.5vw;
+      }
         :hover {
           width: 170px;
           height: 45px;
           font-weight: bold;
           font-size: 20px;
+          @media (max-width: 614px) {
+          width: 51%;
+        height: 12.5vw;
+        font-size: 4.7vw;
+      }
         }
       }
     }
     img {
       height:12vw;
+      @media (max-width: 614px) {
+        height: 25vw;
+      }
     }
     .back-image {
       margin-top: 30px;
@@ -121,11 +150,20 @@ const Container = styled.div`
       width: 9vw;
       border-radius: 120px;
       margin-bottom: 15%;
+      @media (max-width: 614px) {
+        margin-top: 0%;
+        width: 25vw;
+        height: 25vw;
+        margin-bottom: 10%;
+      }
     }
     .inputBox {
       position: relative;
       width: 100%;
       margin-bottom: 2.5vw;
+      @media (max-width: 614px) {
+        margin-bottom: 8.5vw;
+      }
       span {
         font-size: 1em;
         letter-spacing: 0.05em;
@@ -135,6 +173,9 @@ const Container = styled.div`
         padding: 10px 10px 20px;
         pointer-events: none;
         transition: 0.5s;
+        @media (max-width: 614px) {
+          font-size: 3.4vw;
+      }
       }
       i {
         position: absolute;
