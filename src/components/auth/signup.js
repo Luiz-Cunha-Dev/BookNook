@@ -18,7 +18,11 @@ export function SignUp({ status, setStatus }) {
     ) {
       signUp({ username, email, password })
       .then((res) => {
+        alert("Cadastrado com Sucesso")
         setStatus("signin")
+      })
+      .catch(err => {
+        alert("Email ja existente")
       })
     }
   }
