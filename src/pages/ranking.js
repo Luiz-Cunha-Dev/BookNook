@@ -61,7 +61,9 @@ export function Ranking() {
             }
           );
         });
-
+        if(copyList.length > 10){
+          copyList.length=10
+        }
         setEntertainmentList(copyList);
 
   }
@@ -78,8 +80,9 @@ export function Ranking() {
             }
           );
         });
-        console.log(copyList);
-        console.log(copyList.length);
+        if(copyList.length > 10){
+          copyList.length=10
+        }
         setEntertainmentList(copyList);
   }
 
@@ -240,8 +243,8 @@ export function Ranking() {
                         ""
                       )}
                 </div>
-                <Stars grade={filter === "score" ? (scoreList[i]._avg.grade) : 0}>
-                  {filter === "score" ? getStars(scoreList[i]._avg.grade) : ""}
+                <Stars grade={filter === "score" ? (scoreList[i]?._avg.grade) : 0}>
+                  {filter === "score" ? getStars(scoreList[i]?._avg.grade) : ""}
                   {filter === "views" ? <p>Views: {viewList[i]?._count.entertainmentId}</p> : ""}
                 </Stars>
               </div>

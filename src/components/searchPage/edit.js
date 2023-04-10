@@ -331,7 +331,7 @@ const Container2 = styled.div`
         width: 100%;
         margin-bottom: 1vh;
         select {
-          width: 10vw;
+          width: 8vw;
           height: 4vh;
           font-size: 20px;
           padding-left: 2%;

@@ -172,6 +172,47 @@ export function SearchPage() {
       getAllntertainment(userData.token).then((res) => {
         setEntertainmentList(res.data);
       });
+    } else if (categoryNameCorrection() === "Entretenimeto") {
+      let list = [];
+      getEntertainmentByType(userData.token, "Filme").then((res) => {
+        res.data.forEach((e) => {
+          list.push(e);
+        });
+      });
+      setTimeout(() => {
+        getEntertainmentByType(userData.token, "Série").then((res) => {
+          res.data.forEach((e) => {
+            list.push(e);
+          });
+        });
+      }, 1100);
+      setTimeout(() => {}, 700);
+
+      setTimeout(() => {
+        getEntertainmentByType(userData.token, "Desenho").then((res) => {
+          res.data.forEach((e) => {
+            list.push(e);
+          });
+        });
+      }, 1600);
+
+      setTimeout(() => {
+        getEntertainmentByType(userData.token, "Livro").then((res) => {
+          res.data.forEach((e) => {
+            list.push(e);
+          });
+        });
+      }, 1800);
+
+      setTimeout(() => {
+        getEntertainmentByType(userData.token, "Jogo").then((res) => {
+          res.data.forEach((e) => {
+            list.push(e);
+          });
+        });
+
+      setEntertainmentList(list);
+      }, 2000);
     } else {
       getEntertainmentByType(userData.token, categoryNameCorrection()).then(
         (res) => {
@@ -184,19 +225,26 @@ export function SearchPage() {
   useEffect(() => {
     getAllCategories(userData.token).then((res) => {
       setcategoryList(res.data);
+      setTimeout(()=>{setSearch(" ")}, 500)
+      setTimeout(()=>{setSearch("  ")}, 1000)
+      setTimeout(()=>{setSearch("")}, 2000)
     });
   }, []);
 
-  function searchForName(e){
+  function searchForName(e) {
     e.preventDefault();
-    if(categoryNameCorrection() === "Tudo"){
-      let filter = entertainmentList.filter(e => e.name.toLowerCase().includes(search.toLowerCase()))
-      setEntertainmentList(filter)
-      return
+    if (categoryNameCorrection() === "Tudo") {
+      let filter = entertainmentList.filter((e) =>
+        e.name.toLowerCase().includes(search.toLowerCase())
+      );
+      setEntertainmentList(filter);
+      return;
     }
-    let filter = entertainmentList.filter(e => e.entertainments.name.toLowerCase().includes(search.toLowerCase()))
-    setEntertainmentList(filter)
-    return
+    let filter = entertainmentList.filter((e) =>
+      e.entertainments.name.toLowerCase().includes(search.toLowerCase())
+    );
+    setEntertainmentList(filter);
+    return;
   }
 
   return (
@@ -215,7 +263,12 @@ export function SearchPage() {
           <h2>{categoryName}</h2>
           <form onSubmit={searchForName} className="principalForm">
             <div className="inputBox">
-              <input type="text" required="required" value={search} onChange={(e) => setSearch(e.target.value)}/>
+              <input
+                type="text"
+                required="required"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
               <span>Busque pelo nome que procura</span>
               <i></i>
             </div>
@@ -233,48 +286,33 @@ export function SearchPage() {
             {categoryNameCorrection() === "Tudo"
               ? entertainmentList.map((e, i) => (
                   <Box key={i}>
-                    <div
-                      className="back"
-                    >
+                    <div className="back">
                       <div className="img">
                         <img src={e.imageUrl} alt="filme" />
                       </div>
                       <div className="informations">
-                        <h3>
-                          {e.name !== undefined
-                            ? e.name
-                            : ""}
-                        </h3>
+                        <h3>{e.name !== undefined ? e.name : ""}</h3>
                         <div className="categories">
-                          {categoryList[e.category1Id - 1]
-                            ?.name !== undefined ? (
+                          {categoryList[e.category1Id - 1]?.name !==
+                          undefined ? (
                             <div className="category">
-                              {
-                                categoryList[e.category1Id - 1]
-                                  ?.name
-                              }
+                              {categoryList[e.category1Id - 1]?.name}
                             </div>
                           ) : (
                             ""
                           )}
-                          {categoryList[e.category2Id - 1]
-                            ?.name !== undefined ? (
+                          {categoryList[e.category2Id - 1]?.name !==
+                          undefined ? (
                             <div className="category">
-                              {
-                                categoryList[e.category2Id - 1]
-                                  ?.name
-                              }
+                              {categoryList[e.category2Id - 1]?.name}
                             </div>
                           ) : (
                             ""
                           )}
-                          {categoryList[e.category3Id - 1]
-                            ?.name !== undefined ? (
+                          {categoryList[e.category3Id - 1]?.name !==
+                          undefined ? (
                             <div className="category">
-                              {
-                                categoryList[e.category3Id - 1]
-                                  ?.name
-                              }
+                              {categoryList[e.category3Id - 1]?.name}
                             </div>
                           ) : (
                             ""
