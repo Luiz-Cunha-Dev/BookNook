@@ -2,9 +2,126 @@ import styled from "styled-components";
 import { useState } from "react";
 import { Option } from "../../components/goals/option";
 import { IoIosCloseCircle } from "react-icons/io";
+import { createGoal, getAllGoals } from "../../services";
+import { useEffect } from "react";
 
-export function Window({ close, setClose, month, year }) {
-  const [edit, setEdit] = useState(true);
+export function Window({ close, setClose, month, year, goals }) {
+  let userData = JSON.parse(localStorage.getItem("userData"));
+  const [goalMovies, setGoalMovies] = useState(0)
+  const [qtdMovies, setQtdMovies] = useState(0)
+  const [goalSerie, setGoalSerie] = useState(0)
+  const [qtdSerie, setQtdSerie] = useState(0)
+  const [goalAnimes, setGoalAnimes] = useState(0)
+  const [qtdAnimes, setQtdAnimes] = useState(0)
+  const [goalCartoon, setGoalCartoon] = useState(0)
+  const [qtdCartoon, setQtdCartoon] = useState(0)
+  const [goalBook, setGoalBook] = useState(0)
+  const [qtdBook, setQtdBook] = useState(0)
+  const [goalGames, setGoalGames] = useState(0)
+  const [qtdGames, setQtdGames] = useState(0)
+  
+  useEffect(()=>{
+    load()
+  }, [close])
+
+  function sendGoal(quantity, goal, typeId){
+    createGoal(userData.token, {quantity, goal, typeId, month: numberOfMonth(), year: Number(year)}).then(res => {
+      alert("Salvo com Sucesso")
+    })
+  }
+
+  function numberOfMonth(){
+    if(month === "Janeiro"){
+      return 1
+    }
+    if(month === "Fevereiro"){
+      return 2
+    }
+    if(month === "Março"){
+      return 3
+    }
+    if(month === "Abril"){
+      return 4
+    }
+    if(month === "Maio"){
+      return 5
+    }
+    if(month === "Junho"){
+      return 6
+    }
+    if(month === "Julho"){
+      return 7
+    }
+    if(month === "Agosto"){
+      return 8
+    }
+    if(month === "Setembro"){
+      return 9
+    }
+    if(month === "Outubro"){
+      return 10
+    }
+    if(month === "Novembro"){
+      return 11
+    }
+    if(month === "Dezembro"){
+      return 12
+    }
+  }
+
+  function load(){
+    let currentGoal = goals.filter(g => g.month === numberOfMonth() && g.year == year)
+
+    currentGoal.forEach(g => {
+      if(g.typeId === 1){
+        setGoalMovies(g.goal);
+        setQtdMovies(g.quantity)
+      }else{
+        setGoalMovies(0);
+        setQtdMovies(0)
+      }
+
+      if(g.typeId === 2){
+        setGoalSerie(g.goal);
+        setQtdSerie(g.quantity)
+      }else{
+        setGoalSerie(0);
+        setQtdSerie(0)
+      }
+
+      if(g.typeId === 3){
+        setGoalAnimes(g.goal);
+        setQtdAnimes(g.quantity)
+      }else{
+        setGoalAnimes(0);
+        setQtdAnimes(0)
+      }
+
+      if(g.typeId === 4){
+        setGoalCartoon(g.goal);
+        setQtdCartoon(g.quantity)
+      }else{
+        setGoalCartoon(0);
+        setQtdCartoon(0)
+      }
+
+      if(g.typeId === 5){
+        setGoalBook(g.goal);
+        setQtdBook(g.quantity)
+      }else{
+        setGoalBook(0);
+        setQtdBook(0)
+      }
+
+      if(g.typeId === 6){
+        setGoalGames(g.goal);
+        setQtdGames(g.quantity)
+      }else{
+        setGoalGames(0);
+        setQtdGames(0)
+      }
+    })
+  }
 
   return (
     <Container close={close}>
@@ -17,97 +134,97 @@ export function Window({ close, setClose, month, year }) {
           <span className="title">FILMES</span>
           <div className="goal">
             <span>META</span>
-            <button>-</button>
-            <p>00</p>
-            <button>+</button>
+            <button onClick={()=> setGoalMovies(goalMovies-1)}>-</button>
+            <p>{goalMovies}</p>
+            <button onClick={()=> setGoalMovies(goalMovies+1)}>+</button>
           </div>
           <div className="qtd">
             <span>QUANTIDADE ATUAL</span>
-            <button>-</button>
-            <p>00</p>
-            <button>+</button>
+            <button onClick={()=> setQtdMovies(qtdMovies-1)}>-</button>
+            <p>{qtdMovies}</p>
+            <button onClick={()=> setQtdMovies(qtdMovies+1)}>+</button>
           </div>
-          <button className="save">Salvar</button>
+          <button onClick={() => sendGoal(qtdMovies, goalMovies, 1)} className="save">Salvar</button>
         </Option>
         <Option>
           <span className="title">SÈRIES</span>
           <div className="goal">
             <span>META</span>
-            <button>-</button>
-            <p>00</p>
-            <button>+</button>
+            <button onClick={()=> setGoalSerie(goalSerie-1)}>-</button>
+            <p>{goalSerie}</p>
+            <button onClick={()=> setGoalSerie(goalSerie+1)}>+</button>
           </div>
           <div className="qtd">
             <span>QUANTIDADE ATUAL</span>
-            <button>-</button>
-            <p>00</p>
-            <button>+</button>
+            <button onClick={()=> setQtdSerie(qtdSerie-1)}>-</button>
+            <p>{qtdSerie}</p>
+            <button onClick={()=> setQtdSerie(qtdSerie+1)}>+</button>
           </div>
-          <button className="save">Salvar</button>
+          <button onClick={() => sendGoal(qtdSerie, goalSerie, 2)} className="save">Salvar</button>
         </Option>
         <Option>
           <span className="title">ANIMES</span>
           <div className="goal">
             <span>META</span>
-            <button>-</button>
-            <p>00</p>
-            <button>+</button>
+            <button onClick={()=> setGoalAnimes(goalAnimes-1)}>-</button>
+            <p>{goalAnimes}</p>
+            <button onClick={()=> setGoalAnimes(goalAnimes+1)}>+</button>
           </div>
           <div className="qtd">
             <span>QUANTIDADE ATUAL</span>
-            <button>-</button>
-            <p>00</p>
-            <button>+</button>
+            <button onClick={()=> setQtdAnimes(qtdAnimes-1)}>-</button>
+            <p>{qtdAnimes}</p>
+            <button onClick={()=> setQtdAnimes(qtdAnimes+1)}>+</button>
           </div>
-          <button className="save">Salvar</button>
+          <button onClick={() => sendGoal(qtdAnimes, goalAnimes, 3)} className="save">Salvar</button>
         </Option>
         <Option>
           <span className="title">DESENHOS</span>
           <div className="goal">
             <span>META</span>
-            <button>-</button>
-            <p>00</p>
-            <button>+</button>
+            <button onClick={()=> setGoalCartoon(goalCartoon-1)}>-</button>
+            <p>{goalCartoon}</p>
+            <button  onClick={()=> setGoalCartoon(goalCartoon+1)}>+</button>
           </div>
           <div className="qtd">
             <span>QUANTIDADE ATUAL</span>
-            <button>-</button>
-            <p>00</p>
-            <button>+</button>
+            <button onClick={()=> setQtdCartoon(qtdCartoon-1)}>-</button>
+            <p>{qtdCartoon}</p>
+            <button onClick={()=> setQtdCartoon(qtdCartoon+1)}>+</button>
           </div>
-          <button className="save">Salvar</button>
+          <button onClick={() => sendGoal(qtdCartoon, goalCartoon, 4)} className="save">Salvar</button>
         </Option>
         <Option>
           <span className="title">LIVROS</span>
           <div className="goal">
             <span>META</span>
-            <button>-</button>
-            <p>00</p>
-            <button>+</button>
+            <button onClick={()=> setGoalBook(goalBook-1)}>-</button>
+            <p>{goalBook}</p>
+            <button onClick={()=> setGoalBook(goalBook+1)}>+</button>
           </div>
           <div className="qtd">
             <span>QUANTIDADE ATUAL</span>
-            <button>-</button>
-            <p>00</p>
-            <button>+</button>
+            <button onClick={()=> setQtdBook(qtdBook-1)}>-</button>
+            <p>{qtdBook}</p>
+            <button onClick={()=> setQtdBook(qtdBook+1)}>+</button>
           </div>
-          <button className="save">Salvar</button>
+          <button onClick={() => sendGoal(qtdBook, goalBook, 5)} className="save">Salvar</button>
         </Option>
         <Option>
           <span className="title">JOGOS</span>
           <div className="goal">
             <span>META</span>
-            <button>-</button>
-            <p>00</p>
-            <button>+</button>
+            <button onClick={()=> setGoalGames(goalGames-1)}>-</button>
+            <p>{goalGames}</p>
+            <button onClick={()=> setGoalGames(goalGames+1)}>+</button>
           </div>
           <div className="qtd">
             <span>QUANTIDADE ATUAL</span>
-            <button>-</button>
-            <p>00</p>
-            <button>+</button>
+            <button onClick={()=> setQtdGames(qtdGames-1)}>-</button>
+            <p>{qtdGames}</p>
+            <button onClick={()=> setQtdGames(qtdGames+1)}>+</button>
           </div>
-          <button className="save">Salvar</button>
+          <button onClick={() => sendGoal(qtdGames, goalGames, 6)} className="save">Salvar</button>
         </Option>
       </div>
     </Container>
@@ -127,7 +244,6 @@ const Container = styled.div`
   font-size: 20px;
   padding-top: 8%;
   background-color: rgba(10, 23, 55, 0.5);
-  overflow: auto;
   h2 {
     color: darkblue;
     font-size: 30px;

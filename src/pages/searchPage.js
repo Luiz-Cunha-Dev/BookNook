@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import background from "../imgs/w2.jpg";
 import { Header } from "../components/header";
 import { FaSearch } from "react-icons/fa";
@@ -10,28 +10,216 @@ import filme from "../imgs/entretenimentos/filmes.jpg";
 import { Box } from "../components/searchPage/box";
 import { Window } from "../components/searchPage/window";
 import { Add } from "../components/searchPage/add";
+import {
+  getAllCategories,
+  getAllntertainment,
+  getEntertainmentByType,
+} from "../services";
 
 export function SearchPage() {
   const navigate = useNavigate();
   const { categoryName } = useParams();
   const [close, setClose] = useState(true);
   const [add, setAdd] = useState(true);
+  const [entertainmentList, setEntertainmentList] = useState([]);
+  const [categoryList, setcategoryList] = useState([]);
+  const [openEntertainment, setOpenEntertainment] = useState();
+  const [search, setSearch] = useState();
+  let userData = JSON.parse(localStorage.getItem("userData"));
+
+  function categoryNameCorrection() {
+    if (categoryName === "Seus Filmes") {
+      return "Filme";
+    }
+    if (categoryName === "Suas Séries") {
+      return "Série";
+    }
+    if (categoryName === "Seus Animes") {
+      return "Anime";
+    }
+    if (categoryName === "Seus Desenhos") {
+      return "Desenho";
+    }
+    if (categoryName === "Seus Livros") {
+      return "Livro";
+    }
+    if (categoryName === "Seus Jogos") {
+      return "Jogo";
+    }
+    if (categoryName === "Seus Entretenimentos") {
+      return "Entretenimeto";
+    }
+    if (categoryName === "Tudo") {
+      return "Tudo";
+    }
+  }
+
+  function getStars(grade) {
+    if (grade === 10) {
+      return (
+        <>
+          <FaStar className="star1" />
+          <FaStar className="star2" />
+          <FaStar className="star3" />
+          <FaStar className="star4" />
+          <FaStar className="star5" />
+        </>
+      );
+    }
+    if (grade === 9) {
+      return (
+        <>
+          <FaStar className="star1" />
+          <FaStar className="star2" />
+          <FaStar className="star3" />
+          <FaStar className="star4" />
+          <FaStarHalfAlt className="star5" />
+        </>
+      );
+    }
+    if (grade === 8) {
+      return (
+        <>
+          <FaStar className="star1" />
+          <FaStar className="star2" />
+          <FaStar className="star3" />
+          <FaStar className="star4" />
+          <FaStar className="star5" />
+        </>
+      );
+    }
+    if (grade === 7) {
+      return (
+        <>
+          <FaStar className="star1" />
+          <FaStar className="star2" />
+          <FaStar className="star3" />
+          <FaStarHalfAlt className="star4" />
+          <FaStar className="star5" />
+        </>
+      );
+    }
+    if (grade === 6) {
+      return (
+        <>
+          <FaStar className="star1" />
+          <FaStar className="star2" />
+          <FaStar className="star3" />
+          <FaStar className="star4" />
+          <FaStar className="star5" />
+        </>
+      );
+    }
+    if (grade === 5) {
+      return (
+        <>
+          <FaStar className="star1" />
+          <FaStar className="star2" />
+          <FaStarHalfAlt className="star3" />
+          <FaStar className="star4" />
+          <FaStar className="star5" />
+        </>
+      );
+    }
+    if (grade === 4) {
+      return (
+        <>
+          <FaStar className="star1" />
+          <FaStar className="star2" />
+          <FaStar className="star3" />
+          <FaStar className="star4" />
+          <FaStar className="star5" />
+        </>
+      );
+    }
+    if (grade === 3) {
+      return (
+        <>
+          <FaStar className="star1" />
+          <FaStarHalfAlt className="star2" />
+          <FaStar className="star3" />
+          <FaStar className="star4" />
+          <FaStar className="star5" />
+        </>
+      );
+    }
+    if (grade === 2) {
+      return (
+        <>
+          <FaStar className="star1" />
+          <FaStar className="star2" />
+          <FaStar className="star3" />
+          <FaStar className="star4" />
+          <FaStar className="star5" />
+        </>
+      );
+    }
+    if (grade === 1) {
+      return (
+        <>
+          <FaStarHalfAlt className="star1" />
+          <FaStar className="star2" />
+          <FaStar className="star3" />
+          <FaStar className="star4" />
+          <FaStar className="star5" />
+        </>
+      );
+    }
+  }
+
+  useEffect(() => {
+    if (categoryNameCorrection() === "Tudo") {
+      getAllntertainment(userData.token).then((res) => {
+        setEntertainmentList(res.data);
+      });
+    } else {
+      getEntertainmentByType(userData.token, categoryNameCorrection()).then(
+        (res) => {
+          setEntertainmentList(res.data);
+        }
+      );
+    }
+  }, [add, close]);
+
+  useEffect(() => {
+    getAllCategories(userData.token).then((res) => {
+      setcategoryList(res.data);
+    });
+  }, []);
+
+  function searchForName(e){
+    e.preventDefault();
+    if(categoryNameCorrection() === "Tudo"){
+      let filter = entertainmentList.filter(e => e.name.toLowerCase().includes(search.toLowerCase()))
+      setEntertainmentList(filter)
+      return
+    }
+    let filter = entertainmentList.filter(e => e.entertainments.name.toLowerCase().includes(search.toLowerCase()))
+    setEntertainmentList(filter)
+    return
+  }
 
   return (
     <>
       <Container option={categoryName}>
         <Header />
-        <Add add={add} setAdd={setAdd} categoryName={categoryName}/>
-        <Window close={close} setClose={setClose} categoryName={categoryName}/>
+        <Add add={add} setAdd={setAdd} categoryName={categoryName} />
+        <Window
+          categoryList={categoryList}
+          openEntertainment={openEntertainment}
+          close={close}
+          setClose={setClose}
+          categoryName={categoryName}
+        />
         <div className="board">
           <h2>{categoryName}</h2>
-          <form className="principalForm">
+          <form onSubmit={searchForName} className="principalForm">
             <div className="inputBox">
-              <input type="text" required="required" />
+              <input type="text" required="required" value={search} onChange={(e) => setSearch(e.target.value)}/>
               <span>Busque pelo nome que procura</span>
               <i></i>
             </div>
-            <button>
+            <button type="Submit">
               <FaSearch />
             </button>
             <div onClick={() => setAdd(false)} className="add">
@@ -42,182 +230,119 @@ export function SearchPage() {
             </div>
           </form>
           <div className="list">
-            <Box>
-              <div onClick={() => setClose(false)} className="back">
-              <div className="img">
-                <img src={filme} alt="filme" />
-              </div>
-              <div className="informations">
-                <h3>Vingadores: Ultimato</h3>
-                <div className="categories">
-                  <div className="category">Ação</div>
-                  <div className="category">Heroi</div>
-                  <div className="category">Ficção Cientifica</div>
-                </div>
-                <Stars>
-                  <FaStar className="star1" />
-                  <FaStar className="star2" />
-                  <FaStar className="star3" />
-                  <FaStar className="star4" />
-                  <FaStar className="star5" />
-                </Stars>
-              </div>
-              </div>
-            </Box>
-            <Box>
-              <div  onClick={() => setClose(false)} className="back">
-              <div className="img">
-                <img src={filme} alt="filme" />
-              </div>
-              <div className="informations">
-                <h3>Vingadores: Ultimato</h3>
-                <div className="categories">
-                  <div className="category">Ação</div>
-                  <div className="category">Heroi</div>
-                  <div className="category">Ficção Cientifica</div>
-                </div>
-                <Stars>
-                  <FaStar className="star1" />
-                  <FaStar className="star2" />
-                  <FaStar className="star3" />
-                  <FaStar className="star4" />
-                  <FaStar className="star5" />
-                </Stars>
-              </div>
-              </div>
-            </Box>
-            <Box>
-              <div  onClick={() => setClose(false)} className="back">
-              <div className="img">
-                <img src={filme} alt="filme" />
-              </div>
-              <div className="informations">
-                <h3>Vingadores: Ultimato</h3>
-                <div className="categories">
-                  <div className="category">Ação</div>
-                  <div className="category">Heroi</div>
-                  <div className="category">Ficção Cientifica</div>
-                </div>
-                <Stars>
-                  <FaStar className="star1" />
-                  <FaStar className="star2" />
-                  <FaStar className="star3" />
-                  <FaStar className="star4" />
-                  <FaStar className="star5" />
-                </Stars>
-              </div>
-              </div>
-            </Box>
-            <Box>
-              <div  onClick={() => setClose(false)} className="back">
-              <div className="img">
-                <img src={filme} alt="filme" />
-              </div>
-              <div className="informations">
-                <h3>Vingadores: Ultimato</h3>
-                <div className="categories">
-                  <div className="category">Ação</div>
-                  <div className="category">Heroi</div>
-                  <div className="category">Ficção Cientifica</div>
-                </div>
-                <Stars>
-                  <FaStar className="star1" />
-                  <FaStar className="star2" />
-                  <FaStar className="star3" />
-                  <FaStar className="star4" />
-                  <FaStar className="star5" />
-                </Stars>
-              </div>
-              </div>
-            </Box>
-            <Box>
-              <div  onClick={() => setClose(false)} className="back">
-              <div className="img">
-                <img src={filme} alt="filme" />
-              </div>
-              <div className="informations">
-                <h3>Vingadores: Ultimato</h3>
-                <div className="categories">
-                  <div className="category">Ação</div>
-                  <div className="category">Heroi</div>
-                  <div className="category">Ficção Cientifica</div>
-                </div>
-                <Stars>
-                  <FaStar className="star1" />
-                  <FaStar className="star2" />
-                  <FaStar className="star3" />
-                  <FaStar className="star4" />
-                  <FaStar className="star5" />
-                </Stars>
-              </div>
-              </div>
-            </Box>
-            <Box>
-              <div  onClick={() => setClose(false)} className="back">
-              <div className="img">
-                <img src={filme} alt="filme" />
-              </div>
-              <div className="informations">
-                <h3>Vingadores: Ultimato</h3>
-                <div className="categories">
-                  <div className="category">Ação</div>
-                  <div className="category">Heroi</div>
-                  <div className="category">Ficção Cientifica</div>
-                </div>
-                <Stars>
-                  <FaStar className="star1" />
-                  <FaStar className="star2" />
-                  <FaStar className="star3" />
-                  <FaStar className="star4" />
-                  <FaStar className="star5" />
-                </Stars>
-              </div>
-              </div>
-            </Box>
-            <Box>
-              <div  onClick={() => setClose(false)} className="back">
-              <div className="img">
-                <img src={filme} alt="filme" />
-              </div>
-              <div className="informations">
-                <h3>Vingadores: Ultimato</h3>
-                <div className="categories">
-                  <div className="category">Ação</div>
-                  <div className="category">Heroi</div>
-                  <div className="category">Ficção Cientifica</div>
-                </div>
-                <Stars>
-                  <FaStar className="star1" />
-                  <FaStar className="star2" />
-                  <FaStar className="star3" />
-                  <FaStar className="star4" />
-                  <FaStar className="star5" />
-                </Stars>
-              </div>
-              </div>
-            </Box>
-            <Box>
-              <div  onClick={() => setClose(false)} className="back">
-              <div className="img">
-                <img src={filme} alt="filme" />
-              </div>
-              <div className="informations">
-                <h3>Vingadores: Ultimato</h3>
-                <div className="categories">
-                  <div className="category">Ação</div>
-                  <div className="category">Heroi</div>
-                  <div className="category">Ficção Cientifica</div>
-                </div>
-                <Stars>
-                  <FaStar className="star1" />
-                  <FaStar className="star2" />
-                  <FaStar className="star3" />
-                  <FaStar className="star4" />
-                  <FaStar className="star5" />
-                </Stars>
-              </div>
-              </div>
-            </Box>
+            {categoryNameCorrection() === "Tudo"
+              ? entertainmentList.map((e, i) => (
+                  <Box key={i}>
+                    <div
+                      className="back"
+                    >
+                      <div className="img">
+                        <img src={e.imageUrl} alt="filme" />
+                      </div>
+                      <div className="informations">
+                        <h3>
+                          {e.name !== undefined
+                            ? e.name
+                            : ""}
+                        </h3>
+                        <div className="categories">
+                          {categoryList[e.category1Id - 1]
+                            ?.name !== undefined ? (
+                            <div className="category">
+                              {
+                                categoryList[e.category1Id - 1]
+                                  ?.name
+                              }
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                          {categoryList[e.category2Id - 1]
+                            ?.name !== undefined ? (
+                            <div className="category">
+                              {
+                                categoryList[e.category2Id - 1]
+                                  ?.name
+                              }
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                          {categoryList[e.category3Id - 1]
+                            ?.name !== undefined ? (
+                            <div className="category">
+                              {
+                                categoryList[e.category3Id - 1]
+                                  ?.name
+                              }
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                        </div>
+                        <Stars grade={e.grade}>{getStars(e.grade)}</Stars>
+                      </div>
+                    </div>
+                  </Box>
+                ))
+              : entertainmentList.map((e, i) => (
+                  <Box key={i}>
+                    <div
+                      onClick={() => {
+                        setOpenEntertainment(e);
+                        setClose(false);
+                      }}
+                      className="back"
+                    >
+                      <div className="img">
+                        <img src={e.entertainments?.imageUrl} alt="filme" />
+                      </div>
+                      <div className="informations">
+                        <h3>
+                          {e.entertainments?.name !== undefined
+                            ? e.entertainments?.name
+                            : ""}
+                        </h3>
+                        <div className="categories">
+                          {categoryList[e.entertainments?.category1Id - 1]
+                            ?.name !== undefined ? (
+                            <div className="category">
+                              {
+                                categoryList[e.entertainments?.category1Id - 1]
+                                  ?.name
+                              }
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                          {categoryList[e.entertainments?.category2Id - 1]
+                            ?.name !== undefined ? (
+                            <div className="category">
+                              {
+                                categoryList[e.entertainments?.category2Id - 1]
+                                  ?.name
+                              }
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                          {categoryList[e.entertainments?.category3Id - 1]
+                            ?.name !== undefined ? (
+                            <div className="category">
+                              {
+                                categoryList[e.entertainments?.category3Id - 1]
+                                  ?.name
+                              }
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                        </div>
+                        <Stars grade={e.grade}>{getStars(e.grade)}</Stars>
+                      </div>
+                    </div>
+                  </Box>
+                ))}
           </div>
         </div>
       </Container>
@@ -256,24 +381,24 @@ const Container = styled.div`
       margin-left: 5%;
       margin-top: 5%;
       margin-bottom: 5%;
-      }
+    }
     @keyframes fadeInDown {
-    0% {
-      opacity: 0;
-      transform: translate3d(0, 100%, 0);
+      0% {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+      }
+      100% {
+        opacity: 1;
+        transform: none;
+      }
     }
-    100% {
-      opacity: 1;
-      transform: none;
-    }
-  }
     h2 {
       color: darkblue;
       font-size: 30px;
       margin-bottom: 5vh;
       @media (max-width: 614px) {
-       font-size: 6vw;
-       margin-bottom: 3vh;
+        font-size: 6vw;
+        margin-bottom: 3vh;
       }
     }
     .principalForm {
@@ -282,8 +407,8 @@ const Container = styled.div`
       position: relative;
       margin-bottom: 2vw;
       @media (max-width: 614px) {
-       width: 65%;
-       margin-left: -20%;
+        width: 65%;
+        margin-left: -20%;
       }
       .add {
         transition: linear 0.5s;
@@ -292,7 +417,10 @@ const Container = styled.div`
         bottom: 0px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         height: 60px;
-        display: ${props => props.option === "Seus Entretenimentos" || props.option === "Tudo" ? "none" : "flex"};
+        display: ${(props) =>
+          props.option === "Seus Entretenimentos" || props.option === "Tudo"
+            ? "none"
+            : "flex"};
         justify-content: center;
         align-items: center;
         border-radius: 20px;
@@ -306,7 +434,7 @@ const Container = styled.div`
           font-size: 6vw;
           right: -40%;
           bottom: 10%;
-      }
+        }
         :hover {
           font-size: 50px;
           span {
@@ -323,7 +451,7 @@ const Container = styled.div`
           font-weight: 600;
           @media (max-width: 614px) {
             display: none;
-      }
+          }
         }
         .rigth {
           background-color: darkblue;
@@ -335,10 +463,10 @@ const Container = styled.div`
           border-top-right-radius: 20px;
           border-bottom-right-radius: 20px;
           @media (max-width: 614px) {
-          width: 10vw;
-          height: 10vw;
-          border-radius: 10px;
-      }
+            width: 10vw;
+            height: 10vw;
+            border-radius: 10px;
+          }
           .plus {
             transition: linear 0.1;
             color: white;
@@ -354,7 +482,7 @@ const Container = styled.div`
         font-size: 20px;
         @media (max-width: 614px) {
           font-size: 3.5vw;
-      }
+        }
       }
       button {
         position: absolute;
@@ -376,7 +504,7 @@ const Container = styled.div`
           min-width: 8vw;
           height: 8vw;
           top: 20%;
-      }
+        }
         :hover {
           font-weight: bold;
           font-size: 22px;
@@ -408,7 +536,7 @@ const Container = styled.div`
         transition: 0.5s;
         @media (max-width: 614px) {
           font-size: 2.8vw;
-      }
+        }
       }
       i {
         position: absolute;
@@ -426,7 +554,7 @@ const Container = styled.div`
       transform: translateY(-30px);
       font-size: 0.75em;
       @media (max-width: 614px) {
-          font-size: 2vw;
+        font-size: 2vw;
       }
     }
   }
@@ -443,14 +571,16 @@ const Container = styled.div`
     margin-bottom: 30px;
     @media (max-width: 614px) {
       margin-top: 4%;
-      }
+      flex-direction: column;
+      flex-wrap: initial;
+    }
     ::-webkit-scrollbar {
       border-radius: 50px;
       width: 10px;
       background: transparent;
       border-top-right-radius: 50px;
       @media (max-width: 614px) {
-      width: 6px;
+        width: 6px;
       }
     }
     ::-webkit-scrollbar-thumb {
@@ -469,21 +599,21 @@ const Stars = styled.div`
   display: flex;
   align-items: center;
   @media (max-width: 614px) {
-       font-size: 6vw;
-      }
+    font-size: 6vw;
+  }
   .star1 {
-    color: #faab00;
+    color: ${(props) => (props.grade >= 1 ? "#faab00" : "gray")};
   }
   .star2 {
-    color: #faab00;
+    color: ${(props) => (props.grade > 2 ? "#faab00" : "gray")};
   }
   .star3 {
-    color: #faab00;
+    color: ${(props) => (props.grade > 4 ? "#faab00" : "gray")};
   }
   .star4 {
-    color: #faab00;
+    color: ${(props) => (props.grade > 6 ? "#faab00" : "gray")};
   }
   .star5 {
-    color: #faab00;
+    color: ${(props) => (props.grade > 8 ? "#faab00" : "gray")};
   }
 `;

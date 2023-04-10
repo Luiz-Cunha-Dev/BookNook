@@ -85,8 +85,8 @@ const Container = styled.div`
         margin-top: 20px;
         background-color: #EEEEEE;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        width: 19vw;
-        height: 60px;
+        width: 90%;
+        height: 80px;
         display: flex;
         justify-content: space-between;
         align-items: center;

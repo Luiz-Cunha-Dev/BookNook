@@ -9,11 +9,17 @@ import { FaHome } from "react-icons/fa";
 import { AiFillFire } from "react-icons/ai";
 import { ImExit } from "react-icons/im";
 import { RiBookletLine } from "react-icons/ri";
+import { logout } from "../services";
 
 export function Header() {
   const navigate = useNavigate();
   const [menu, setMenu] = useState(false);
   const [exit, setExit] = useState(false);
+  let userData = JSON.parse(localStorage.getItem("userData"));
+
+  function signout(){
+    logout(userData.token).then(() => { localStorage.removeItem("userData"); navigate("/") })
+  }
 
   return (
     <Container menu={menu === true ? "0px" : "-20vw"} exit={exit}>
@@ -26,9 +32,9 @@ export function Header() {
       </div>
       <div className="left-window">
         <div className="back-image">
-          <img src={userPicture} alt="userPicture" />
+          <img src={userData.pictureUrl || userPicture} alt="userPicture" />
         </div>
-        <span>User Name</span>
+        <span>{userData.username || "user name"}</span>
 
         <div className="options">
           <p onClick={() => navigate("/about-me")}>
@@ -65,7 +71,7 @@ export function Header() {
       <div onClick={() => {exit === true ? setMenu(menu) : setMenu(!menu)}} className="rigth-window">
       <div className="exit-window">
         <h2>Tem certeza de que quer sair da sua conta?</h2>
-        <button  onClick={() => navigate("/")}>Sair</button>
+        <button  onClick={signout}>Sair</button>
         <p onClick={() => setExit(false)}>Cancelar</p>
       </div>
       </div>
@@ -203,12 +209,13 @@ const Container = styled.div`
       left: ${(props) => props.menu === "-20vw" || props.exit === true ? "-85%" : "0%"};
       }
     img {
-      height: 200px;
+      height: 15vw;
       @media (max-width: 614px) {
-      height: 44vw;
+        height: 60vw;
       }
     }
     .back-image {
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       margin-top: 30px;
       display: flex;
       justify-content: center;
@@ -218,6 +225,7 @@ const Container = styled.div`
       width: 180px;
       border-radius: 120px;
       margin-bottom: 2vw;
+      overflow: hidden;
       @media (max-width: 614px) {
       width: 40vw;
       height: 40vw;

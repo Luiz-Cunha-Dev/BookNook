@@ -4,9 +4,24 @@ import { useState } from "react";
 import background from "../imgs/w2.jpg";
 import { Header } from "../components/header";
 import userPicture from "../imgs/userPicture.png";
+import { putUser } from "../services";
 
 export function AboutMe() {
   const navigate = useNavigate();
+  let userData = JSON.parse(localStorage.getItem("userData"));
+  const [email, setEmail] = useState(userData.email);
+  const [pictureUrl, setPictureUrl] = useState(userData.pictureUrl);
+  const [username, setUsername] = useState(userData.username);
+
+  function updateUser(e){
+    e.preventDefault();
+    if(email !== "" && username !== ""){
+      putUser(userData.token, {email, pictureUrl: pictureUrl, username}).then((res) => {
+        console.log(res);
+        localStorage.setItem("userData", JSON.stringify({...userData, email, pictureUrl, username}));
+      })
+    }
+  }
 
   return (
     <Container>
@@ -14,25 +29,40 @@ export function AboutMe() {
       <div className="board">
         <h2>Sobre Mim</h2>
         <div className="back-image">
-          <img src={userPicture} alt="userPicture" />
+          <img src={pictureUrl || userPicture} alt="userPicture" />
         </div>
-        <form>
+        <form onSubmit={updateUser}>
           <div className="inputBox">
-            <input type="text" required="required" />
+            <input
+              type="text"
+              value={pictureUrl}
+              onChange={(e) => setPictureUrl(e.target.value)}
+            />
             <span>Inserir/Alterar URL da Imagem de Perfil</span>
             <i></i>
           </div>
           <div className="inputBox">
-            <input type="text" required="required" />
+            <input
+              type="text"
+              required="required"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
             <span>E-mail</span>
             <i></i>
           </div>
           <div className="inputBox">
-            <input type="text" required="required" />
+            <input
+              type="text"
+              required="required"
+              maxLength={20}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
             <span>Nome</span>
             <i></i>
           </div>
-          <button>Salvar</button>
+          <button type="submit">Salvar</button>
         </form>
       </div>
     </Container>
@@ -49,7 +79,6 @@ const Container = styled.div`
   background-position: center;
   width: 100vw;
   height: 100%;
-  overflow: auto;
   .board {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -70,22 +99,22 @@ const Container = styled.div`
       margin-right: 5%;
       margin-left: 5%;
       margin-top: 12%;
-      }
+    }
     @keyframes fadeInDown {
-    0% {
-      opacity: 0;
-      transform: translate3d(0, 100%, 0);
+      0% {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+      }
+      100% {
+        opacity: 1;
+        transform: none;
+      }
     }
-    100% {
-      opacity: 1;
-      transform: none;
-    }
-  }
     h2 {
       color: darkblue;
       font-size: 30px;
       @media (max-width: 614px) {
-       font-size: 6vw;
+        font-size: 6vw;
       }
     }
     form {
@@ -118,29 +147,30 @@ const Container = styled.div`
         margin-bottom: 10%;
         @media (max-width: 614px) {
           width: 50%;
-        height: 12vw;
-        font-size: 4.5vw;
-      }
+          height: 12vw;
+          font-size: 4.5vw;
+        }
         :hover {
           width: 170px;
           height: 45px;
           font-weight: bold;
           font-size: 20px;
           @media (max-width: 614px) {
-          width: 51%;
-        height: 12.5vw;
-        font-size: 4.7vw;
-      }
+            width: 51%;
+            height: 12.5vw;
+            font-size: 4.7vw;
+          }
         }
       }
     }
     img {
-      height:12vw;
+      height: 14vw;
       @media (max-width: 614px) {
-        height: 25vw;
+        height: 38vw;
       }
     }
     .back-image {
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       margin-top: 30px;
       display: flex;
       justify-content: center;
@@ -150,6 +180,7 @@ const Container = styled.div`
       width: 9vw;
       border-radius: 120px;
       margin-bottom: 15%;
+      overflow: hidden;
       @media (max-width: 614px) {
         margin-top: 0%;
         width: 25vw;
@@ -175,7 +206,7 @@ const Container = styled.div`
         transition: 0.5s;
         @media (max-width: 614px) {
           font-size: 3.4vw;
-      }
+        }
       }
       i {
         position: absolute;

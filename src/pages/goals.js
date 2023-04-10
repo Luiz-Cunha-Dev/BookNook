@@ -6,17 +6,27 @@ import calendar from "../imgs/calendario.png";
 import { BsFillPatchCheckFill } from "react-icons/bs";
 import { Window } from "../components/goals/window";
 import { useState } from "react";
+import { useEffect } from "react";
+import { getAllGoals } from "../services";
 
 export function Goals() {
+  let userData = JSON.parse(localStorage.getItem("userData"));
   const navigate = useNavigate();
   const [close, setClose] = useState(true);
   const [month, setMonth] = useState("")
   const [year, setYear] = useState("")
+  const [goals, setGoals] = useState([])
+
+  useEffect(()=> {
+    getAllGoals(userData.token).then(res => {
+      setGoals(res.data)
+    })
+  }, [close])
 
   return (
     <Container>
       <Header />
-      <Window close={close} setClose={setClose} month={month} year={year}/>
+      <Window goals={goals} close={close} setClose={setClose} month={month} year={year}/>
       <div className="board">
         <h2>Metas</h2>
         <div className="back">
@@ -36,86 +46,50 @@ export function Goals() {
               <Month>
                 <img onClick={() => {if(year === "")return; setMonth("Janeiro"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Janeiro</span>
-                <div onClick={() => {if(year === "")return; setMonth("Janeiro"); setClose(false)}} className="check">
-                  <BsFillPatchCheckFill className="icon" />
-                </div>
               </Month>
               <Month>
                 <img onClick={() => {if(year === "")return; setMonth("Fevereiro"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Fevereiro</span>
-                <div onClick={() => {if(year === "")return; setMonth("Fevereiro"); setClose(false)}} className="check">
-                  <BsFillPatchCheckFill className="icon" />
-                </div>
               </Month>
               <Month>
                 <img onClick={() => {if(year === "")return; setMonth("Março"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Março</span>
-                <div onClick={() => {if(year === "")return; setMonth("Março"); setClose(false)}} className="check">
-                  <BsFillPatchCheckFill className="icon" />
-                </div>
               </Month>
               <Month>
                 <img onClick={() => {if(year === "")return; setMonth("Abril"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Abril</span>
-                <div onClick={() => {if(year === "")return; setMonth("Abril"); setClose(false)}} className="check">
-                  <BsFillPatchCheckFill className="icon" />
-                </div>
               </Month>
               <Month>
                 <img onClick={() => {if(year === "")return; setMonth("Maio"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Maio</span>
-                <div onClick={() => {if(year === "")return; setMonth("Maio"); setClose(false)}} className="check">
-                  <BsFillPatchCheckFill className="icon" />
-                </div>
               </Month>
               <Month>
                 <img onClick={() => {if(year === "")return; setMonth("Junho"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Junho</span>
-                <div onClick={() => {if(year === "")return; setMonth("Junho"); setClose(false)}} className="check">
-                  <BsFillPatchCheckFill className="icon" />
-                </div>
               </Month>
               <Month>
                 <img onClick={() => {if(year === "")return; setMonth("Julho"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Julho</span>
-                <div onClick={() => {if(year === "")return; setMonth("Julho"); setClose(false)}} className="check">
-                  <BsFillPatchCheckFill className="icon" />
-                </div>
               </Month>
               <Month>
                 <img onClick={() => {if(year === "")return; setMonth("Agosto"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Agosto</span>
-                <div onClick={() => {if(year === "")return; setMonth("Agosto"); setClose(false)}} className="check">
-                  <BsFillPatchCheckFill className="icon" />
-                </div>
               </Month>
               <Month>
                 <img onClick={() => {if(year === "")return; setMonth("Setembro"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Setembro</span>
-                <div onClick={() => {if(year === "")return; setMonth("Setembro"); setClose(false)}} className="check">
-                  <BsFillPatchCheckFill className="icon" />
-                </div>
               </Month>
               <Month>
                 <img onClick={() => {if(year === "")return; setMonth("Outubro"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Outubro</span>
-                <div onClick={() => {if(year === "")return; setMonth("Outubro"); setClose(false)}} className="check">
-                  <BsFillPatchCheckFill className="icon" />
-                </div>
               </Month>
               <Month>
                 <img onClick={() => {if(year === "")return; setMonth("Novembro"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Novembro</span>
-                <div onClick={() => {if(year === "")return; setMonth("Novembro"); setClose(false)}} className="check">
-                  <BsFillPatchCheckFill className="icon" />
-                </div>
               </Month>
               <Month>
                 <img onClick={() => {if(year === "")return; setMonth("Dezembro"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Dezembro</span>
-                <div onClick={() => {if(year === "")return; setMonth("Dezembro"); setClose(false)}} className="check">
-                  <BsFillPatchCheckFill className="icon" />
-                </div>
               </Month>
             </div>
           </div>
@@ -136,7 +110,6 @@ const Container = styled.div`
   width: 100vw;
   height: 100%;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  overflow: auto;
   .board {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background-color: white;

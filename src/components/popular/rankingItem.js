@@ -83,14 +83,10 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 4px;
     right: 5px;
     bottom: 0px;
-    font-size: 0.8vw;
+    font-size: 1.2vw;
     color: black;
-    margin-left: 6%;
     @media (max-width: 614px) {
-      position: absolute;
-      right: 0px;
-      bottom: 0px;
-       font-size: 2vw;
+       font-size: 4vw;
       }
   }
     .categories{

@@ -1,28 +1,52 @@
 import styled from "styled-components";
 import userPicture from "../../imgs/userPicture.png";
 import { useNavigate } from "react-router-dom";
+import { login } from "../../services";
+import { useState } from "react";
 
 export function SignIn({ status, setStatus }) {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function sendForm(e) {
+    e.preventDefault();
+    if (password !== "" && email !== "") {
+      login({ email, password }).then((res) => {
+        localStorage.setItem("userData", JSON.stringify(res.data));
+        navigate("/initial");
+      });
+    }
+  }
 
   return (
     <Back status={status}>
       <Container>
         <div className="forms">
           <h2>BEM VINDO</h2>
-          <form>
+          <form onSubmit={sendForm}>
             <div className="inputBox">
-              <input type="text" required="required" />
+              <input
+                type="text"
+                required="required"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <span>E-mail</span>
               <i></i>
             </div>
             <div className="inputBox">
-              <input type="text" required="required" />
+              <input
+                type="password"
+                required="required"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
               <span>Senha</span>
               <i></i>
             </div>
             <div className="buttons">
-              <button onClick={() => navigate("/initial")}>Entrar</button>
+              <button type="submit">Entrar</button>
               <span onClick={() => setStatus("signup")}>
                 Ainda Não Tenho Uma Conta
               </span>
@@ -52,7 +76,12 @@ const Container = styled.div`
   position: relative;
   @media (max-width: 614px) {
     width: 100%;
-    height: 90%;
+    height: 75%;
+    margin-top: 10%;
+    @media (max-height: 700px) {
+      margin-top: 0%;
+      height: 90%;
+    }
   }
   ::before {
     content: "";
@@ -104,7 +133,7 @@ const Container = styled.div`
         margin-top: 160px;
       }
       @media (max-width: 614px) {
-        margin-top: 43%;
+        margin-top: 47%;
         margin-bottom: 4%;
       }
     }
@@ -130,8 +159,8 @@ const Container = styled.div`
     position: relative;
     margin-bottom: 40px;
     @media (max-width: 614px) {
-        margin-bottom: 30px;
-      }
+      margin-bottom: 30px;
+    }
     span {
       position: absolute;
       left: 0;
@@ -230,7 +259,7 @@ const Back = styled.div`
       left: 0;
       top: 0;
       margin-bottom: 30px;
-  }
+    }
   }
   img {
     width: 320px;
@@ -240,7 +269,7 @@ const Back = styled.div`
     }
     @media (max-width: 614px) {
       margin-top: 1vh;
-    width: 50%;
-  }
+      width: 50%;
+    }
   }
 `;

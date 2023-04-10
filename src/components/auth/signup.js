@@ -1,33 +1,75 @@
+import { useState } from "react";
 import styled from "styled-components";
+import { signUp } from "../../services";
 
 export function SignUp({ status, setStatus }) {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  function sendForm(e) {
+    e.preventDefault(); 
+    if (
+      password === confirmPassword &&
+      password !== "" &&
+      email !== "" &&
+      username !== ""
+    ) {
+      signUp({ username, email, password })
+      .then((res) => {
+        setStatus("signin")
+      })
+    }
+  }
+
   return (
     <Container status={status}>
       <div className="forms">
         <h2>CRIE UMA CONTA</h2>
-        <form>
+        <form onSubmit={sendForm}>
           <div className="inputBox">
-            <input type="text" required="required" />
+            <input
+              type="text"
+              required="required"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
             <span>Nome</span>
             <i></i>
           </div>
           <div className="inputBox">
-            <input type="text" required="required" />
+            <input
+              type="text"
+              required="required"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
             <span>E-mail</span>
             <i></i>
           </div>
           <div className="inputBox">
-            <input type="text" required="required" />
+            <input
+              type="password"
+              required="required"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
             <span>Senha</span>
             <i></i>
           </div>
           <div className="inputBox">
-            <input type="text" required="required" />
+            <input
+              type="password"
+              required="required"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
             <span>Confirmar Senha</span>
             <i></i>
           </div>
           <div className="buttons">
-            <button>Cadastre-se</button>
+            <button type="submit">Cadastre-se</button>
             <span onClick={() => setStatus("signin")}>Já Tenho Uma Conta</span>
           </div>
         </form>
@@ -53,8 +95,13 @@ const Container = styled.div`
   transition: linear 1s ${(props) => (props.status === "signup" ? "1s" : "0s")};
   @media (max-width: 614px) {
     width: 90%;
-    height: 80%;
+    height: 68%;
     right: ${(props) => (props.status === "signin" ? "-90%" : "5%")};
+    margin-top: -15%;
+    @media (max-height: 700px) {
+      margin-top: 0%;
+      height: 80%;
+  }
   }
   ::before {
     content: "";

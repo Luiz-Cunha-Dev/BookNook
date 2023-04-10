@@ -38,9 +38,6 @@ box-sizing: border-box;
      width: 12vw;
      font-size: 3vw;
       }
-    :hover{
-        font-size: 1.1vw;
-      }
   }
   .title{
     box-sizing: border-box;
@@ -125,15 +122,6 @@ box-sizing: border-box;
       width: 6vw;
       height: 6vw;
       font-size: 4vw;
-      }
-      :hover{
-        font-size: 2.2vw;
-        @media (max-width: 614px) {
-      width: 6vw;
-      height: 6vw;
-      font-size: 4vw;
-      font-size: 4.3vw;
-      }
       }
     }
     p{

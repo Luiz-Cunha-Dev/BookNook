@@ -65,6 +65,7 @@ const Container = styled.div`
     justify-content: center;
     h3 {
       font-size: 1vw;
+      margin-bottom: 6%;
       @media (max-width: 614px) {
         margin-bottom: 6%;
         font-size: 3vw;
@@ -72,6 +73,7 @@ const Container = styled.div`
     }
     .categories {
       display: flex;
+      margin-bottom:6%;
       @media (max-width: 614px) {
         margin-bottom: 6%;
       }

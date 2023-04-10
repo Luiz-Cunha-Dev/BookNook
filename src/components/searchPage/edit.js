@@ -1,9 +1,69 @@
 import styled from "styled-components";
 import { IoIosCloseCircle } from "react-icons/io";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getAllCategories, updateEntertainment } from "../../services";
 
-export function Edit({ setEdit, edit, categoryName }) {
-  const [grade, setGrade] = useState([]);
+export function Edit({
+  setEdit,
+  edit,
+  categoryName,
+  openEntertainment,
+  setClose,
+}) {
+  let userData = JSON.parse(localStorage.getItem("userData"));
+  const [grade2, setGrade2] = useState([openEntertainment.grade]);
+  const [imageUrl2, setImageUrl2] = useState(
+    openEntertainment.entertainments?.imageUrl
+  );
+  const [name2, setName2] = useState(openEntertainment.entertainments?.name);
+  const [category1Id2, setCategory1Id2] = useState(
+    openEntertainment.entertainments?.category1Id
+  );
+  const [category2Id2, setCategory2Id2] = useState(
+    openEntertainment.entertainments?.category2Id
+  );
+  const [category3Id2, setCategory3Id2] = useState(
+    openEntertainment.entertainments?.category3Id
+  );
+  const [categoryList2, setCategoryList2] = useState([]);
+  const [comment2, setComment2] = useState(openEntertainment.comment);
+
+  useEffect(() => {
+    getAllCategories(userData.token).then((res) => {
+      setCategoryList2(res.data);
+      setGrade2([openEntertainment.grade]);
+      setImageUrl2(openEntertainment.entertainments?.imageUrl);
+      setName2(openEntertainment.entertainments?.name);
+      setCategory1Id2(openEntertainment.entertainments?.category1Id);
+      setCategory2Id2(openEntertainment.entertainments?.category2Id);
+      setCategory3Id2(openEntertainment.entertainments?.category3Id);
+      setComment2(openEntertainment.comment);
+    });
+  }, [edit]);
+
+  function sendForm(e) {
+    e.preventDefault();
+
+    if (name2 !== "" && imageUrl2 !== "" && grade2.length === 1) {
+      updateEntertainment(
+        userData.token,
+        {
+          name: name2,
+          imageUrl: imageUrl2,
+          typeId: getTypeId(),
+          category1Id: Number(category1Id2),
+          category2Id: Number(category2Id2),
+          category3Id: Number(category3Id2),
+          grade: grade2[0],
+          comment: comment2,
+        },
+        openEntertainment.id
+      ).then((res) => {
+        setEdit(true);
+        setClose(true)
+      });
+    }
+  }
 
   function Name() {
     if (categoryName === "Seus Filmes") {
@@ -26,130 +86,177 @@ export function Edit({ setEdit, edit, categoryName }) {
     }
   }
 
+  function getTypeId() {
+    if (categoryName === "Seus Filmes") {
+      return 1;
+    }
+    if (categoryName === "Suas Séries") {
+      return 2;
+    }
+    if (categoryName === "Seus Animes") {
+      return 3;
+    }
+    if (categoryName === "Seus Desenhos") {
+      return 4;
+    }
+    if (categoryName === "Seus Livros") {
+      return 5;
+    }
+    if (categoryName === "Seus Jogos") {
+      return 6;
+    }
+  }
+
   return (
-    <Container edit={edit}>
+    <Container2 edit={edit}>
       <div className="board2">
-        <IoIosCloseCircle onClick={() => setEdit(true)} className="close" />
+        <IoIosCloseCircle
+          onClick={() => {
+            setName2("");
+            setImageUrl2("");
+            setCategory1Id2("");
+            setCategory2Id2("");
+            setCategory3Id2("");
+            setGrade2([]);
+            setComment2("");
+            setEdit(true);
+          }}
+          className="close2"
+        />
         <h2>{Name()}</h2>
-        <form>
-          <div className="inputBox">
-            <input type="text" required="required" />
+        <form onSubmit={sendForm}>
+          <div className="inputBox2">
+            <input
+              type="text"
+              required="required"
+              value={imageUrl2}
+              onChange={(e) => setImageUrl2(e.target.value)}
+            />
             <span>Inserir URL da Imagem</span>
             <i></i>
           </div>
-          <div className="inputBox">
-            <input type="text" required="required" />
+          <div className="inputBox2">
+            <input
+              type="text"
+              required="required"
+              value={name2}
+              maxLength={20}
+              onChange={(e) => setName2(e.target.value)}
+            />
             <span>Nome</span>
             <i></i>
           </div>
-          <div className="categories">
-            <select>
-              <option value="2023">Categoria 1</option>
-              <option value="2024">2024</option>
-              <option value="2025">2025</option>
-              <option value="2026">2026</option>
-              <option value="2027">2027</option>
-              <option value="2028">2028</option>
-              <option value="2029">2029</option>
-              <option value="2030">2030</option>
+          <div className="categories2">
+            <select
+              value={category1Id2}
+              onChange={(e) => setCategory1Id2(e.target.value)}
+            >
+              <option value="">Categoria 1</option>
+              {categoryList2.map((c) => (
+                <option value={c.id}>{c.name}</option>
+              ))}
             </select>
-            <select>
-              <option value="2023">Categoria 2</option>
-              <option value="2024">2024</option>
-              <option value="2025">2025</option>
-              <option value="2026">2026</option>
-              <option value="2027">2027</option>
-              <option value="2028">2028</option>
-              <option value="2029">2029</option>
-              <option value="2030">2030</option>
+            <select
+              value={category2Id2}
+              onChange={(e) => setCategory2Id2(e.target.value)}
+            >
+              <option value="">Categoria 2</option>
+              {categoryList2.map((c) => (
+                <option value={c.id}>{c.name}</option>
+              ))}
             </select>
-            <select>
-              <option value="2023">categoria 3</option>
-              <option value="2024">2024</option>
-              <option value="2025">2025</option>
-              <option value="2026">2026</option>
-              <option value="2027">2027</option>
-              <option value="2028">2028</option>
-              <option value="2029">2029</option>
-              <option value="2030">2030</option>
+            <select
+              value={category3Id2}
+              onChange={(e) => setCategory3Id2(e.target.value)}
+            >
+              <option value="">Categoria 3</option>
+              {categoryList2.map((c) => (
+                <option value={c.id}>{c.name}</option>
+              ))}
             </select>
           </div>
           <span>De uma Nota</span>
-          <div className="grades">
+          <div className="grades2">
             <Grade
-              select={grade.includes(1) === true ? true : false}
-              onClick={() => setGrade([1])}
+              select={grade2.includes(1) === true ? true : false}
+              onClick={() => setGrade2([1])}
             >
               1
             </Grade>
             <Grade
-              select={grade.includes(2) === true ? true : false}
-              onClick={() => setGrade([2])}
+              select={grade2.includes(2) === true ? true : false}
+              onClick={() => setGrade2([2])}
             >
               2
             </Grade>
             <Grade
-              select={grade.includes(3) === true ? true : false}
-              onClick={() => setGrade([3])}
+              select={grade2.includes(3) === true ? true : false}
+              onClick={() => setGrade2([3])}
             >
               3
             </Grade>
             <Grade
-              select={grade.includes(4) === true ? true : false}
-              onClick={() => setGrade([4])}
+              select={grade2.includes(4) === true ? true : false}
+              onClick={() => setGrade2([4])}
             >
               4
             </Grade>
             <Grade
-              select={grade.includes(5) === true ? true : false}
-              onClick={() => setGrade([5])}
+              select={grade2.includes(5) === true ? true : false}
+              onClick={() => setGrade2([5])}
             >
               5
             </Grade>
             <Grade
-              select={grade.includes(6) === true ? true : false}
-              onClick={() => setGrade([6])}
+              select={grade2.includes(6) === true ? true : false}
+              onClick={() => setGrade2([6])}
             >
               6
             </Grade>
             <Grade
-              select={grade.includes(7) === true ? true : false}
-              onClick={() => setGrade([7])}
+              select={grade2.includes(7) === true ? true : false}
+              onClick={() => setGrade2([7])}
             >
               7
             </Grade>
             <Grade
-              select={grade.includes(8) === true ? true : false}
-              onClick={() => setGrade([8])}
+              select={grade2.includes(8) === true ? true : false}
+              onClick={() => setGrade2([8])}
             >
               8
             </Grade>
             <Grade
-              select={grade.includes(9) === true ? true : false}
-              onClick={() => setGrade([9])}
+              select={grade2.includes(9) === true ? true : false}
+              onClick={() => setGrade2([9])}
             >
               9
             </Grade>
             <Grade
-              select={grade.includes(10) === true ? true : false}
-              onClick={() => setGrade([10])}
+              select={grade2.includes(10) === true ? true : false}
+              onClick={() => setGrade2([10])}
             >
               10
             </Grade>
           </div>
-          <div className="comment">
+          <div className="comment2">
             <span>Comentario</span>
-            <textarea wrap="hard" className="big-input" type="text" />
+            <textarea
+              wrap="hard"
+              className="big-input"
+              type="text"
+              value={comment2}
+              onChange={(e) => setComment2(e.target.value)}
+            />
             <i></i>
           </div>
-          <button>Salvar</button>
+          <button type="submit">Salvar</button>
         </form>
       </div>
-    </Container>
+    </Container2>
   );
 }
 
-const Container = styled.div`
+const Container2 = styled.div`
   z-index: 2;
   position: fixed;
   left: 0;
@@ -164,9 +271,9 @@ const Container = styled.div`
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     background-color: white;
-    height: 75%;
+    height: fit-content;
     width: 40%;
-    border-radius: 50px;
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -178,7 +285,6 @@ const Container = styled.div`
     @media (max-width: 614px) {
       margin-left: 5%;
       margin-right: 5%;
-      height: fit-content;
       width: 90%;
       margin-top: 10%;
       margin-bottom: 12%;
@@ -193,7 +299,7 @@ const Container = styled.div`
         transform: none;
       }
     }
-    .close {
+    .close2 {
       position: absolute;
       right: 15px;
       top: 15px;
@@ -219,7 +325,7 @@ const Container = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
-      .categories {
+      .categories2 {
         display: flex;
         justify-content: center;
         width: 100%;
@@ -248,7 +354,7 @@ const Container = styled.div`
         letter-spacing: 0.05em;
         padding: 20px 10px 20px;
       }
-      .grades {
+      .grades2 {
         box-sizing: border-box;
         width: 18.5vw;
         display: flex;
@@ -271,7 +377,7 @@ const Container = styled.div`
       div:nth-child(10) {
         border-bottom-right-radius: 10px;
       }
-      .comment {
+      .comment2 {
         width: 100%;
       }
       textarea {
@@ -298,7 +404,7 @@ const Container = styled.div`
           min-width: 90%;
           min-height: 9vh;
           font-size: 3.2vw;
-      }
+        }
         ::-webkit-scrollbar {
           border-radius: 50px;
           width: 10px;
@@ -351,7 +457,7 @@ const Container = styled.div`
         }
       }
     }
-    .inputBox {
+    .inputBox2 {
       position: relative;
       width: 100%;
       margin-bottom: 3.5vh;
@@ -378,8 +484,8 @@ const Container = styled.div`
         border-radius: 4px;
       }
     }
-    .inputBox input:valid ~ span,
-    .inputBox input:focus ~ span {
+    .inputBox2 input:valid ~ span,
+    .inputBox2 input:focus ~ span {
       color: darkblue;
       transform: translateY(-28px);
       font-size: 0.75em;

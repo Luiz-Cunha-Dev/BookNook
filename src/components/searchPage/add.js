@@ -1,99 +1,224 @@
 import styled from "styled-components";
 import { IoIosCloseCircle } from "react-icons/io";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createNewEntertainment, getAllCategories } from "../../services";
 
-export function Add({setAdd, add, categoryName}) {
+export function Add({ setAdd, add, categoryName }) {
+  let userData = JSON.parse(localStorage.getItem("userData"));
+  const [grade, setGrade] = useState([]);
+  const [imageUrl, setImageUrl] = useState("");
+  const [name, setName] = useState("");
+  const [category1Id, setCategory1Id] = useState("");
+  const [category2Id, setCategory2Id] = useState("");
+  const [category3Id, setCategory3Id] = useState("");
+  const [categoryList, setCategoryList] = useState([]);
+  const [comment, setComment] = useState("");
 
-  const [grade, setGrade] = useState([])
+  useEffect(() => {
+    getAllCategories(userData.token).then((res) => {
+      setCategoryList(res.data);
+    });
+  }, []);
 
-  function Name(){
-    if(categoryName === "Seus Filmes"){
-      return "Adicionar um Filme"
+  function sendForm(e) {
+    e.preventDefault();
+
+    if (name !== "" && imageUrl !== "" && grade.length === 1) {
+      createNewEntertainment(userData.token, {
+        name,
+        imageUrl,
+        typeId: getTypeId(),
+        category1Id: Number(category1Id),
+        category2Id: Number(category2Id),
+        category3Id: Number(category3Id),
+        grade: grade[0],
+        comment
+      }).then((res) => {
+        setName("");
+        setImageUrl("");
+        setCategory1Id("");
+        setCategory2Id("");
+        setCategory3Id("");
+        setGrade([]);
+        setComment("")
+        setAdd(true);
+      });
     }
-    if(categoryName === "Suas Séries"){
-      return "Adicionar uma Série"
+  }
+
+  function Name() {
+    if (categoryName === "Seus Filmes") {
+      return "Adicionar um Filme";
     }
-    if(categoryName === "Seus Animes"){
-      return "Adicionar um Anime"
+    if (categoryName === "Suas Séries") {
+      return "Adicionar uma Série";
     }
-    if(categoryName === "Seus Desenhos"){
-      return "Adicionar um Desenho"
+    if (categoryName === "Seus Animes") {
+      return "Adicionar um Anime";
     }
-    if(categoryName === "Seus Livros"){
-      return "Adicionar um Livro"
+    if (categoryName === "Seus Desenhos") {
+      return "Adicionar um Desenho";
     }
-    if(categoryName === "Seus Jogos"){
-      return "Adicionar um Jogo"
+    if (categoryName === "Seus Livros") {
+      return "Adicionar um Livro";
+    }
+    if (categoryName === "Seus Jogos") {
+      return "Adicionar um Jogo";
+    }
+  }
+
+  function getTypeId() {
+    if (categoryName === "Seus Filmes") {
+      return 1;
+    }
+    if (categoryName === "Suas Séries") {
+      return 2;
+    }
+    if (categoryName === "Seus Animes") {
+      return 3;
+    }
+    if (categoryName === "Seus Desenhos") {
+      return 4;
+    }
+    if (categoryName === "Seus Livros") {
+      return 5;
+    }
+    if (categoryName === "Seus Jogos") {
+      return 6;
     }
   }
 
   return (
     <Container add={add}>
       <div className="board2">
-      <IoIosCloseCircle onClick={() => setAdd(true)} className="close" />
+        <IoIosCloseCircle onClick={() => setAdd(true)} className="close" />
         <h2>{Name()}</h2>
-        <form>
+        <form onSubmit={sendForm}>
           <div className="inputBox">
-            <input type="text" required="required" />
+            <input
+              type="text"
+              required="required"
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
+            />
             <span>Inserir URL da Imagem</span>
             <i></i>
           </div>
           <div className="inputBox">
-            <input type="text" required="required" />
+            <input
+              type="text"
+              required="required"
+              value={name}
+              maxLength={20}
+              onChange={(e) => setName(e.target.value)}
+            />
             <span>Nome</span>
             <i></i>
           </div>
           <div className="categories">
-          <select>
-              <option value="2023">Categoria 1</option>
-              <option value="2024">2024</option>
-              <option value="2025">2025</option>
-              <option value="2026">2026</option>
-              <option value="2027">2027</option>
-              <option value="2028">2028</option>
-              <option value="2029">2029</option>
-              <option value="2030">2030</option>
+            <select
+              value={category1Id}
+              onChange={(e) => setCategory1Id(e.target.value)}
+            >
+              <option value="">Categoria 1</option>
+              {categoryList.map((c) => (
+                <option value={c.id}>{c.name}</option>
+              ))}
             </select>
-            <select>
-              <option value="2023">Categoria 2</option>
-              <option value="2024">2024</option>
-              <option value="2025">2025</option>
-              <option value="2026">2026</option>
-              <option value="2027">2027</option>
-              <option value="2028">2028</option>
-              <option value="2029">2029</option>
-              <option value="2030">2030</option>
+            <select
+              value={category2Id}
+              onChange={(e) => setCategory2Id(e.target.value)}
+            >
+              <option value="">Categoria 2</option>
+              {categoryList.map((c) => (
+                <option value={c.id}>{c.name}</option>
+              ))}
             </select>
-            <select>
-              <option value="2023">categoria 3</option>
-              <option value="2024">2024</option>
-              <option value="2025">2025</option>
-              <option value="2026">2026</option>
-              <option value="2027">2027</option>
-              <option value="2028">2028</option>
-              <option value="2029">2029</option>
-              <option value="2030">2030</option>
+            <select
+              value={category3Id}
+              onChange={(e) => setCategory3Id(e.target.value)}
+            >
+              <option value="">Categoria 3</option>
+              {categoryList.map((c) => (
+                <option value={c.id}>{c.name}</option>
+              ))}
             </select>
           </div>
           <span>De uma Nota</span>
           <div className="grades">
-            <Grade select={grade.includes(1) === true ? true : false} onClick={() => setGrade([1])}>1</Grade>
-            <Grade select={grade.includes(2) === true ? true : false} onClick={() => setGrade([2])}>2</Grade>
-            <Grade select={grade.includes(3) === true ? true : false} onClick={() => setGrade([3])}>3</Grade>
-            <Grade select={grade.includes(4) === true ? true : false} onClick={() => setGrade([4])}>4</Grade>
-            <Grade select={grade.includes(5) === true ? true : false} onClick={() => setGrade([5])}>5</Grade>
-            <Grade select={grade.includes(6) === true ? true : false} onClick={() => setGrade([6])}>6</Grade>
-            <Grade select={grade.includes(7) === true ? true : false} onClick={() => setGrade([7])}>7</Grade>
-            <Grade select={grade.includes(8) === true ? true : false} onClick={() => setGrade([8])}>8</Grade>
-            <Grade select={grade.includes(9) === true ? true : false} onClick={() => setGrade([9])}>9</Grade>
-            <Grade select={grade.includes(10) === true ? true : false} onClick={() => setGrade([10])}>10</Grade>
+            <Grade
+              select={grade.includes(1) === true ? true : false}
+              onClick={() => setGrade([1])}
+            >
+              1
+            </Grade>
+            <Grade
+              select={grade.includes(2) === true ? true : false}
+              onClick={() => setGrade([2])}
+            >
+              2
+            </Grade>
+            <Grade
+              select={grade.includes(3) === true ? true : false}
+              onClick={() => setGrade([3])}
+            >
+              3
+            </Grade>
+            <Grade
+              select={grade.includes(4) === true ? true : false}
+              onClick={() => setGrade([4])}
+            >
+              4
+            </Grade>
+            <Grade
+              select={grade.includes(5) === true ? true : false}
+              onClick={() => setGrade([5])}
+            >
+              5
+            </Grade>
+            <Grade
+              select={grade.includes(6) === true ? true : false}
+              onClick={() => setGrade([6])}
+            >
+              6
+            </Grade>
+            <Grade
+              select={grade.includes(7) === true ? true : false}
+              onClick={() => setGrade([7])}
+            >
+              7
+            </Grade>
+            <Grade
+              select={grade.includes(8) === true ? true : false}
+              onClick={() => setGrade([8])}
+            >
+              8
+            </Grade>
+            <Grade
+              select={grade.includes(9) === true ? true : false}
+              onClick={() => setGrade([9])}
+            >
+              9
+            </Grade>
+            <Grade
+              select={grade.includes(10) === true ? true : false}
+              onClick={() => setGrade([10])}
+            >
+              10
+            </Grade>
           </div>
           <div className="comment">
-          <span>Comentario</span>
-          <textarea  wrap="hard" className="big-input" type="text" />
+            <span>Comentario</span>
+            <textarea
+              wrap="hard"
+              className="big-input"
+              type="text"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+            />
             <i></i>
           </div>
-          <button>Salvar</button>
+          <button type="submit">Salvar</button>
         </form>
       </div>
     </Container>
@@ -101,7 +226,7 @@ export function Add({setAdd, add, categoryName}) {
 }
 
 const Container = styled.div`
-z-index: 1;
+  z-index: 1;
   position: fixed;
   left: 0;
   top: 0;
@@ -111,14 +236,13 @@ z-index: 1;
   padding-top: 6%;
   display: ${(props) => (props.add === true ? "none" : "flex")};
   justify-content: center;
-  overflow: auto;
   .board2 {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     background-color: white;
-    height: 75%;
+    height: fit-content;
     width: 40%;
-    border-radius: 50px;
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -130,23 +254,22 @@ z-index: 1;
     @media (max-width: 614px) {
       margin-left: 5%;
       margin-right: 5%;
-    height: fit-content;
-    width: 90%;
-    margin-top: 12%;
-    margin-bottom: 10%;
-  }
+      width: 90%;
+      margin-top: 12%;
+      margin-bottom: 10%;
+    }
     @keyframes fadeInDown {
-    0% {
-      opacity: 0;
-      transform: translate3d(0, 100%, 0);
+      0% {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+      }
+      100% {
+        opacity: 1;
+        transform: none;
+      }
     }
-    100% {
-      opacity: 1;
-      transform: none;
-    }
-  }
-  .close {
-    z-index: 1;
+    .close {
+      z-index: 1;
       position: absolute;
       right: 15px;
       top: 15px;
@@ -155,15 +278,15 @@ z-index: 1;
       cursor: pointer;
       @media (max-width: 614px) {
         font-size: 10vw;
-  }
+      }
     }
     h2 {
       color: darkblue;
       font-size: 30px;
       margin-bottom: 10%;
       @media (max-width: 614px) {
-       font-size: 6vw;
-       margin-bottom: 5vh;
+        font-size: 6vw;
+        margin-bottom: 5vh;
       }
     }
     form {
@@ -172,27 +295,27 @@ z-index: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      .categories{
+      .categories {
         display: flex;
         justify-content: center;
         width: 100%;
         margin-bottom: 1vh;
-        select{
+        select {
           width: 10vw;
           height: 4vh;
           font-size: 20px;
-                  padding-left: 2%;
-        padding-right: 2%;
-        border-radius: 10px;
-        color: darkblue;
-        margin-left: 4%;
-        margin-right: 4%;
-        @media (max-width: 614px) {
-          width: 25vw;
-          margin-left: 1.5%;
-          margin-right: 1.5%;
-          font-size: 3.1vw;
-      }
+          padding-left: 2%;
+          padding-right: 2%;
+          border-radius: 10px;
+          color: darkblue;
+          margin-left: 4%;
+          margin-right: 4%;
+          @media (max-width: 614px) {
+            width: 25vw;
+            margin-left: 1.5%;
+            margin-right: 1.5%;
+            font-size: 3.1vw;
+          }
         }
       }
 
@@ -201,7 +324,7 @@ z-index: 1;
         letter-spacing: 0.05em;
         padding: 20px 10px 20px;
       }
-      .grades{
+      .grades {
         box-sizing: border-box;
         width: 18.5vw;
         display: flex;
@@ -210,40 +333,40 @@ z-index: 1;
         margin-bottom: 5%;
         @media (max-width: 614px) {
           width: 90%;
-      }
-        div:nth-child(1){
+        }
+        div:nth-child(1) {
           border-top-left-radius: 10px;
         }
-        div:nth-child(5){
+        div:nth-child(5) {
           border-top-right-radius: 10px;
         }
       }
-      div:nth-child(6){
-          border-bottom-left-radius: 10px;
-        }
-        div:nth-child(10){
-          border-bottom-right-radius: 10px;
-        }
-      .comment{
+      div:nth-child(6) {
+        border-bottom-left-radius: 10px;
+      }
+      div:nth-child(10) {
+        border-bottom-right-radius: 10px;
+      }
+      .comment {
         width: 100%;
       }
-      textarea{
-    background: transparent;
-    height: 9vh;
-    width: 95%;
-    max-width: 95%;
-    max-height: 9vh;
-    border: solid 1px #878787;
-    border-radius: 10px;
-    font-size: 0.8vw;
-    line-height: 20px;
-    font-weight: 300;
-    padding: 7px 15px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    transition: all 0.3s ease-in-out;
-    margin-bottom: 30px;
-    @media (max-width: 614px) {
+      textarea {
+        background: transparent;
+        height: 9vh;
+        width: 95%;
+        max-width: 95%;
+        max-height: 9vh;
+        border: solid 1px #878787;
+        border-radius: 10px;
+        font-size: 0.8vw;
+        line-height: 20px;
+        font-weight: 300;
+        padding: 7px 15px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        transition: all 0.3s ease-in-out;
+        margin-bottom: 30px;
+        @media (max-width: 614px) {
           margin-bottom: 5%;
           margin-top: 2%;
           width: 90%;
@@ -251,27 +374,27 @@ z-index: 1;
           min-width: 90%;
           min-height: 9vh;
           font-size: 3.2vw;
+        }
+        ::-webkit-scrollbar {
+          border-radius: 50px;
+          width: 10px;
+          background: transparent;
+          border-top-right-radius: 50px;
+        }
+        ::-webkit-scrollbar-thumb {
+          background-color: darkblue;
+          border-radius: 50px;
+        }
+        ::-webkit-scrollbar-track-piece {
+          height: 80%;
+        }
       }
-    ::-webkit-scrollbar {
-      border-radius: 50px;
-      width: 10px;
-      background: transparent;
-      border-top-right-radius: 50px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background-color: darkblue;
-      border-radius: 50px;
-    }
-    ::-webkit-scrollbar-track-piece {
-      height: 80%;
-    }
-}
       input {
         height: 6%;
         width: 95%;
         border: none;
         outline: none;
-        padding: 10px 10px 10px ;
+        padding: 10px 10px 10px;
         font-size: 20px;
       }
       button {
@@ -287,20 +410,20 @@ z-index: 1;
         margin-bottom: 10%;
         @media (max-width: 614px) {
           width: 50%;
-        height: 12vw;
-        font-size: 4.5vw;
-        margin-bottom: 5%;
-      }
+          height: 12vw;
+          font-size: 4.5vw;
+          margin-bottom: 5%;
+        }
         :hover {
           width: 170px;
           height: 45px;
           font-weight: bold;
           font-size: 20px;
           @media (max-width: 614px) {
-          width: 51%;
-        height: 12.5vw;
-        font-size: 4.7vw;
-      }
+            width: 51%;
+            height: 12.5vw;
+            font-size: 4.7vw;
+          }
         }
       }
     }
@@ -319,7 +442,7 @@ z-index: 1;
         transition: 0.5s;
         @media (max-width: 614px) {
           font-size: 3.3vw;
-      }
+        }
       }
       i {
         position: absolute;
@@ -337,34 +460,35 @@ z-index: 1;
       transform: translateY(-28px);
       font-size: 0.75em;
       @media (max-width: 614px) {
-          font-size: 2.5vw;
+        font-size: 2.5vw;
       }
     }
   }
 `;
 
 const Grade = styled.div`
-    box-shadow: rgba(0, 0, 0, 0.35) 5px 5px 5px;
-    width:3.5vw;
-    height: 2.8vw;
-    font-size: 0.9vw;
-    border: solid 1px ${props => props.select === true ? "darkred" : "darkblue"};
-    background-color: ${props => props.select === true ? "red" : "blue"};
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.35) 5px 5px 5px;
+  width: 3.5vw;
+  height: 2.8vw;
+  font-size: 0.9vw;
+  border: solid 1px
+    ${(props) => (props.select === true ? "darkred" : "darkblue")};
+  background-color: ${(props) => (props.select === true ? "red" : "blue")};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  @media (max-width: 614px) {
+    width: 12vw;
+    height: 10vw;
+    font-size: 3vw;
+  }
+  :hover {
+    font-size: 1.2vw;
+    font-weight: bold;
     @media (max-width: 614px) {
-      width: 12vw;
-      height: 10vw;
       font-size: 3vw;
-      }
-    :hover{
-      font-size: 1.2vw;
-      font-weight: bold;
-      @media (max-width: 614px) {
-      font-size: 3vw;
-      }
     }
-`
+  }
+`;
