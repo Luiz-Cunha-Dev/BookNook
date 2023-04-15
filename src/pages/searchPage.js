@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import background from "../imgs/w2.jpg";
 import { Header } from "../components/header";
@@ -17,10 +17,10 @@ import {
 } from "../services";
 
 export function SearchPage() {
-  const navigate = useNavigate();
   const { categoryName } = useParams();
   const [close, setClose] = useState(true);
   const [add, setAdd] = useState(true);
+  const [edit, setEdit] = useState(true);
   const [entertainmentList, setEntertainmentList] = useState([]);
   const [categoryList, setcategoryList] = useState([]);
   const [openEntertainment, setOpenEntertainment] = useState();
@@ -168,66 +168,66 @@ export function SearchPage() {
   }
 
   useEffect(() => {
+    load()
+  }, [add, edit]);
+
+  const load = async () => {
     if (categoryNameCorrection() === "Tudo") {
-      getAllntertainment(userData.token).then((res) => {
+      await getAllntertainment(userData.token).then((res) => {
         setEntertainmentList(res.data);
       });
     } else if (categoryNameCorrection() === "Entretenimeto") {
       let list = [];
-      getEntertainmentByType(userData.token, "Filme").then((res) => {
+      await getEntertainmentByType(userData.token, "Filme").then((res) => {
         res.data.forEach((e) => {
           list.push(e);
         });
       });
-      setTimeout(() => {
-        getEntertainmentByType(userData.token, "Série").then((res) => {
-          res.data.forEach((e) => {
-            list.push(e);
-          });
-        });
-      }, 1100);
-      setTimeout(() => {}, 700);
 
-      setTimeout(() => {
-        getEntertainmentByType(userData.token, "Desenho").then((res) => {
-          res.data.forEach((e) => {
-            list.push(e);
-          });
+      await getEntertainmentByType(userData.token, "Série").then((res) => {
+        res.data.forEach((e) => {
+          list.push(e);
         });
-      }, 1600);
+      });
 
-      setTimeout(() => {
-        getEntertainmentByType(userData.token, "Livro").then((res) => {
-          res.data.forEach((e) => {
-            list.push(e);
-          });
+      await getEntertainmentByType(userData.token, "Anime").then((res) => {
+        res.data.forEach((e) => {
+          list.push(e);
         });
-      }, 1800);
+      });
 
-      setTimeout(() => {
-        getEntertainmentByType(userData.token, "Jogo").then((res) => {
-          res.data.forEach((e) => {
-            list.push(e);
-          });
+      await getEntertainmentByType(userData.token, "Desenho").then((res) => {
+        res.data.forEach((e) => {
+          list.push(e);
         });
+      });
+
+      await getEntertainmentByType(userData.token, "Livro").then((res) => {
+        res.data.forEach((e) => {
+          list.push(e);
+        });
+      });
+
+      await getEntertainmentByType(userData.token, "Jogo").then((res) => {
+        res.data.forEach((e) => {
+          list.push(e);
+        });
+      });
 
       setEntertainmentList(list);
-      }, 2000);
+
     } else {
-      getEntertainmentByType(userData.token, categoryNameCorrection()).then(
+      await getEntertainmentByType(userData.token, categoryNameCorrection()).then(
         (res) => {
           setEntertainmentList(res.data);
         }
       );
     }
-  }, [add, close]);
+  }
 
   useEffect(() => {
     getAllCategories(userData.token).then((res) => {
       setcategoryList(res.data);
-      setTimeout(()=>{setSearch(" ")}, 500)
-      setTimeout(()=>{setSearch("  ")}, 1000)
-      setTimeout(()=>{setSearch("")}, 2000)
     });
   }, []);
 
@@ -258,6 +258,8 @@ export function SearchPage() {
           close={close}
           setClose={setClose}
           categoryName={categoryName}
+          edit={edit}
+          setEdit={setEdit}
         />
         <div className="board">
           <h2>{categoryName}</h2>

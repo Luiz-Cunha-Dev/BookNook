@@ -15,7 +15,10 @@ export function SignIn({ status, setStatus }) {
       login({ email, password }).then((res) => {
         localStorage.setItem("userData", JSON.stringify(res.data));
         navigate("/initial");
-      });
+      })
+      .catch((err)=>{
+        alert("Senha ou email incorreto")
+      })
     }
   }
 

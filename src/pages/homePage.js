@@ -2,9 +2,18 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import background from "../imgs/principal-wallpaper.jpg";
 import icone from "../imgs/icone.png";
+import { useEffect } from "react";
 
 export function HomePage() {
+  let userData = JSON.parse(localStorage.getItem("userData"));
   const navigate = useNavigate();
+
+  useEffect(()=> {
+    console.log(userData);
+    if(userData){
+      navigate("/initial");
+    }
+  }, [])
 
   return (
     <Container>

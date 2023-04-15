@@ -22,68 +22,37 @@ export function Ranking() {
 
   useEffect(() => {
     getRanking(userData.token).then((res) => {
+      console.log(res);
       setScoreList(res.data.highestRated);
       setViewList(res.data.mostViewed);
-      setTimeout(()=>{setFilter("views")}, 500)
-      setTimeout(()=>{setFilter("score")}, 1000)
+      setEntertainmentList(res.data.highestRated);
     });
   }, []);
 
   useEffect(() => {
     getAllCategories(userData.token).then((res) => {
       setcategoryList(res.data);
-      getScoreList()
     });
   }, []);
 
   useEffect(() => {
     if (scoreList.length !== 0 && viewList.length !== 0) {
+      setEntertainmentList([])
       if (filter === "score") {
-        setEntertainmentList([])
         getScoreList()
       }
       if(filter === "views") {
-        setEntertainmentList([])
         getViewList()
       }
     }
-  }, [filter, scoreList, viewList]);
+  }, [filter]);
 
   function getScoreList() {
-    let copyList = entertainmentList;
-    if(copyList.length > 0){
-      copyList.length=0
-    }
-        scoreList.forEach((item) => {
-          getEntertainmentById(userData.token, item.entertainmentId).then(
-            (res) => {
-              copyList.push(res.data);
-            }
-          );
-        });
-        if(copyList.length > 10){
-          copyList.length=10
-        }
-        setEntertainmentList(copyList);
-
+        setEntertainmentList(scoreList);
   }
 
   function getViewList() {
-    let copyList = entertainmentList;
-    if(copyList.length > 0){
-      copyList.length=0
-    }
-        viewList.forEach((item) => {
-          getEntertainmentById(userData.token, item.entertainmentId).then(
-            (res) => {
-              copyList.push(res.data);
-            }
-          );
-        });
-        if(copyList.length > 10){
-          copyList.length=10
-        }
-        setEntertainmentList(copyList);
+        setEntertainmentList(viewList );
   }
 
   function getStars(grade) {

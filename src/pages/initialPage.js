@@ -11,9 +11,22 @@ import livro from "../imgs/entretenimentos/livros.jpg";
 import jogo from "../imgs/entretenimentos/jogos.jpg";
 import entretenimento from "../imgs/entretenimentos/entretenimentos.jpg";
 import tudo from "../imgs/entretenimentos/tudo.png";
+import { useEffect } from "react";
+import { getEntertainmentQuantity } from "../services";
+import { useState } from "react";
 
 export function InitialPage() {
+  let userData = JSON.parse(localStorage.getItem("userData"));
   const navigate = useNavigate();
+
+  const [quantity, setQuantity] = useState({})
+
+  useEffect(()=>{
+    getEntertainmentQuantity(userData.token).then((res) => {
+      console.log(res);
+      setQuantity(res.data)
+    })
+  }, [])
 
   return (
     <Container>
@@ -25,6 +38,7 @@ export function InitialPage() {
               <img src={filme} alt="filme" />
             </div>
             Seus Filmes
+            <span>{quantity.movies || 0}</span>
           </div>
         </Option>
         <Option>
@@ -33,6 +47,7 @@ export function InitialPage() {
               <img src={serie} alt="serie" />
             </div>
             Suas Séries
+            <span>{quantity.series || 0}</span>
           </div>
         </Option>
         <Option>
@@ -41,6 +56,7 @@ export function InitialPage() {
               <img src={anime} alt="anime" />
             </div>
             Seus Animes
+            <span>{quantity.animes || 0}</span>
           </div>
         </Option>
         <Option>
@@ -49,6 +65,7 @@ export function InitialPage() {
               <img src={desenho} alt="desenho" />
             </div>
             Seus Desenhos
+            <span>{quantity.cartoons || 0}</span>
           </div>
         </Option>
         <Option>
@@ -57,6 +74,7 @@ export function InitialPage() {
               <img src={livro} alt="livro" />
             </div>
             Seus Livros
+            <span>{quantity.books || 0}</span>
           </div>
         </Option>
         <Option>
@@ -65,6 +83,7 @@ export function InitialPage() {
               <img src={jogo} alt="jogo" />
             </div>
             Seus Jogos
+            <span>{quantity.games || 0}</span>
           </div>
         </Option>
         <Option>
@@ -75,6 +94,7 @@ export function InitialPage() {
             Seus
             <br />
             Entretenimentos
+            <span>{quantity.userEntertainments || 0}</span>
           </div>
         </Option>
         <Option>
@@ -83,6 +103,7 @@ export function InitialPage() {
               <img src={tudo} alt="tudo" />
             </div>
             Tudo
+            <span>{quantity.allEntertainments || 0}</span>
           </div>
         </Option>
       </div>

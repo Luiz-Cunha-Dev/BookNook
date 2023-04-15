@@ -20,7 +20,7 @@ export function Window({ close, setClose, month, year, goals }) {
   const [goalGames, setGoalGames] = useState(0)
   const [qtdGames, setQtdGames] = useState(0)
   
-  useEffect(()=>{
+  useEffect(()=>{ 
     load()
   }, [close])
 
@@ -70,55 +70,50 @@ export function Window({ close, setClose, month, year, goals }) {
   }
 
   function load(){
-    let currentGoal = goals.filter(g => g.month === numberOfMonth() && g.year == year)
+    let currentGoal = goals.filter(g => g.month === numberOfMonth() && g.year == year);
+
+    setGoalMovies(0);
+    setQtdMovies(0);
+    setGoalSerie(0);
+    setQtdSerie(0);
+    setGoalAnimes(0);
+    setQtdAnimes(0);
+    setGoalCartoon(0);
+    setQtdCartoon(0);
+    setGoalBook(0);
+    setQtdBook(0);
+    setGoalGames(0);
+    setQtdGames(0);
 
     currentGoal.forEach(g => {
       if(g.typeId === 1){
         setGoalMovies(g.goal);
-        setQtdMovies(g.quantity)
-      }else{
-        setGoalMovies(0);
-        setQtdMovies(0)
+        setQtdMovies(g.quantity);
       }
 
       if(g.typeId === 2){
         setGoalSerie(g.goal);
-        setQtdSerie(g.quantity)
-      }else{
-        setGoalSerie(0);
-        setQtdSerie(0)
+        setQtdSerie(g.quantity);
       }
 
       if(g.typeId === 3){
         setGoalAnimes(g.goal);
-        setQtdAnimes(g.quantity)
-      }else{
-        setGoalAnimes(0);
-        setQtdAnimes(0)
+        setQtdAnimes(g.quantity);
       }
 
       if(g.typeId === 4){
         setGoalCartoon(g.goal);
-        setQtdCartoon(g.quantity)
-      }else{
-        setGoalCartoon(0);
-        setQtdCartoon(0)
+        setQtdCartoon(g.quantity);
       }
 
       if(g.typeId === 5){
         setGoalBook(g.goal);
-        setQtdBook(g.quantity)
-      }else{
-        setGoalBook(0);
-        setQtdBook(0)
+        setQtdBook(g.quantity);
       }
 
       if(g.typeId === 6){
         setGoalGames(g.goal);
-        setQtdGames(g.quantity)
-      }else{
-        setGoalGames(0);
-        setQtdGames(0)
+        setQtdGames(g.quantity);
       }
     })
   }

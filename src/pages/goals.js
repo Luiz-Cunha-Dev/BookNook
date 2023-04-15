@@ -21,7 +21,7 @@ export function Goals() {
     getAllGoals(userData.token).then(res => {
       setGoals(res.data)
     })
-  }, [close])
+  }, [close, year])
 
   return (
     <Container>

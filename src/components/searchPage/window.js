@@ -13,9 +13,10 @@ export function Window({
   setClose,
   categoryName,
   openEntertainment,
-  categoryList
+  categoryList,
+  edit,
+  setEdit
 }) {
-  const [edit, setEdit] = useState(true);
   const [delet, setDelet] = useState(true);
 
   function getStars(grade) {

@@ -2,10 +2,20 @@ import styled from "styled-components";
 import { useState } from "react";
 import background from "../imgs/w2.jpg";
 import { Header } from "../components/header";
+import { putDarkMode } from "../services";
 
 export function Config() {
+  let userData = JSON.parse(localStorage.getItem("userData"));
+  const [darkMode, setDarkMode] = useState(userData.darkMode)
 
-  const [darkMode, setDarkMode] = useState(false)
+   function changeDarkMode(){
+    putDarkMode(userData.token).then((res) => {
+      console.log(res.data);
+      setDarkMode(!darkMode);
+      localStorage.setItem("userData", JSON.stringify({...userData, darkMode: !darkMode}));
+    })
+  }
+
 
   return (
     <Container darkMode={darkMode === true ? "0px" : "35px"}>
@@ -15,7 +25,7 @@ export function Config() {
         <div className="items">
         <span>Modo Escuro
           <div className="switch">
-            <button onClick={() => setDarkMode(!darkMode)}></button>
+            <button onClick={changeDarkMode}></button>
           </div>
         </span>
         </div>
