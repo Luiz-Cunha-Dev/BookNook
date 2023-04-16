@@ -119,13 +119,13 @@ export function Window({ close, setClose, month, year, goals }) {
   }
 
   return (
-    <Container close={close}>
+    <Container darkMode={userData.darkMode} close={close}>
       <div className="left">
         <IoIosCloseCircle onClick={() => setClose(true)} className="close" />
         <h2>
           {month} de {year}
         </h2>
-        <Option>
+        <Option darkMode={userData.darkMode}>
           <span className="title">FILMES</span>
           <div className="goal">
             <span>META</span>
@@ -141,7 +141,7 @@ export function Window({ close, setClose, month, year, goals }) {
           </div>
           <button onClick={() => sendGoal(qtdMovies, goalMovies, 1)} className="save">Salvar</button>
         </Option>
-        <Option>
+        <Option darkMode={userData.darkMode}>
           <span className="title">SÈRIES</span>
           <div className="goal">
             <span>META</span>
@@ -157,7 +157,7 @@ export function Window({ close, setClose, month, year, goals }) {
           </div>
           <button onClick={() => sendGoal(qtdSerie, goalSerie, 2)} className="save">Salvar</button>
         </Option>
-        <Option>
+        <Option darkMode={userData.darkMode}>
           <span className="title">ANIMES</span>
           <div className="goal">
             <span>META</span>
@@ -173,7 +173,7 @@ export function Window({ close, setClose, month, year, goals }) {
           </div>
           <button onClick={() => sendGoal(qtdAnimes, goalAnimes, 3)} className="save">Salvar</button>
         </Option>
-        <Option>
+        <Option darkMode={userData.darkMode}>
           <span className="title">DESENHOS</span>
           <div className="goal">
             <span>META</span>
@@ -189,7 +189,7 @@ export function Window({ close, setClose, month, year, goals }) {
           </div>
           <button onClick={() => sendGoal(qtdCartoon, goalCartoon, 4)} className="save">Salvar</button>
         </Option>
-        <Option>
+        <Option darkMode={userData.darkMode}>
           <span className="title">LIVROS</span>
           <div className="goal">
             <span>META</span>
@@ -205,7 +205,7 @@ export function Window({ close, setClose, month, year, goals }) {
           </div>
           <button onClick={() => sendGoal(qtdBook, goalBook, 5)} className="save">Salvar</button>
         </Option>
-        <Option>
+        <Option darkMode={userData.darkMode}>
           <span className="title">JOGOS</span>
           <div className="goal">
             <span>META</span>
@@ -240,7 +240,7 @@ const Container = styled.div`
   padding-top: 8%;
   background-color: rgba(10, 23, 55, 0.5);
   h2 {
-    color: darkblue;
+    color: ${props=> props.darkMode === false ? "darkblue" : "white"};
     font-size: 30px;
     margin-bottom: 3%;
     margin-top: 2%;
@@ -249,13 +249,16 @@ const Container = styled.div`
       margin-bottom: 10%;
     }
   }
+  span{
+    color: ${props=> props.darkMode === false ? "black" : "white"};
+  }
   .left {
     width: 50%;
     height: 83%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
+    background-color: ${props=> props.darkMode === false ? "white" : "#505050"};
     border-radius: 20px;
     margin-top: -2%;
     position: relative;
@@ -287,8 +290,11 @@ const Container = styled.div`
       top: 15px;
       font-size: 50px;
       color: red;
+      background-color: white;
+      border-radius: 100%;
       cursor: pointer;
       @media (max-width: 614px) {
+        right: 10px;
         font-size: 10vw;
       }
     }

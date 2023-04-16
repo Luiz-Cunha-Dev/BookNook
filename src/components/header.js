@@ -13,25 +13,40 @@ import { logout } from "../services";
 import { ThreeDots } from 'react-loader-spinner'
 
 export function Header() {
+  let userData = JSON.parse(localStorage.getItem("userData"));
   const navigate = useNavigate();
   const [menu, setMenu] = useState(false);
   const [exit, setExit] = useState(false);
-  let userData = JSON.parse(localStorage.getItem("userData"));
   const [button, setButton] = useState("Sair");
   const [disabled, setDisabled] = useState(false);
 
   function signout(){
     setDisabled(true);
-    setButton(<ThreeDots
-      height="80"
-      width="80"
-      radius="9"
-      color="white"
-      ariaLabel="three-dots-loading"
-      wrapperStyle={{}}
-      wrapperClassName=""
-      visible={true}
-  />)
+
+    if(userData.darkMode === true){
+      setButton(<ThreeDots
+        height="80"
+        width="80"
+        radius="9"
+        color="black"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+    />)
+    }else{
+      setButton(<ThreeDots
+        height="80"
+        width="80"
+        radius="9"
+        color="white"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+    />)
+    }
+    
     logout(userData.token).then(() => { 
       localStorage.removeItem("userData"); setDisabled(false); setButton("Sair"); navigate("/") })
       .catch(()=>{
@@ -41,7 +56,7 @@ export function Header() {
   }
 
   return (
-    <Container menu={menu === true ? "0px" : "-20vw"} exit={exit}>
+    <Container darkMode={userData.darkMode} menu={menu === true ? "0px" : "-20vw"} exit={exit}>
       <div className="header">
         <HiOutlineMenu onClick={() => setMenu(!menu)} className="menu" />
         <div onClick={() => navigate("/initial")} className="icone">
@@ -124,9 +139,13 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: ${props=> props.darkMode === false ? "white" : "#202020"};
     cursor: default;
     animation-duration: 1s;
     animation-name: fadeInDown;
+    h2{
+      color: ${props=> props.darkMode === false ? "black" : "white"};
+    }
     @media (max-width: 614px) {
         width: 80%;
         height: 50%;
@@ -149,8 +168,8 @@ const Container = styled.div`
       height: 42px;
       border-radius: 20px;
       border: thin;
-      background-color: darkblue;
-      color: white;
+      background-color: ${props=> props.darkMode === false ? "darkblue" : "white"};
+      color: ${props=> props.darkMode === false ? "white" : "black"};
       font-size: 18px;
       margin-top: 30px;
       margin-bottom: 10px;
@@ -167,15 +186,17 @@ const Container = styled.div`
       }
     }
     p{
+      color: ${props=> props.darkMode === false ? "black" : "white"};
       cursor: pointer;
     }
   }
   .header {
     display: flex;
     align-items: center;
+    margin-top: 2vh;
     h1 {
       font-family: "Chewy";
-      color: darkblue;
+      color: ${props=> props.darkMode === false ? "darkblue" : "white"};
       font-size: 55px;
       @media (max-width: 614px) {
         font-size: 5vh;
@@ -186,18 +207,23 @@ const Container = styled.div`
       color: darkblue;
       cursor: pointer;
       margin-left: 50px;
+      color: ${props=> props.darkMode === false ? "darkblue" : "white"};
+      border-radius: 10px;
       @media (max-width: 614px) {
         font-size: 6vh;
         margin-left: 3%;
       }
     }
     .icone {
-      height: 12vh;
+      height: 10vh;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-left: 12%;
       cursor: pointer;
+      border-radius: 30px;
+      padding-left: 10px;
+      padding-right: 10px;
       @media (max-width: 614px) {
       }
       img {
@@ -221,7 +247,7 @@ const Container = styled.div`
     top: 0px;
     width: 20vw;
     height: 100vh;
-    background-color: darkblue;
+    background-color: ${props=> props.darkMode === false ? "darkblue" : "#202020"};
     z-index: 2;
     color: white;
     font-size: 30px;

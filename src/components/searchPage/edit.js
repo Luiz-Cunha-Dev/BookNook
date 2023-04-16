@@ -132,7 +132,7 @@ export function Edit({
   }
 
   return (
-    <Container2 edit={edit}>
+    <Container2 darkMode={userData.darkMode} edit={edit}>
       <div className="board2">
         <IoIosCloseCircle
           onClick={() => {
@@ -204,60 +204,70 @@ export function Edit({
             <Grade
               select={grade2.includes(1) === true ? true : false}
               onClick={() => setGrade2([1])}
+              darkMode={userData.darkMode}
             >
               1
             </Grade>
             <Grade
               select={grade2.includes(2) === true ? true : false}
               onClick={() => setGrade2([2])}
+              darkMode={userData.darkMode}
             >
               2
             </Grade>
             <Grade
               select={grade2.includes(3) === true ? true : false}
               onClick={() => setGrade2([3])}
+              darkMode={userData.darkMode}
             >
               3
             </Grade>
             <Grade
               select={grade2.includes(4) === true ? true : false}
               onClick={() => setGrade2([4])}
+              darkMode={userData.darkMode}
             >
               4
             </Grade>
             <Grade
               select={grade2.includes(5) === true ? true : false}
               onClick={() => setGrade2([5])}
+              darkMode={userData.darkMode}
             >
               5
             </Grade>
             <Grade
               select={grade2.includes(6) === true ? true : false}
               onClick={() => setGrade2([6])}
+              darkMode={userData.darkMode}
             >
               6
             </Grade>
             <Grade
               select={grade2.includes(7) === true ? true : false}
               onClick={() => setGrade2([7])}
+              darkMode={userData.darkMode}
             >
               7
             </Grade>
             <Grade
               select={grade2.includes(8) === true ? true : false}
               onClick={() => setGrade2([8])}
+              darkMode={userData.darkMode}
             >
               8
             </Grade>
             <Grade
               select={grade2.includes(9) === true ? true : false}
               onClick={() => setGrade2([9])}
+              darkMode={userData.darkMode}
             >
               9
             </Grade>
             <Grade
               select={grade2.includes(10) === true ? true : false}
               onClick={() => setGrade2([10])}
+              darkMode={userData.darkMode}
             >
               10
             </Grade>
@@ -294,7 +304,7 @@ const Container2 = styled.div`
   .board2 {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    background-color: white;
+    background-color: ${props=> props.darkMode === false ? "white" : "#505050"};
     height: fit-content;
     width: 40%;
     border-radius: 30px;
@@ -329,13 +339,15 @@ const Container2 = styled.div`
       top: 15px;
       font-size: 50px;
       color: red;
+      background-color: white;
+      border-radius: 100%;
       cursor: pointer;
       @media (max-width: 614px) {
         font-size: 10vw;
       }
     }
     h2 {
-      color: darkblue;
+      color: ${props=> props.darkMode === false ? "darkblue" : "white"};
       font-size: 30px;
       margin-bottom: 10%;
       @media (max-width: 614px) {
@@ -361,7 +373,8 @@ const Container2 = styled.div`
           padding-left: 2%;
           padding-right: 2%;
           border-radius: 10px;
-          color: darkblue;
+          color: ${props=> props.darkMode === false ? "darkblue" : "white"};
+          background-color: ${props=> props.darkMode === false ? "white" : "#505050"};
           margin-left: 4%;
           margin-right: 4%;
           @media (max-width: 614px) {
@@ -377,6 +390,7 @@ const Container2 = styled.div`
         font-size: 1em;
         letter-spacing: 0.05em;
         padding: 20px 10px 20px;
+        color: ${props=> props.darkMode === false ? "darkblue" : "white"};
       }
       .grades2 {
         box-sizing: border-box;
@@ -420,6 +434,7 @@ const Container2 = styled.div`
         margin-bottom: 20px;
         transition: all 0.3s ease-in-out;
         margin-bottom: 30px;
+        color: ${props=> props.darkMode === false ? "black" : "white"};
         @media (max-width: 614px) {
           margin-bottom: 5%;
           margin-top: 2%;
@@ -450,13 +465,15 @@ const Container2 = styled.div`
         outline: none;
         padding: 10px 10px 10px;
         font-size: 20px;
+        background-color: ${props=> props.darkMode === false ? "white" : "#505050"};
+        color: ${props=> props.darkMode === false ? "black" : "white"};
       }
       button {
         width: 160px;
         height: 42px;
         border-radius: 20px;
         border: thin;
-        background-color: darkblue;
+        background-color: ${props=> props.darkMode === false ? "darkblue" : "#191919"};
         color: white;
         font-size: 18px;
         cursor: pointer;
@@ -497,6 +514,7 @@ const Container2 = styled.div`
         padding: 20px 10px 20px;
         pointer-events: none;
         transition: 0.5s;
+        color: ${props=> props.darkMode === false ? "darkblue" : "white"};
         @media (max-width: 614px) {
           font-size: 3.3vw;
         }
@@ -509,11 +527,12 @@ const Container2 = styled.div`
         height: 2px;
         background-color: darkblue;
         border-radius: 4px;
+        background-color: ${props=> props.darkMode === false ? "darkblue" : "white"};
       }
     }
     .inputBox2 input:valid ~ span,
     .inputBox2 input:focus ~ span {
-      color: darkblue;
+      color: ${props=> props.darkMode === false ? "darkblue" : "white"};
       transform: translateY(-28px);
       font-size: 0.75em;
       @media (max-width: 614px) {
@@ -528,9 +547,9 @@ const Grade = styled.div`
   width: 3.5vw;
   height: 2.8vw;
   font-size: 0.9vw;
-  border: solid 1px
-    ${(props) => (props.select === true ? "darkred" : "darkblue")};
-  background-color: ${(props) => (props.select === true ? "red" : "blue")};
+  border: solid 1px black;
+  background-color: ${props=> props.darkMode === false ? "blue" : "#191919"};
+  background-color: ${(props) => (props.select === true ? "red" : "")};
   display: flex;
   justify-content: center;
   align-items: center;

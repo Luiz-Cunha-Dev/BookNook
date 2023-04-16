@@ -172,7 +172,7 @@ export function Ranking() {
   }
 
   return (
-    <Container filter={filter}>
+    <Container filter={filter} darkMode={userData.darkMode}>
       <Header />
       <div className="board">
         <h2>Os Mais Populares</h2>
@@ -183,7 +183,7 @@ export function Ranking() {
         <div className="list">
         {entertainmentList.length === 0 ? <div className="load"><img src={load} alt="load"/> </div>: ""}
           {entertainmentList.map((e, i) => (
-            <RankingItem>
+            <RankingItem darkMode={userData.darkMode}>
               <span>{i + 1}°</span>
               <div className="img">
                 <img src={e.imageUrl} alt="filme" />
@@ -237,6 +237,8 @@ const Container = styled.div`
   left: 0;
   top: 0;
   background-image: url(${background});
+  background-image: ${props=> props.darkMode === false ? "" : "none"};
+  background-color: ${props=> props.darkMode === false ? "" : "#191919"};
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -245,7 +247,7 @@ const Container = styled.div`
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   .board {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    background-color: white;
+    background-color: ${props=> props.darkMode === false ? "white" : "#505050"};
     width: 35%;
     height: 78%;
     border-radius: 50px;
@@ -299,7 +301,7 @@ const Container = styled.div`
         border-top-right-radius: 50px;
       }
       ::-webkit-scrollbar-thumb {
-        background-color: darkblue;
+        background-color: ${props=> props.darkMode === false ? "darkblue" : "white"};
         border-radius: 50px;
       }
       ::-webkit-scrollbar-track-piece {
@@ -307,7 +309,7 @@ const Container = styled.div`
       }
     }
     h2 {
-      color: darkblue;
+      color: ${props=> props.darkMode === false ? "darkblue" : "white"};
       font-size: 30px;
       @media (max-width: 614px) {
         font-size: 6vw;
@@ -341,14 +343,15 @@ const Container = styled.div`
           font-size: 3.8vw;
         }
         :nth-child(1) {
+
           background-color: ${(props) =>
-            props.filter === "score" ? "darkblue" : "ligthblue"};
-          color: ${(props) => (props.filter === "score" ? "white" : "black")};
+            props.filter === "score" ? props=> props.darkMode === false ? "darkblue" : "white" : props=> props.darkMode === false ? "ligthblue" : "#202020"};
+          color: ${(props) => (props.filter === "score" ? props=> props.darkMode === false ? "white" : "black" : props=> props.darkMode === false ? "black" : "white")};
         }
         :nth-child(2) {
           background-color: ${(props) =>
-            props.filter === "views" ? "darkblue" : "ligthblue"};
-          color: ${(props) => (props.filter === "views" ? "white" : "black")};
+            props.filter === "views" ? props=> props.darkMode === false ? "darkblue" : "white" : props=> props.darkMode === false ? "ligthblue" : "#202020"};
+          color: ${(props) => (props.filter === "score" ? props=> props.darkMode === false ? "black" : "white" : props=> props.darkMode === false ? "white" : "black")};
         }
       }
     }

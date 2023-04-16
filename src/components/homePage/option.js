@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export function Option(props) {
+export function Option({children, darkMode}) {
   return (
-    <Container>
-      {props.children}
+    <Container darkMode={darkMode}>
+      {children}
     </Container>
   );
 }
@@ -11,10 +11,10 @@ export function Option(props) {
 const Container = styled.div`
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 200px;
-  width: 300px;
   width: 18vw;
   height: 250px;
-  background-color: white;
+  background-color: ${props=> props.darkMode === false ? "white" : "#636363"};
+  color: ${props=> props.darkMode === false ? "black" : "white"};
   border-radius: 30px;
   display: flex;
   flex-direction: column;
@@ -39,7 +39,7 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
-    background-color: darkblue;
+    background-color: ${props=> props.darkMode === false ? "darkblue" : "#191919"};
     color: white;
     font-family: Arial;
     border-radius: 10px;
@@ -72,7 +72,7 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       }
   }
   :hover{
-    background-color: #EEEEEE;
+    background-color: ${props=> props.darkMode === false ? "#EEEEEE" : "#838383"};
     font-size: 22px;
     font-weight: 500;
     @media (max-width: 614px) {

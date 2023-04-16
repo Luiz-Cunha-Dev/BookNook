@@ -33,10 +33,10 @@ export function InitialPage() {
   }, []);
 
   return (
-    <Container>
+    <Container darkMode={userData.darkMode}>
       <Header />
       <div className="board">
-        <Option>
+        <Option darkMode={userData.darkMode}>
           <div onClick={() => navigate("/search-page/Seus Filmes")}>
             <div className="img">
               <img src={filme} alt="filme" />
@@ -63,7 +63,7 @@ export function InitialPage() {
             </span>
           </div>
         </Option>
-        <Option>
+        <Option darkMode={userData.darkMode}>
           <div onClick={() => navigate("/search-page/Suas Séries")}>
             <div className="img">
               <img src={serie} alt="serie" />
@@ -90,7 +90,7 @@ export function InitialPage() {
             </span>
           </div>
         </Option>
-        <Option>
+        <Option darkMode={userData.darkMode}>
           <div onClick={() => navigate("/search-page/Seus Animes")}>
             <div className="img">
               <img src={anime} alt="anime" />
@@ -117,7 +117,7 @@ export function InitialPage() {
             </span>
           </div>
         </Option>
-        <Option>
+        <Option darkMode={userData.darkMode}>
           <div onClick={() => navigate("/search-page/Seus Desenhos")}>
             <div className="img">
               <img src={desenho} alt="desenho" />
@@ -144,7 +144,7 @@ export function InitialPage() {
             </span>
           </div>
         </Option>
-        <Option>
+        <Option darkMode={userData.darkMode}>
           <div onClick={() => navigate("/search-page/Seus Livros")}>
             <div className="img">
               <img src={livro} alt="livro" />
@@ -171,7 +171,7 @@ export function InitialPage() {
             </span>
           </div>
         </Option>
-        <Option>
+        <Option darkMode={userData.darkMode}>
           <div onClick={() => navigate("/search-page/Seus Jogos")}>
             <div className="img">
               <img src={jogo} alt="jogo" />
@@ -198,7 +198,7 @@ export function InitialPage() {
             </span>
           </div>
         </Option>
-        <Option>
+        <Option darkMode={userData.darkMode}>
           <div onClick={() => navigate("/search-page/Seus Entretenimentos")}>
             <div className="img">
               <img src={entretenimento} alt="entretenimento" />
@@ -227,7 +227,7 @@ export function InitialPage() {
             </span>
           </div>
         </Option>
-        <Option>
+        <Option darkMode={userData.darkMode}>
           <div onClick={() => navigate("/search-page/Tudo")}>
             <div className="img">
               <img src={tudo} alt="tudo" />
@@ -264,6 +264,8 @@ const Container = styled.div`
   left: 0;
   top: 0;
   background-image: url(${background});
+  background-image: ${props=> props.darkMode === false ? "" : "none"};
+  background-color: ${props=> props.darkMode === false ? "" : "#191919"};
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;

@@ -38,6 +38,8 @@ const Container = styled.div`
   left: 0;
   top: 0;
   background-image: url(${background});
+  background-image: ${props=> props.darkMode === "35px" ? "" : "none"};
+  background-color: ${props=> props.darkMode === "35px" ? "" : "#191919"};
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -46,7 +48,7 @@ const Container = styled.div`
   .board {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    background-color: white;
+    background-color: ${props=> props.darkMode === "35px" ? "white" : "#505050"};
     height: 78%;
     border-radius: 50px;
     display: flex;
@@ -76,7 +78,7 @@ const Container = styled.div`
     }
   }
     h2 {
-      color: darkblue;
+      color: ${props=> props.darkMode === "35px" ? "darkblue" : "white"};
       font-size: 30px;
       @media (max-width: 614px) {
        font-size: 6vw;
@@ -92,7 +94,7 @@ const Container = styled.div`
       span{
         box-sizing: border-box;
         margin-top: 20px;
-        background-color: #EEEEEE;
+        background-color: ${props=> props.darkMode === "35px" ? "#EEEEEE" : "#202020"};
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         width: 90%;
         height: 80px;
@@ -101,7 +103,7 @@ const Container = styled.div`
         align-items: center;
         border-radius: 50px;
         padding: 30px 60px 30px 60px;
-        color: darkblue;
+        color: ${props=> props.darkMode === "35px" ? "darkblue" : "white"};
         font-size: 22px;
         @media (max-width: 614px) {
           padding: 30px 30px 30px 30px;

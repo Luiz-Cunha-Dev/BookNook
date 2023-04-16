@@ -4,25 +4,47 @@ import background from "../imgs/w2.jpg";
 import { Header } from "../components/header";
 import userPicture from "../imgs/userPicture.png";
 import { putUser } from "../services";
+import { ThreeDots } from 'react-loader-spinner';
 
 export function AboutMe() {
   let userData = JSON.parse(localStorage.getItem("userData"));
   const [email, setEmail] = useState(userData.email);
   const [pictureUrl, setPictureUrl] = useState(userData.pictureUrl);
   const [username, setUsername] = useState(userData.username);
+  const [button, setButton] = useState("Salvar");
+  const [disabled, setDisabled] = useState(false);
 
   function updateUser(e){
     e.preventDefault();
+    setButton(<ThreeDots
+      height="80"
+      width="80"
+      radius="9"
+      color="white"
+      ariaLabel="three-dots-loading"
+      wrapperStyle={{}}
+      wrapperClassName=""
+      visible={true}
+  />)
+    setDisabled(true);
     if(email !== "" && username !== ""){
       putUser(userData.token, {email, pictureUrl: pictureUrl, username}).then((res) => {
-        console.log(res);
+        setDisabled(false);
+        setButton("Salvar");
         localStorage.setItem("userData", JSON.stringify({...userData, email, pictureUrl, username}));
       })
+      .catch(()=>{
+        setDisabled(false);
+        setButton("Salvar");
+      })
+    }else{
+      setDisabled(false);
+      setButton("Salvar");
     }
   }
 
   return (
-    <Container>
+    <Container darkMode={userData.darkMode}>
       <Header />
       <div className="board">
         <h2>Sobre Mim</h2>
@@ -60,7 +82,7 @@ export function AboutMe() {
             <span>Nome</span>
             <i></i>
           </div>
-          <button type="submit">Salvar</button>
+          <button disabled={disabled} type="submit">{button}</button>
         </form>
       </div>
     </Container>
@@ -72,6 +94,8 @@ const Container = styled.div`
   left: 0;
   top: 0;
   background-image: url(${background});
+  background-image: ${props=> props.darkMode === false ? "" : "none"};
+  background-color: ${props=> props.darkMode === false ? "" : "#191919"};
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -80,7 +104,7 @@ const Container = styled.div`
   .board {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    background-color: white;
+    background-color: ${props=> props.darkMode === false ? "white" : "#505050"};
     height: fit-content;
     border-radius: 50px;
     display: flex;
@@ -109,7 +133,7 @@ const Container = styled.div`
       }
     }
     h2 {
-      color: darkblue;
+      color: ${props=> props.darkMode === false ? "darkblue" : "white"};
       font-size: 30px;
       @media (max-width: 614px) {
         font-size: 6vw;
@@ -131,18 +155,23 @@ const Container = styled.div`
         outline: none;
         padding: 10px 10px 10px;
         font-size: 20px;
+        background-color: ${props=> props.darkMode === false ? "" : "#505050"};
+        color: ${props=> props.darkMode === false ? "" : "white"};
       }
       button {
         width: 160px;
         height: 42px;
         border-radius: 20px;
         border: thin;
-        background-color: darkblue;
+        background-color: ${props=> props.darkMode === false ? "darkblue" : "#191919"};
         color: white;
         font-size: 18px;
         cursor: pointer;
         transition: linear 0.1s;
         margin-bottom: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         @media (max-width: 614px) {
           width: 50%;
           height: 12vw;
@@ -202,6 +231,7 @@ const Container = styled.div`
         padding: 10px 10px 20px;
         pointer-events: none;
         transition: 0.5s;
+        color: ${props=> props.darkMode === false ? "black" : "white"};
         @media (max-width: 614px) {
           font-size: 3.4vw;
         }
@@ -212,13 +242,13 @@ const Container = styled.div`
         bottom: 0;
         width: 100%;
         height: 2px;
-        background-color: darkblue;
+        background-color: ${props=> props.darkMode === false ? "darkblue" : "white"};
         border-radius: 4px;
       }
     }
     .inputBox input:valid ~ span,
     .inputBox input:focus ~ span {
-      color: darkblue;
+      color: ${props=> props.darkMode === false ? "darkblue" : "white"};
       transform: translateY(-34px);
       font-size: 0.75em;
     }

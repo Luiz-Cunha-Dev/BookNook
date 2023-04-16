@@ -28,6 +28,7 @@ export function SearchPage() {
   const [categoryList, setcategoryList] = useState([]);
   const [openEntertainment, setOpenEntertainment] = useState();
   const [search, setSearch] = useState();
+  const [disabled, setDisabled] = useState(false);
   let userData = JSON.parse(localStorage.getItem("userData"));
 
   function categoryNameCorrection() {
@@ -253,14 +254,19 @@ export function SearchPage() {
   }
 
   function addToYourList(id){
+    setDisabled(true)
     addExistingEntertainment(userData.token, id).then((res)=>{
       alert("Adicionado à sua lista!")
+      setDisabled(false)
+    })
+    .catch(()=>{
+      setDisabled(false)
     })
   }
 
   return (
     <>
-      <Container option={categoryName}>
+      <Container darkMode={userData.darkMode} option={categoryName}>
         <Header />
         <Add add={add} setAdd={setAdd} categoryName={categoryName} />
         <Window
@@ -301,7 +307,7 @@ export function SearchPage() {
             {entertainmentList.length === 0 ? <div className="load"><img src={load} alt="load"/> </div>: ""}
             {categoryNameCorrection() === "Tudo"
               ? entertainmentList.map((e, i) => (
-                  <Box key={i}>
+                  <Box darkMode={userData.darkMode} key={i}>
                     <div key={i} className="back">
                       <div className="img">
                         <img src={e.imageUrl} alt="filme" />
@@ -335,13 +341,13 @@ export function SearchPage() {
                           )}
                         </div>
                         <Stars grade={e.grade}>{getStars(e.grade)}</Stars>
-                        <HiPlusCircle onClick={()=> addToYourList(e.id)} className="add"/>
+                        <HiPlusCircle disabled={disabled} onClick={()=> addToYourList(e.id)} className="add"/>
                       </div>
                     </div>
                   </Box>
                 ))
               : entertainmentList.map((e, i) => (
-                  <Box key={i}>
+                  <Box darkMode={userData.darkMode} key={i}>
                     <div
                       key={i}
                       onClick={() => {
@@ -412,6 +418,8 @@ const Container = styled.div`
   left: 0;
   top: 0;
   background-image: url(${background});
+  background-image: ${props=> props.darkMode === false ? "" : "none"};
+  background-color: ${props=> props.darkMode === false ? "" : "#191919"};
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -420,7 +428,7 @@ const Container = styled.div`
   .board {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    background-color: white;
+    background-color: ${props=> props.darkMode === false ? "white" : "#505050"};
     height: 75%;
     border-radius: 50px;
     display: flex;
@@ -463,7 +471,7 @@ const Container = styled.div`
     }
     }
     h2 {
-      color: darkblue;
+      color: ${props=> props.darkMode === false ? "darkblue" : "white"};
       font-size: 30px;
       margin-bottom: 5vh;
       @media (max-width: 614px) {
@@ -495,7 +503,7 @@ const Container = styled.div`
         align-items: center;
         border-radius: 20px;
         font-size: 40px;
-        color: darkblue;
+        background-color: white;
         margin-right: 20px;
         cursor: pointer;
         @media (max-width: 614px) {
@@ -519,12 +527,13 @@ const Container = styled.div`
           padding-left: 10px;
           padding-right: 10px;
           font-weight: 600;
+          color: ${props=> props.darkMode === false ? "darkblue" : "black"};
           @media (max-width: 614px) {
             display: none;
           }
         }
         .rigth {
-          background-color: darkblue;
+          background-color: ${props=> props.darkMode === false ? "darkblue" : "white"};
           display: flex;
           justify-content: center;
           align-items: center;
@@ -539,7 +548,7 @@ const Container = styled.div`
           }
           .plus {
             transition: linear 0.1;
-            color: white;
+            color: ${props=> props.darkMode === false ? "white" : "#505050"};
           }
         }
       }
@@ -550,6 +559,8 @@ const Container = styled.div`
         outline: none;
         padding: 20px 10px 10px 10px;
         font-size: 20px;
+        background-color: ${props=> props.darkMode === false ? "white" : "#505050"};
+        color: ${props=> props.darkMode === false ? "black" : "white"};
         @media (max-width: 614px) {
           font-size: 3.5vw;
         }
@@ -561,8 +572,8 @@ const Container = styled.div`
         height: 40px;
         border-radius: 100%;
         border: none;
-        background-color: darkblue;
-        color: white;
+        background-color: ${props=> props.darkMode === false ? "darkblue" : "white"};
+        color: ${props=> props.darkMode === false ? "white" : "#505050"};
         font-size: 19px;
         cursor: pointer;
         transition: linear 0.1s;
@@ -604,6 +615,7 @@ const Container = styled.div`
         padding: 20px 10px 20px;
         pointer-events: none;
         transition: 0.5s;
+        color: ${props=> props.darkMode === false ? "black" : "white"};
         @media (max-width: 614px) {
           font-size: 2.8vw;
         }
@@ -614,13 +626,13 @@ const Container = styled.div`
         bottom: 0;
         width: 100%;
         height: 2px;
-        background-color: darkblue;
+        background-color: ${props=> props.darkMode === false ? "darkblue" : "white"};
         border-radius: 4px;
       }
     }
     .inputBox input:valid ~ span,
     .inputBox input:focus ~ span {
-      color: darkblue;
+      color: ${props=> props.darkMode === false ? "darkblue" : "white"};
       transform: translateY(-30px);
       font-size: 0.75em;
       @media (max-width: 614px) {
@@ -654,7 +666,7 @@ const Container = styled.div`
       }
     }
     ::-webkit-scrollbar-thumb {
-      background-color: darkblue;
+      background-color: ${props=> props.darkMode === false ? "darkblue" : "white"};
       border-radius: 50px;
     }
     ::-webkit-scrollbar-track-piece {

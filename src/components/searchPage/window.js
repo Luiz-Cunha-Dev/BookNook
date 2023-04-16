@@ -17,7 +17,7 @@ export function Window({
   delet,
   setDelet
 }) {
-
+  let userData = JSON.parse(localStorage.getItem("userData"));
   function getStars(grade) {
     if (grade === 10) {
       return (
@@ -133,7 +133,7 @@ export function Window({
 
   if(openEntertainment !== undefined){
   return (
-    <Container close={close} categoryName={categoryName}>
+    <Container darkMode={userData.darkMode} close={close} categoryName={categoryName}>
       <Edit setClose={setClose} openEntertainment={openEntertainment} edit={edit} setEdit={setEdit} categoryName={categoryName} />
       <Delete setClose={setClose} openEntertainment={openEntertainment} delet={delet} setDelet={setDelet} />
       <div className="window">
@@ -210,7 +210,7 @@ const Container = styled.div`
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: ${props=> props.darkMode === false ? "white" : "#505050"};
     border-radius: 15px;
     position: relative;
     animation-duration: 1s;
@@ -240,6 +240,8 @@ const Container = styled.div`
       top: 15px;
       font-size: 50px;
       color: red;
+      background-color: white;
+      border-radius: 100%;
       cursor: pointer;
       @media (max-width: 614px) {
         font-size: 10vw;
@@ -306,6 +308,7 @@ const Container = styled.div`
     margin-top: 5%;
     overflow: auto;
     overflow-x: hidden;
+    color: ${props=> props.darkMode === false ? "black" : "white"};
     @media (max-width: 614px) {
       box-sizing: border-box;
       height: 50%;
@@ -320,7 +323,7 @@ const Container = styled.div`
       border-top-right-radius: 50px;
     }
     ::-webkit-scrollbar-thumb {
-      background-color: darkblue;
+      background-color: ${props=> props.darkMode === false ? "darkblue" : "white"};
       border-radius: 50px;
     }
     ::-webkit-scrollbar-track-piece {
@@ -382,6 +385,7 @@ const Container = styled.div`
       justify-content: center;
     }
     h3 {
+      color: ${props=> props.darkMode === false ? "black" : "white"};
       font-size: 1.5vw;
       margin-bottom: 6%;
       @media (max-width: 614px) {

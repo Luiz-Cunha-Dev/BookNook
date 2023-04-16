@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-export function Box(props) {
-  return <Container>{props.children}</Container>;
+export function Box({children, darkMode}) {
+  return <Container darkMode={darkMode}>{children}</Container>;
 }
 
 const Container = styled.div`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 32%;
   height: 12vw;
-  background-color: white;
+  background-color: ${props=> props.darkMode === false ? "white" : "#202020"};
   border-radius: 10px;
   font-family: "Courier New", Courier, monospace;
   font-size: 20px;
@@ -25,7 +25,7 @@ const Container = styled.div`
     right: 20px;
     bottom: 20px;
     font-size: 40px;
-    color: darkblue;
+    color: ${props=> props.darkMode === false ? "darkblue" : "white"};
     cursor: pointer;
     @media (max-width: 614px) {
     right: 12px;
@@ -69,7 +69,7 @@ const Container = styled.div`
     }
   }
   :hover {
-    background-color: #eeeeee;
+    background-color: ${props=> props.darkMode === false ? "#eeeeee" : "#303030"};
   }
   .informations {
     width: 100%;
@@ -78,6 +78,7 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     h3 {
+      color: ${props=> props.darkMode === false ? "black" : "white"};
       font-size: 1vw;
       margin-bottom: 6%;
       @media (max-width: 614px) {

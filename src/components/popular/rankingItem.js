@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export function RankingItem(props) {
+export function RankingItem({children, darkMode}) {
   return (
-    <Container>
-      {props.children}
+    <Container darkMode={darkMode}>
+      {children}
     </Container>
   );
 }
@@ -12,7 +12,7 @@ const Container = styled.div`
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 95%;
   min-height: 180px;
-  background-color: white;
+  background-color: ${props=> props.darkMode === false ? "white" : "#202020"};
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -21,7 +21,7 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin-bottom: 12px;
   position: relative;
   span{
-    color: #4b5669;
+    color: ${props=> props.darkMode === false ? "#4b5669" : "white"};
     padding-left: 10px;
     padding-right: 10px;
     @media (max-width: 614px) {
@@ -39,6 +39,7 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-size: 21px;
     margin-bottom: 0px;
     margin-top: 0px;
+    color: ${props=> props.darkMode === false ? "black" : "white"};
   }
 
   .img{
@@ -57,7 +58,7 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       }
   }
   :hover{
-    background-color: #EEEEEE;
+    background-color: ${props=> props.darkMode === false ? "#eeeeee" : "#303030"};
   }
   .informations{
     width: 100%;
@@ -70,6 +71,7 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
        margin-right: 2%;
       }
     h3{
+      color: ${props=> props.darkMode === false ? "black" : "white"};
       font-size: 1vw; 
       margin-bottom: 3%;
       @media (max-width: 614px) {
@@ -84,7 +86,7 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     right: 5px;
     bottom: 0px;
     font-size: 1.2vw;
-    color: black;
+    color: ${props=> props.darkMode === false ? "black" : "white"};
     @media (max-width: 614px) {
        font-size: 4vw;
       }

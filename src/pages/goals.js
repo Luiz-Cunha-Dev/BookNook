@@ -24,7 +24,7 @@ export function Goals() {
   }, [close, year])
 
   return (
-    <Container>
+    <Container darkMode={userData.darkMode}>
       <Header />
       <Window goals={goals} close={close} setClose={setClose} month={month} year={year}/>
       <div className="board">
@@ -43,51 +43,51 @@ export function Goals() {
               <option value="2030">2030</option>
             </select>
             <div className="months">
-              <Month>
+              <Month darkMode={userData.darkMode}>
                 <img onClick={() => {if(year === "")return; setMonth("Janeiro"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Janeiro</span>
               </Month>
-              <Month>
+              <Month darkMode={userData.darkMode}>
                 <img onClick={() => {if(year === "")return; setMonth("Fevereiro"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Fevereiro</span>
               </Month>
-              <Month>
+              <Month darkMode={userData.darkMode}>
                 <img onClick={() => {if(year === "")return; setMonth("Março"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Março</span>
               </Month>
-              <Month>
+              <Month darkMode={userData.darkMode}>
                 <img onClick={() => {if(year === "")return; setMonth("Abril"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Abril</span>
               </Month>
-              <Month>
+              <Month darkMode={userData.darkMode}>
                 <img onClick={() => {if(year === "")return; setMonth("Maio"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Maio</span>
               </Month>
-              <Month>
+              <Month darkMode={userData.darkMode}>
                 <img onClick={() => {if(year === "")return; setMonth("Junho"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Junho</span>
               </Month>
-              <Month>
+              <Month darkMode={userData.darkMode}>
                 <img onClick={() => {if(year === "")return; setMonth("Julho"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Julho</span>
               </Month>
-              <Month>
+              <Month darkMode={userData.darkMode}>
                 <img onClick={() => {if(year === "")return; setMonth("Agosto"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Agosto</span>
               </Month>
-              <Month>
+              <Month darkMode={userData.darkMode}>
                 <img onClick={() => {if(year === "")return; setMonth("Setembro"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Setembro</span>
               </Month>
-              <Month>
+              <Month darkMode={userData.darkMode}>
                 <img onClick={() => {if(year === "")return; setMonth("Outubro"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Outubro</span>
               </Month>
-              <Month>
+              <Month darkMode={userData.darkMode}>
                 <img onClick={() => {if(year === "")return; setMonth("Novembro"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Novembro</span>
               </Month>
-              <Month>
+              <Month darkMode={userData.darkMode}>
                 <img onClick={() => {if(year === "")return; setMonth("Dezembro"); setClose(false)}} src={calendar} alt="calendar" />
                 <span>Dezembro</span>
               </Month>
@@ -104,6 +104,8 @@ const Container = styled.div`
   left: 0;
   top: 0;
   background-image: url(${background});
+  background-image: ${props=> props.darkMode === false ? "" : "none"};
+  background-color: ${props=> props.darkMode === false ? "" : "#191919"};
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -112,7 +114,7 @@ const Container = styled.div`
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   .board {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    background-color: white;
+    background-color: ${props=> props.darkMode === false ? "white" : "#505050"};
     height: 80%;
     border-radius: 50px;
     display: flex;
@@ -144,7 +146,7 @@ const Container = styled.div`
       }
     }
     h2 {
-      color: darkblue;
+      color: ${props=> props.darkMode === false ? "darkblue" : "white"};
       font-size: 30px;
       margin-bottom: 5vh;
       @media (max-width: 614px) {
@@ -185,9 +187,9 @@ const Container = styled.div`
         border-radius: 10px;
         padding-left: 10px;
         padding-right: 5px;
-        background-color: white;
+        color: ${props=> props.darkMode === false ? "darkblue" : "white"};
+        background-color: ${props=> props.darkMode === false ? "white" : "#505050"};
         font-size: 22px;
-        color: darkblue;
         @media (max-width: 614px) {
           font-size: 3.4vw;
           height: 30px;
@@ -243,12 +245,13 @@ const Month = styled.div`
   font-size: 0.8vw;
   overflow: hidden;
   cursor: pointer;
+  background-color: ${props=> props.darkMode === false ? "white" : "#202020"};
   @media (max-width: 614px) {
     width: 22vw;
     height: 22vw;
   }
   :hover {
-    background-color: #eeeeee;
+    background-color: ${props=> props.darkMode === false ? "#eeeeee" : "#212121"};
     font-size: 1vw;
     img {
       width: 15vw;

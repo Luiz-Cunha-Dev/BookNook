@@ -11,16 +11,31 @@ export function Delete({delet, setDelet, openEntertainment, setClose}) {
 
   function deleteItem() {
     setDisabled(true);
-    setButton(<ThreeDots
-      height="80"
-      width="80"
-      radius="9"
-      color="white"
-      ariaLabel="three-dots-loading"
-      wrapperStyle={{}}
-      wrapperClassName=""
-      visible={true}
-  />)
+
+    if(userData.darkMode === true){
+      setButton(<ThreeDots
+        height="80"
+        width="80"
+        radius="9"
+        color="black"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+    />)
+    }else{
+      setButton(<ThreeDots
+        height="80"
+        width="80"
+        radius="9"
+        color="white"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+    />)
+    }
+
 
       deleteEntertainment(
         userData.token,
@@ -38,7 +53,7 @@ export function Delete({delet, setDelet, openEntertainment, setClose}) {
   }
 
   return (
-    <Container delet={delet}>
+    <Container darkMode={userData.darkMode} delet={delet}>
       <div className="board2">
         <h2>Tem certeza que gostaria de deletar esse item?</h2>
         <button disabled={disabled} onClick={deleteItem}>{button}</button>
@@ -63,7 +78,7 @@ const Container = styled.div`
   .board2 {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    background-color: white;
+    background-color: ${props=> props.darkMode === false ? "white" : "#202020"};
     height: fit-content;
     width: 400px;
     height: 35%;
@@ -99,6 +114,7 @@ const Container = styled.div`
         width: 100%;
         text-align: center;
       margin-bottom: 10%;
+      color: ${props=> props.darkMode === false ? "black" : "white"};
       @media (max-width: 614px) {
         font-size: 6vw;
         margin-bottom: 5vh;
@@ -109,8 +125,8 @@ const Container = styled.div`
       height: 42px;
       border-radius: 20px;
       border: thin;
-      background-color: darkblue;
-      color: white;
+      background-color: ${props=> props.darkMode === false ? "darkblue" : "white"};
+      color: ${props=> props.darkMode === false ? "white" : "black"};
       font-size: 18px;
       margin-top: 30px;
       margin-bottom: 10px;
@@ -128,6 +144,7 @@ const Container = styled.div`
     }
     p {
       cursor: pointer;
+      color: ${props=> props.darkMode === false ? "black" : "white"};
     }
   }
 `;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export function Option(props) {
-  return <Container>{props.children}</Container>;
+export function Option({children, darkMode}) {
+  return <Container darkMode={darkMode}>{children}</Container>;
 }
 
 const Container = styled.div`
@@ -9,7 +9,7 @@ box-sizing: border-box;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 90%;
   height: 13.1%;
-  background-color: white;
+  background-color: ${props=> props.darkMode === false ? "white" : "#202020"};
   border-radius: 15px;
   display: flex;
   align-items: center;
