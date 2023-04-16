@@ -161,6 +161,7 @@ const Container = styled.div`
         margin-bottom: 10vh;
       }
       @media (max-width: 614px) {
+        margin-bottom: 5vh;
         font-size: 6vw;
       }
     }
