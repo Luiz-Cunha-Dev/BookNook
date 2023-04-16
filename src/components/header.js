@@ -259,6 +259,8 @@ const Container = styled.div`
     font-size: 30px;
     font-weight: bold;
     @media (max-width: 935px) {
+      overflow: auto;
+      font-size: 3vw;
       width: 35%;
       left: ${(props) => props.menu === "-20vw" || props.exit === true ? "-85%" : "0%"};
       }
@@ -269,7 +271,7 @@ const Container = styled.div`
     img {
       height: 15vw;
       @media (max-width: 935px) {
-        height: 20vw;
+        height: 30vw;
       }
       @media (max-width: 614px) {
         height: 60vw;
@@ -314,6 +316,10 @@ const Container = styled.div`
         margin-bottom: 1.5vw;
         color: white;
         font-size: 2.5vh;
+        @media (max-width: 935px) {
+      margin-bottom: 3vw;
+      font-size: 2vw;
+      }
         @media (max-width: 614px) {
       margin-bottom: 4vw;
       }

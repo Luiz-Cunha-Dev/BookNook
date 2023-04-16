@@ -507,8 +507,10 @@ const Container = styled.div`
         margin-right: 20px;
         cursor: pointer;
         @media (max-width: 935px) {
-          font-size: 6vw;
-          right: -80%;
+          height: 8vw;
+          width: 20vw;
+          font-size: 4vw;
+          right: -90%;
           bottom: 10%;
         }
         @media (max-width: 614px) {
@@ -523,6 +525,9 @@ const Container = styled.div`
           span {
             font-size: 20px;
             width: 110px;
+            @media (max-width: 935px) {
+          font-size: 1.8vw;
+        }
           }
         }
         span {
@@ -533,6 +538,9 @@ const Container = styled.div`
           padding-right: 10px;
           font-weight: 600;
           color: ${props=> props.darkMode === false ? "darkblue" : "black"};
+          @media (max-width: 935px) {
+          font-size: 1.8vw;
+        }
           @media (max-width: 614px) {
             display: none;
           }

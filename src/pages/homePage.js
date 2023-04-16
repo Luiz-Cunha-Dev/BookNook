@@ -174,7 +174,7 @@ const Container = styled.div`
       animation: fadetoDown 8s infinite alternate;
       @media (max-width: 935px) {
       width: 50%;
-      margin-bottom: -20vw;
+      margin-bottom: -30vw;
       }
       @media (max-width: 614px) {
       width: 90%;
@@ -194,6 +194,9 @@ const Container = styled.div`
     width: 43%;
     background-color: white;
     border-radius: 20px;
+    @media (max-width: 935px) {
+      margin-top: -70px;
+      }
     @media (max-width: 614px) {
         width: 90%;
         padding: 5%;

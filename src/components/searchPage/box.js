@@ -18,7 +18,7 @@ const Container = styled.div`
   @media (max-width: 935px) {
     width: 48%;
     height: 20vw;
-    margin-bottom: 4%;
+
   }
   @media (max-width: 614px) {
     width: 95%;
