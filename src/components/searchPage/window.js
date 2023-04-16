@@ -223,6 +223,14 @@ const Container = styled.div`
       margin-top: 12%;
       margin-bottom: 10%;
     }
+    @media (max-width: 935px) {
+      margin-left: 5%;
+      margin-right: 5%;
+      height: 60%;
+      width: 70%;
+      margin-top: 12%;
+      margin-bottom: 10%;
+    }
     @keyframes fadeInDown {
       0% {
         opacity: 0;
@@ -283,11 +291,17 @@ const Container = styled.div`
     @media (max-width: 614px) {
       font-size: 8vw;
     }
+    @media (max-width: 935px) {
+      font-size: 4.5vw;
+    }
     :hover {
       font-size: 2.4vw;
       @media (max-width: 614px) {
         font-size: 8vw;
       }
+      @media (max-width: 935px) {
+      font-size: 4.5vw;
+    }
     }
   }
   .trash {
@@ -296,11 +310,17 @@ const Container = styled.div`
     @media (max-width: 614px) {
       font-size: 7.2vw;
     }
+    @media (max-width: 935px) {
+      font-size: 4.2vw;
+    }
     :hover {
       font-size: 2.4vw;
       @media (max-width: 614px) {
         font-size: 8vw;
       }
+      @media (max-width: 935px) {
+      font-size: 4.2vw;
+    }
     }
   }
   .down {
@@ -369,6 +389,11 @@ const Container = styled.div`
       margin-left: 2%;
       margin-right: 2%;
     }
+    @media (max-width: 935px) {
+      width: 30%;
+      height: 30vw;
+      margin-right: 3%;
+    }
   }
   .informations {
     box-sizing: border-box;
@@ -383,12 +408,23 @@ const Container = styled.div`
       height: 75%;
       padding-right: 2%;
       justify-content: center;
+    } 
+    @media (max-width: 935px) {
+      margin-top: 6%;
+      width: 50%;
+      height: 75%;
+      padding-right: 2%;
+      justify-content: center;
     }
     h3 {
       color: ${props=> props.darkMode === false ? "black" : "white"};
       font-size: 1.5vw;
       margin-bottom: 6%;
       @media (max-width: 614px) {
+        margin-bottom: 6%;
+        font-size: 3vw;
+      }
+      @media (max-width: 935px) {
         margin-bottom: 6%;
         font-size: 3vw;
       }
@@ -437,6 +473,9 @@ const Stars = styled.div`
   align-items: center;
   @media (max-width: 614px) {
     font-size: 6vw;
+  }
+  @media (max-width: 935px) {
+    font-size: 3.5vw;
   }
   .star1 {
     color: ${props => props.grade >= 1 ? "#faab00" : "gray"};

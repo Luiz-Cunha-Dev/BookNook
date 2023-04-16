@@ -248,6 +248,10 @@ const Container = styled.div`
       font-size: 6vw;
       margin-bottom: 10%;
     }
+    @media (max-width: 935px) {
+      font-size: 3.5vw;
+      margin-bottom: 7%;
+    }
   }
   span{
     color: ${props=> props.darkMode === false ? "black" : "white"};
@@ -272,6 +276,14 @@ const Container = styled.div`
       margin-top: 12%;
       margin-bottom: 10%;
       padding-bottom: 5%;
+    }
+    @media (max-width: 935px) {
+      margin-left: 20%;
+      margin-right: 20%;
+      height: fit-content;
+      width: 60%;
+      margin-top: 3%;
+      margin-bottom: 10%;
     }
     @keyframes fadeInDown {
       0% {

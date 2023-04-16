@@ -20,6 +20,12 @@ const Container = styled.div`
     height: 40vw;
     margin-bottom: 4%;
   }
+
+  @media (max-width: 935px) {
+    width: 48%;
+    height: 20vw;
+    margin-bottom: 4%;
+  }
   .add{
     position: absolute;
     right: 20px;
@@ -85,6 +91,10 @@ const Container = styled.div`
         margin-bottom: 6%;
         font-size: 3vw;
       }
+      @media (max-width: 935px) {
+        margin-bottom: 6%;
+        font-size: 1.5vw;
+      }
     }
     .categories {
       display: flex;
@@ -104,6 +114,10 @@ const Container = styled.div`
         justify-content: center;
         @media (max-width: 614px) {
           font-size: 2.2vw;
+          margin-right: 2%;
+        }
+        @media (max-width: 935px) {
+          font-size: 1.2vw;
           margin-right: 2%;
         }
       }

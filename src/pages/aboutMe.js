@@ -122,6 +122,13 @@ const Container = styled.div`
       margin-left: 5%;
       margin-top: 12%;
     }
+    @media (max-width: 935px) {
+      width: 60%;
+      height: fit-content;
+      margin-right: 20%;
+      margin-left: 20%;
+      margin-top: 5%;
+    }
     @keyframes fadeInDown {
       0% {
         opacity: 0;
@@ -195,6 +202,9 @@ const Container = styled.div`
       @media (max-width: 614px) {
         height: 38vw;
       }
+      @media (max-width: 935px) {
+        height: 15vw;
+      }
     }
     .back-image {
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -214,6 +224,12 @@ const Container = styled.div`
         height: 25vw;
         margin-bottom: 10%;
       }
+      @media (max-width: 935px) {
+        margin-top: 0%;
+        width: 15vw;
+        height: 15vw;
+        margin-bottom: 10%;
+      }
     }
     .inputBox {
       position: relative;
@@ -221,6 +237,9 @@ const Container = styled.div`
       margin-bottom: 2.5vw;
       @media (max-width: 614px) {
         margin-bottom: 8.5vw;
+      }
+      @media (max-width: 935px) {
+        margin-bottom: 4.5vw;
       }
       span {
         font-size: 1em;

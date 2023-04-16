@@ -100,8 +100,8 @@ const Container = styled.div`
   position: relative;
   @media (max-width: 614px) {
     width: 100%;
-    height: 75%;
-    margin-top: 10%;
+    height: 80%;
+    margin-top: 4%;
     @media (max-height: 700px) {
       margin-top: 0%;
       height: 90%;
@@ -175,7 +175,7 @@ const Container = styled.div`
       font-size: 20px;
       @media (max-width: 614px) {
         height: 50px;
-        width: 60%;
+        width: 95%;
       }
     }
   }
@@ -259,6 +259,9 @@ const Back = styled.div`
     right: ${(props) => (props.status === "signup" ? "-90%" : "5%")};
     margin-top: 15%;
   }
+  @media (max-width: 935px) {
+    right: ${(props) => (props.status === "signup" ? "-90%" : "20%")};
+      }
   .userPicture {
     width: 200px;
     height: 200px;

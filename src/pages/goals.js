@@ -135,6 +135,14 @@ const Container = styled.div`
       margin-top: 12%;
       padding-bottom: 5%;
     }
+    @media (max-width: 935px) {
+      width: 80%;
+      height: fit-content;
+      margin-right: 10%;
+      margin-left: 10%;
+      margin-top: 6%;
+      padding-bottom: 5%;
+    }
     @keyframes fadeInDown {
       0% {
         opacity: 0;
@@ -151,6 +159,9 @@ const Container = styled.div`
       margin-bottom: 5vh;
       @media (max-width: 614px) {
         font-size: 6vw;
+      }
+      @media (max-width: 935px) {
+        margin-bottom: 10vh;
       }
     }
   }
@@ -195,6 +206,13 @@ const Container = styled.div`
           height: 30px;
           width: 40%;
           right: 30%;
+          top: 12%;
+        }
+        @media (max-width: 935px) {
+          font-size: 2vw;
+          height: 30px;
+          width: 30%;
+          right: 35%;
           top: 12%;
         }
       }
@@ -250,6 +268,10 @@ const Month = styled.div`
     width: 22vw;
     height: 22vw;
   }
+  @media (max-width: 935px) {
+    width: 15vw;
+    height: 15vw;
+  }
   :hover {
     background-color: ${props=> props.darkMode === false ? "#eeeeee" : "#212121"};
     font-size: 1vw;
@@ -257,6 +279,9 @@ const Month = styled.div`
       width: 15vw;
       @media (max-width: 614px) {
         width: 34vw;
+      }
+      @media (max-width: 935px) {
+        width: 23vw;
       }
     }
     span {
@@ -293,11 +318,18 @@ const Month = styled.div`
         font-size: 2vw;
         top: 16.5%;
       }
+      @media (max-width: 935px) {
+        font-size: 1.4vw;
+        top: 16.5%;
+      }
   }
   img {
     width: 14vw;
     @media (max-width: 614px) {
         width: 33vw;
+      }
+      @media (max-width: 935px) {
+        width: 23vw;
       }
   }
   .check {

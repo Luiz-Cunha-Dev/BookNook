@@ -78,6 +78,10 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         margin-bottom: 6%;
        font-size: 3vw;
       }
+      @media (max-width: 935px) {
+        margin-bottom: 6%;
+       font-size: 2vw;
+      }
     }
     p{
     border: solid 2px;
@@ -89,6 +93,9 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     color: ${props=> props.darkMode === false ? "black" : "white"};
     @media (max-width: 614px) {
        font-size: 4vw;
+      }
+      @media (max-width: 935px) {
+       font-size: 2.5vw;
       }
   }
     .categories{
@@ -109,6 +116,10 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         margin-bottom: 3%;
         @media (max-width: 614px) {
        font-size: 2.2vw;
+       margin-right: 2%;
+      }
+      @media (max-width: 935px) {
+       font-size: 1.5vw;
        margin-right: 2%;
       }
       }

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import background from "../imgs/principal-wallpaper.jpg";
 import icone from "../imgs/icone.png";
+import app from "../imgs/aplicativo.png";
 import { useEffect } from "react";
 
 export function HomePage() {
@@ -45,15 +46,8 @@ export function HomePage() {
             Defina metas pessoais para ler mais livros, assistir mais filmes ou
             jogar mais jogos
           </p>
-          <p>Compartilhe suas opiniões com amigos e familiares</p>
-          <p>
-            Com o nosso site, você pode manter um controle completo sobre suas
-            atividades de entretenimento e descobrir novas recomendações com
-            base nas avaliações de outros usuários. Junte-se a nós hoje e comece
-            a registrar suas aventuras de entretenimento!
-          </p>
         </div>
-        <img src="https://files.tecnoblog.net/wp-content/uploads/2018/12/apps-android-facebook-google-plus-700x394.jpg" />
+        <img src={app} />
       </div>
     </Container>
   );
@@ -70,7 +64,6 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   @media (max-width: 614px) {
-        overflow: auto;
       }
   .header {
     display: flex;
@@ -102,6 +95,9 @@ const Container = styled.div`
         width: 35%;
         display: flex;
         flex-direction: column;
+      }
+      @media (max-width: 935px) {
+      width: 40%;
       }
     }
     button {
@@ -175,32 +171,34 @@ const Container = styled.div`
       width: 600px;
       height: 100%;
       border-radius: 10px;
-      animation: up-down 3s infinite alternate;
+      animation: fadetoDown 8s infinite alternate;
+      @media (max-width: 935px) {
+      width: 50%;
+      margin-bottom: -20vw;
+      }
       @media (max-width: 614px) {
       width: 90%;
-      margin-bottom: 100px;
       }
     }
-    @keyframes up-down {
-      from {
-        transform: translateY(50px);
+    @keyframes fadetoDown {
+      0% {
+        transform: translate3d(0, 120%, 0);
       }
-      to {
-        transform: translateY(-50px);
+      100% {
+        transform: translate3d(0, 18%, 0);
       }
     }
-  }
   .text {
     padding: 2%;
     padding-top: 1% ;
-    width: 40%;
+    width: 43%;
     background-color: white;
     border-radius: 20px;
     @media (max-width: 614px) {
         width: 90%;
-        margin-bottom: 60px;
         padding: 5%;
     padding-top: 3% ;
+    margin-bottom: -50px;
       }
     h2 {
       width: 100%;
@@ -222,4 +220,5 @@ const Container = styled.div`
       }
     }
   }
+}
 `;

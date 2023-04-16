@@ -120,7 +120,7 @@ const Container = styled.div`
   transition: linear 1s ${(props) => (props.status === "signup" ? "1s" : "0s")};
   @media (max-width: 614px) {
     width: 90%;
-    height: 68%;
+    height: 73%;
     right: ${(props) => (props.status === "signin" ? "-90%" : "5%")};
     margin-top: -15%;
     @media (max-height: 700px) {
@@ -128,6 +128,9 @@ const Container = styled.div`
       height: 80%;
   }
   }
+  @media (max-width: 935px) {
+    right: ${(props) => (props.status === "signin" ? "-90%" : "20%")};
+      }
   ::before {
     content: "";
     position: absolute;
@@ -191,7 +194,7 @@ const Container = styled.div`
       font-size: 20px;
       @media (max-width: 614px) {
         height: 50px;
-        width: 60%;
+        width: 95%;
       }
     }
   }

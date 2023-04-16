@@ -26,6 +26,13 @@ box-sizing: border-box;
   padding-left: 2%;
   padding-right: 2%
       }
+      @media (max-width: 935px) {
+    width: 95%;
+  height: 9vw;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-bottom: 15px;
+      }
   .save{
     border-radius: 15px;
     font-size: 1vw;
@@ -38,6 +45,11 @@ box-sizing: border-box;
      width: 12vw;
      font-size: 3vw;
       }
+      @media (max-width: 935px) {
+     width: 8vw;
+     height: 3vw;
+     font-size: 2vw;
+      }
   }
   .title{
     box-sizing: border-box;
@@ -48,6 +60,10 @@ box-sizing: border-box;
     @media (max-width: 614px) {
       font-size: 3vw;
       margin-right: 9%;
+      }
+      @media (max-width: 935px) {
+      font-size: 2vw;
+      margin-right: 6%;
       }
   }
   .goal{
@@ -66,6 +82,10 @@ box-sizing: border-box;
       top: 5px;
       @media (max-width: 614px) {
       font-size: 2.5vw;
+      }
+      @media (max-width: 935px) {
+        margin-top: 3%;
+      font-size: 1.6vw;
       }
     }
     button:nth-child(2){
@@ -93,6 +113,10 @@ box-sizing: border-box;
       top: 5px;
       @media (max-width: 614px) {
       font-size: 2.5vw;
+      }
+      @media (max-width: 935px) {
+        margin-top: 3%;
+      font-size: 1.6vw;
       }
     }
     button:nth-child(2){
@@ -123,6 +147,11 @@ box-sizing: border-box;
       height: 6vw;
       font-size: 4vw;
       }
+      @media (max-width: 935px) {
+      width: 3vw;
+      height: 3vw;
+      font-size: 2vw;
+      }
     }
     p{
       box-sizing: border-box;
@@ -140,6 +169,11 @@ box-sizing: border-box;
       width: 7vw;
       height: 6vw;
       font-size: 3vw;
+      }
+      @media (max-width: 935px) {
+      width: 4vw;
+      height: 3vw;
+      font-size: 2vw;
       }
     }
 `;

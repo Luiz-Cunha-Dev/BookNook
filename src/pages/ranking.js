@@ -267,6 +267,13 @@ const Container = styled.div`
       margin-left: 5%;
       margin-top: 6%;
     }
+    @media (max-width: 935px) {
+      width: 60%;
+      height: 75%;
+      margin-right: 20%;
+      margin-left: 20%;
+      margin-top: 6%;
+    }
     @keyframes fadeInDown {
       0% {
         opacity: 0;
@@ -365,6 +372,9 @@ const Stars = styled.div`
   align-items: center;
   @media (max-width: 614px) {
     font-size: 6vw;
+  }
+  @media (max-width: 935px) {
+    font-size: 3.5vw;
   }
   .star1 {
     color: ${(props) => (props.grade >= 1 ? "#faab00" : "gray")};

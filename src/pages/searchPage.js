@@ -513,6 +513,11 @@ const Container = styled.div`
           right: -40%;
           bottom: 10%;
         }
+        @media (max-width: 935px) {
+          font-size: 6vw;
+          right: -80%;
+          bottom: 10%;
+        }
         :hover {
           font-size: 50px;
           span {
@@ -619,6 +624,9 @@ const Container = styled.div`
         @media (max-width: 614px) {
           font-size: 2.8vw;
         }
+        @media (max-width: 935px) {
+          font-size: 1.5vw;
+        }
       }
       i {
         position: absolute;
@@ -682,6 +690,9 @@ const Stars = styled.div`
   align-items: center;
   @media (max-width: 614px) {
     font-size: 6vw;
+  }
+  @media (max-width: 935px) {
+    font-size: 3vw;
   }
   .star1 {
     color: ${(props) => (props.grade >= 1 ? "#faab00" : "gray")};

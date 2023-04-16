@@ -100,6 +100,14 @@ const Container = styled.div`
       margin-top: 50%;
       margin-bottom: 10%;
     }
+    @media (max-width: 935px) {
+      margin-left: 5%;
+      margin-right: 5%;
+      width: 40%;
+      height: 40%;
+      margin-top: 20%;
+      margin-bottom: 10%;
+    }
     @keyframes fadeInDown {
       0% {
         opacity: 0;
