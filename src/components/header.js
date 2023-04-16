@@ -46,12 +46,18 @@ export function Header() {
         visible={true}
     />)
     }
-    
+
     logout(userData.token).then(() => { 
-      localStorage.removeItem("userData"); setDisabled(false); setButton("Sair"); navigate("/") })
+      localStorage.removeItem("userData");
+       setDisabled(false);
+        setButton("Sair");
+         navigate("/") 
+        })
       .catch(()=>{
+        localStorage.removeItem("userData")
         setDisabled(false);
         setButton("Sair");
+        navigate("/") 
       })
   }
 
