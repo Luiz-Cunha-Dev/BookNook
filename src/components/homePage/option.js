@@ -35,9 +35,10 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       line-height: 20px;
       }
   @media (max-width: 614px) {
-      width: 41vw;
-      height: 38.5vw;
+      width: 40vw;
+      height: 37.5vw;
       margin-right: 3%;
+      margin-bottom: 10px;
       font-size: 4vw;
       line-height: 4vw;
       }
@@ -85,9 +86,9 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       margin-bottom: 10px;
       }
     @media (max-width: 614px) {
-      width: 18vw;
-      height: 18vw;
-      margin-bottom: 10px;
+      width: 17vw;
+      height: 17vw;
+      margin-bottom: 8px;
       }
   }
   :hover{

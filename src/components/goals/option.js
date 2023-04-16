@@ -48,6 +48,7 @@ box-sizing: border-box;
       }
     @media (max-width: 614px) {
      width: 12vw;
+     height: 6vw;
      font-size: 3vw;
       }
   }
