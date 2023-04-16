@@ -265,6 +265,8 @@ const Container = styled.div`
       left: ${(props) => props.menu === "-20vw" || props.exit === true ? "-85%" : "0%"};
       }
     @media (max-width: 614px) {
+      overflow: none;
+      font-size: 30px;
       width: 85%;
       left: ${(props) => props.menu === "-20vw" || props.exit === true ? "-85%" : "0%"};
       }
@@ -322,6 +324,7 @@ const Container = styled.div`
       }
         @media (max-width: 614px) {
       margin-bottom: 4vw;
+      font-size: 2.5vh;
       }
         .icon {
           font-size: 30px;

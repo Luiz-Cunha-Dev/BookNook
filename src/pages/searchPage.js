@@ -528,6 +528,9 @@ const Container = styled.div`
             @media (max-width: 935px) {
           font-size: 1.8vw;
         }
+        @media (max-width: 614px) {
+          font-size: 20px;
+        }
           }
         }
         span {
