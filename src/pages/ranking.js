@@ -260,18 +260,18 @@ const Container = styled.div`
     animation-duration: 1s;
     animation-name: fadeInDown;
     margin-bottom: 10%;
-    @media (max-width: 614px) {
-      width: 90%;
-      height: 75%;
-      margin-right: 5%;
-      margin-left: 5%;
-      margin-top: 6%;
-    }
     @media (max-width: 935px) {
       width: 60%;
       height: 75%;
       margin-right: 20%;
       margin-left: 20%;
+      margin-top: 6%;
+    }
+    @media (max-width: 614px) {
+      width: 90%;
+      height: 75%;
+      margin-right: 5%;
+      margin-left: 5%;
       margin-top: 6%;
     }
     @keyframes fadeInDown {
@@ -370,11 +370,11 @@ const Stars = styled.div`
   color: grey;
   display: flex;
   align-items: center;
-  @media (max-width: 614px) {
-    font-size: 6vw;
-  }
   @media (max-width: 935px) {
     font-size: 3.5vw;
+  }
+  @media (max-width: 614px) {
+    font-size: 6vw;
   }
   .star1 {
     color: ${(props) => (props.grade >= 1 ? "#faab00" : "gray")};

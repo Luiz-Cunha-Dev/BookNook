@@ -74,13 +74,13 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       color: ${props=> props.darkMode === false ? "black" : "white"};
       font-size: 1vw; 
       margin-bottom: 3%;
-      @media (max-width: 614px) {
-        margin-bottom: 6%;
-       font-size: 3vw;
-      }
       @media (max-width: 935px) {
         margin-bottom: 6%;
        font-size: 2vw;
+      }
+      @media (max-width: 614px) {
+        margin-bottom: 6%;
+       font-size: 3vw;
       }
     }
     p{
@@ -91,11 +91,11 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     bottom: 0px;
     font-size: 1.2vw;
     color: ${props=> props.darkMode === false ? "black" : "white"};
+    @media (max-width: 935px) {
+       font-size: 2.5vw;
+      }
     @media (max-width: 614px) {
        font-size: 4vw;
-      }
-      @media (max-width: 935px) {
-       font-size: 2.5vw;
       }
   }
     .categories{
@@ -114,12 +114,12 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         justify-content: center;
         text-align: center;
         margin-bottom: 3%;
-        @media (max-width: 614px) {
-       font-size: 2.2vw;
+        @media (max-width: 935px) {
+       font-size: 1.5vw;
        margin-right: 2%;
       }
-      @media (max-width: 935px) {
-       font-size: 1.5vw;
+        @media (max-width: 614px) {
+       font-size: 2.2vw;
        margin-right: 2%;
       }
       }

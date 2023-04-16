@@ -91,13 +91,13 @@ const Container = styled.div`
     }
     .buttons{
       width: 17vw;
+      @media (max-width: 935px) {
+      width: 40%;
+      }
       @media (max-width: 614px) {
         width: 35%;
         display: flex;
         flex-direction: column;
-      }
-      @media (max-width: 935px) {
-      width: 40%;
       }
     }
     button {

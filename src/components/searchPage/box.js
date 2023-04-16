@@ -15,15 +15,14 @@ const Container = styled.div`
   margin-bottom: 30px;
   margin-left: 10px;
   position: relative;
-  @media (max-width: 614px) {
-    width: 95%;
-    height: 40vw;
-    margin-bottom: 4%;
-  }
-
   @media (max-width: 935px) {
     width: 48%;
     height: 20vw;
+    margin-bottom: 4%;
+  }
+  @media (max-width: 614px) {
+    width: 95%;
+    height: 40vw;
     margin-bottom: 4%;
   }
   .add{
@@ -87,13 +86,13 @@ const Container = styled.div`
       color: ${props=> props.darkMode === false ? "black" : "white"};
       font-size: 1vw;
       margin-bottom: 6%;
-      @media (max-width: 614px) {
-        margin-bottom: 6%;
-        font-size: 3vw;
-      }
       @media (max-width: 935px) {
         margin-bottom: 6%;
         font-size: 1.5vw;
+      }
+      @media (max-width: 614px) {
+        margin-bottom: 6%;
+        font-size: 3vw;
       }
     }
     .categories {
@@ -112,12 +111,12 @@ const Container = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        @media (max-width: 614px) {
-          font-size: 2.2vw;
-          margin-right: 2%;
-        }
         @media (max-width: 935px) {
           font-size: 1.2vw;
+          margin-right: 2%;
+        }
+        @media (max-width: 614px) {
+          font-size: 2.2vw;
           margin-right: 2%;
         }
       }

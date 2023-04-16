@@ -258,21 +258,21 @@ const Container = styled.div`
     color: white;
     font-size: 30px;
     font-weight: bold;
+    @media (max-width: 935px) {
+      width: 35%;
+      left: ${(props) => props.menu === "-20vw" || props.exit === true ? "-85%" : "0%"};
+      }
     @media (max-width: 614px) {
       width: 85%;
       left: ${(props) => props.menu === "-20vw" || props.exit === true ? "-85%" : "0%"};
       }
-      @media (max-width: 935px) {
-      width: 35%;
-      left: ${(props) => props.menu === "-20vw" || props.exit === true ? "-85%" : "0%"};
-      }
     img {
       height: 15vw;
-      @media (max-width: 614px) {
-        height: 60vw;
-      }
       @media (max-width: 935px) {
         height: 20vw;
+      }
+      @media (max-width: 614px) {
+        height: 60vw;
       }
     }
     .back-image {

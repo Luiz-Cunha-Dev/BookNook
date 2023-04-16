@@ -127,20 +127,20 @@ const Container = styled.div`
     animation-duration: 1s;
     animation-name: fadeInDown;
     margin-bottom: 5%;
-    @media (max-width: 614px) {
-      width: 90%;
-      height: fit-content;
-      margin-right: 5%;
-      margin-left: 5%;
-      margin-top: 12%;
-      padding-bottom: 5%;
-    }
     @media (max-width: 935px) {
       width: 80%;
       height: fit-content;
       margin-right: 10%;
       margin-left: 10%;
       margin-top: 6%;
+      padding-bottom: 5%;
+    }
+    @media (max-width: 614px) {
+      width: 90%;
+      height: fit-content;
+      margin-right: 5%;
+      margin-left: 5%;
+      margin-top: 12%;
       padding-bottom: 5%;
     }
     @keyframes fadeInDown {
@@ -157,11 +157,11 @@ const Container = styled.div`
       color: ${props=> props.darkMode === false ? "darkblue" : "white"};
       font-size: 30px;
       margin-bottom: 5vh;
-      @media (max-width: 614px) {
-        font-size: 6vw;
-      }
       @media (max-width: 935px) {
         margin-bottom: 10vh;
+      }
+      @media (max-width: 614px) {
+        font-size: 6vw;
       }
     }
   }
@@ -201,18 +201,18 @@ const Container = styled.div`
         color: ${props=> props.darkMode === false ? "darkblue" : "white"};
         background-color: ${props=> props.darkMode === false ? "white" : "#505050"};
         font-size: 22px;
-        @media (max-width: 614px) {
-          font-size: 3.4vw;
-          height: 30px;
-          width: 40%;
-          right: 30%;
-          top: 12%;
-        }
         @media (max-width: 935px) {
           font-size: 2vw;
           height: 30px;
           width: 30%;
           right: 35%;
+          top: 12%;
+        }
+        @media (max-width: 614px) {
+          font-size: 3.4vw;
+          height: 30px;
+          width: 40%;
+          right: 30%;
           top: 12%;
         }
       }
@@ -264,24 +264,24 @@ const Month = styled.div`
   overflow: hidden;
   cursor: pointer;
   background-color: ${props=> props.darkMode === false ? "white" : "#202020"};
-  @media (max-width: 614px) {
-    width: 22vw;
-    height: 22vw;
-  }
   @media (max-width: 935px) {
     width: 15vw;
     height: 15vw;
+  }
+  @media (max-width: 614px) {
+    width: 22vw;
+    height: 22vw;
   }
   :hover {
     background-color: ${props=> props.darkMode === false ? "#eeeeee" : "#212121"};
     font-size: 1vw;
     img {
       width: 15vw;
-      @media (max-width: 614px) {
-        width: 34vw;
-      }
       @media (max-width: 935px) {
         width: 23vw;
+      }
+      @media (max-width: 614px) {
+        width: 34vw;
       }
     }
     span {
@@ -314,22 +314,22 @@ const Month = styled.div`
     top: 16%;
     color: white;
     font-weight: bold;
-    @media (max-width: 614px) {
-        font-size: 2vw;
+    @media (max-width: 935px) {
+        font-size: 1.4vw;
         top: 16.5%;
       }
-      @media (max-width: 935px) {
-        font-size: 1.4vw;
+    @media (max-width: 614px) {
+        font-size: 2vw;
         top: 16.5%;
       }
   }
   img {
     width: 14vw;
+    @media (max-width: 935px) {
+        width: 23vw;
+      }
     @media (max-width: 614px) {
         width: 33vw;
-      }
-      @media (max-width: 935px) {
-        width: 23vw;
       }
   }
   .check {

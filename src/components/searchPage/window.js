@@ -215,19 +215,19 @@ const Container = styled.div`
     position: relative;
     animation-duration: 1s;
     animation-name: fadeInDown;
-    @media (max-width: 614px) {
-      margin-left: 5%;
-      margin-right: 5%;
-      height: 80%;
-      width: 90%;
-      margin-top: 12%;
-      margin-bottom: 10%;
-    }
     @media (max-width: 935px) {
       margin-left: 5%;
       margin-right: 5%;
       height: 60%;
       width: 70%;
+      margin-top: 12%;
+      margin-bottom: 10%;
+    }
+    @media (max-width: 614px) {
+      margin-left: 5%;
+      margin-right: 5%;
+      height: 80%;
+      width: 90%;
       margin-top: 12%;
       margin-bottom: 10%;
     }
@@ -288,39 +288,39 @@ const Container = styled.div`
   .edit {
     font-size: 2.2vw;
     color: darkblue;
-    @media (max-width: 614px) {
-      font-size: 8vw;
-    }
     @media (max-width: 935px) {
       font-size: 4.5vw;
     }
+    @media (max-width: 614px) {
+      font-size: 8vw;
+    }
     :hover {
       font-size: 2.4vw;
-      @media (max-width: 614px) {
-        font-size: 8vw;
-      }
       @media (max-width: 935px) {
       font-size: 4.5vw;
     }
+      @media (max-width: 614px) {
+        font-size: 8vw;
+      }
     }
   }
   .trash {
     color: red;
     font-size: 1.9vw;
-    @media (max-width: 614px) {
-      font-size: 7.2vw;
-    }
     @media (max-width: 935px) {
       font-size: 4.2vw;
     }
+    @media (max-width: 614px) {
+      font-size: 7.2vw;
+    }
     :hover {
       font-size: 2.4vw;
-      @media (max-width: 614px) {
-        font-size: 8vw;
-      }
       @media (max-width: 935px) {
       font-size: 4.2vw;
     }
+      @media (max-width: 614px) {
+        font-size: 8vw;
+      }
     }
   }
   .down {
@@ -383,16 +383,16 @@ const Container = styled.div`
     margin-right: 40px;
     overflow: hidden;
     border-radius: 10px;
+    @media (max-width: 935px) {
+      width: 30%;
+      height: 30vw;
+      margin-right: 3%;
+    }
     @media (max-width: 614px) {
       width: 50%;
       height: 60vw;
       margin-left: 2%;
       margin-right: 2%;
-    }
-    @media (max-width: 935px) {
-      width: 30%;
-      height: 30vw;
-      margin-right: 3%;
     }
   }
   .informations {
@@ -402,13 +402,6 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     overflow: auto;
-    @media (max-width: 614px) {
-      margin-top: 6%;
-      width: 50%;
-      height: 75%;
-      padding-right: 2%;
-      justify-content: center;
-    } 
     @media (max-width: 935px) {
       margin-top: 6%;
       width: 50%;
@@ -416,15 +409,22 @@ const Container = styled.div`
       padding-right: 2%;
       justify-content: center;
     }
+    @media (max-width: 614px) {
+      margin-top: 6%;
+      width: 50%;
+      height: 75%;
+      padding-right: 2%;
+      justify-content: center;
+    } 
     h3 {
       color: ${props=> props.darkMode === false ? "black" : "white"};
       font-size: 1.5vw;
       margin-bottom: 6%;
-      @media (max-width: 614px) {
+      @media (max-width: 935px) {
         margin-bottom: 6%;
         font-size: 3vw;
       }
-      @media (max-width: 935px) {
+      @media (max-width: 614px) {
         margin-bottom: 6%;
         font-size: 3vw;
       }
@@ -471,11 +471,11 @@ const Stars = styled.div`
   color: grey;
   display: flex;
   align-items: center;
-  @media (max-width: 614px) {
-    font-size: 6vw;
-  }
   @media (max-width: 935px) {
     font-size: 3.5vw;
+  }
+  @media (max-width: 614px) {
+    font-size: 6vw;
   }
   .star1 {
     color: ${props => props.grade >= 1 ? "#faab00" : "gray"};

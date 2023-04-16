@@ -253,15 +253,15 @@ const Back = styled.div`
   transition: linear 1s ${(props) => (props.status === "signin" ? "1s" : "0s")};
   position: fixed;
   right: ${(props) => (props.status === "signup" ? "-40%" : "36%")};
+  @media (max-width: 935px) {
+    right: ${(props) => (props.status === "signup" ? "-90%" : "20%")};
+      }
   @media (max-width: 614px) {
     width: 90%;
     height: 90%;
     right: ${(props) => (props.status === "signup" ? "-90%" : "5%")};
     margin-top: 15%;
   }
-  @media (max-width: 935px) {
-    right: ${(props) => (props.status === "signup" ? "-90%" : "20%")};
-      }
   .userPicture {
     width: 200px;
     height: 200px;

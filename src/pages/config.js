@@ -60,18 +60,18 @@ const Container = styled.div`
     animation-duration: 1s;
     animation-name: fadeInDown;
     margin-bottom: 5%;
+    @media (max-width: 935px) {
+      width: 60%;
+      height: 70%;
+      margin-right: 20%;
+      margin-left: 20%;
+      margin-top: 6%;
+      }
     @media (max-width: 614px) {
       width: 90%;
       height: 70%;
       margin-right: 5%;
       margin-left: 5%;
-      margin-top: 6%;
-      }
-      @media (max-width: 935px) {
-      width: 60%;
-      height: 70%;
-      margin-right: 20%;
-      margin-left: 20%;
       margin-top: 6%;
       }
     @keyframes fadeInDown {

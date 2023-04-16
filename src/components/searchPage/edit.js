@@ -316,17 +316,17 @@ const Container2 = styled.div`
     position: relative;
     animation-duration: 1s;
     animation-name: fadeInDown;
+    @media (max-width: 935px) {
+      margin-left: 5%;
+      margin-right: 5%;
+      width: 60%;
+      margin-bottom: 12%;
+    }
     @media (max-width: 614px) {
       margin-left: 5%;
       margin-right: 5%;
       width: 90%;
       margin-top: 10%;
-      margin-bottom: 12%;
-    }
-    @media (max-width: 935px) {
-      margin-left: 5%;
-      margin-right: 5%;
-      width: 60%;
       margin-bottom: 12%;
     }
     @keyframes fadeInDown {
@@ -383,17 +383,17 @@ const Container2 = styled.div`
           background-color: ${props=> props.darkMode === false ? "white" : "#505050"};
           margin-left: 4%;
           margin-right: 4%;
-          @media (max-width: 614px) {
-            width: 25vw;
-            margin-left: 1.5%;
-            margin-right: 1.5%;
-            font-size: 3.1vw;
-          }
           @media (max-width: 935px) {
             width: 17vw;
             margin-left: 1.5%;
             margin-right: 1.5%;
             font-size: 1.8vw;
+          }
+          @media (max-width: 614px) {
+            width: 25vw;
+            margin-left: 1.5%;
+            margin-right: 1.5%;
+            font-size: 3.1vw;
           }
         }
       }
@@ -411,11 +411,11 @@ const Container2 = styled.div`
         flex-wrap: wrap;
         justify-content: center;
         margin-bottom: 5%;
-        @media (max-width: 614px) {
-          width: 90%;
-        }
         @media (max-width: 935px) {
           width: 40%;
+        }
+        @media (max-width: 614px) {
+          width: 90%;
         }
         div:nth-child(1) {
           border-top-left-radius: 10px;
@@ -450,15 +450,6 @@ const Container2 = styled.div`
         transition: all 0.3s ease-in-out;
         margin-bottom: 30px;
         color: ${props=> props.darkMode === false ? "black" : "white"};
-        @media (max-width: 614px) {
-          margin-bottom: 5%;
-          margin-top: 2%;
-          width: 90%;
-          max-width: 90%;
-          min-width: 90%;
-          min-height: 9vh;
-          font-size: 3.2vw;
-        }
         @media (max-width: 935px) {
           margin-bottom: 5%;
           margin-top: 2%;
@@ -467,6 +458,15 @@ const Container2 = styled.div`
           min-width: 90%;
           min-height: 9vh;
           font-size: 2.0vw;
+        }
+        @media (max-width: 614px) {
+          margin-bottom: 5%;
+          margin-top: 2%;
+          width: 90%;
+          max-width: 90%;
+          min-width: 90%;
+          min-height: 9vh;
+          font-size: 3.2vw;
         }
         ::-webkit-scrollbar {
           border-radius: 50px;
@@ -579,24 +579,24 @@ const Grade = styled.div`
   align-items: center;
   color: white;
   cursor: pointer;
-  @media (max-width: 614px) {
-    width: 12vw;
-    height: 10vw;
-    font-size: 3vw;
-  }
   @media (max-width: 935px) {
     width: 4vw;
     height: 4vw;
     font-size: 2vw;
   }
+  @media (max-width: 614px) {
+    width: 12vw;
+    height: 10vw;
+    font-size: 3vw;
+  }
   :hover {
     font-size: 1.2vw;
     font-weight: bold;
-    @media (max-width: 614px) {
-      font-size: 3vw;
-    }
     @media (max-width: 935px) {
       font-size: 2vw;
+    }
+    @media (max-width: 614px) {
+      font-size: 3vw;
     }
   }
 `;

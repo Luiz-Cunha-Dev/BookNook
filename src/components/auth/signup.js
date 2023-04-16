@@ -118,6 +118,9 @@ const Container = styled.div`
   position: fixed;
   right: ${(props) => (props.status === "signin" ? "-40%" : "36%")};
   transition: linear 1s ${(props) => (props.status === "signup" ? "1s" : "0s")};
+  @media (max-width: 935px) {
+    right: ${(props) => (props.status === "signin" ? "-90%" : "20%")};
+      }
   @media (max-width: 614px) {
     width: 90%;
     height: 73%;
@@ -128,9 +131,6 @@ const Container = styled.div`
       height: 80%;
   }
   }
-  @media (max-width: 935px) {
-    right: ${(props) => (props.status === "signin" ? "-90%" : "20%")};
-      }
   ::before {
     content: "";
     position: absolute;

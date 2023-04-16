@@ -244,13 +244,13 @@ const Container = styled.div`
     font-size: 30px;
     margin-bottom: 3%;
     margin-top: 2%;
-    @media (max-width: 614px) {
-      font-size: 6vw;
-      margin-bottom: 10%;
-    }
     @media (max-width: 935px) {
       font-size: 3.5vw;
       margin-bottom: 7%;
+    }
+    @media (max-width: 614px) {
+      font-size: 6vw;
+      margin-bottom: 10%;
     }
   }
   span{
@@ -268,6 +268,14 @@ const Container = styled.div`
     position: relative;
     animation-duration: 1s;
     animation-name: fadeInDown;
+    @media (max-width: 935px) {
+      margin-left: 20%;
+      margin-right: 20%;
+      height: fit-content;
+      width: 60%;
+      margin-top: 3%;
+      margin-bottom: 10%;
+    }
     @media (max-width: 614px) {
       margin-left: 5%;
       margin-right: 5%;
@@ -276,14 +284,6 @@ const Container = styled.div`
       margin-top: 12%;
       margin-bottom: 10%;
       padding-bottom: 5%;
-    }
-    @media (max-width: 935px) {
-      margin-left: 20%;
-      margin-right: 20%;
-      height: fit-content;
-      width: 60%;
-      margin-top: 3%;
-      margin-bottom: 10%;
     }
     @keyframes fadeInDown {
       0% {

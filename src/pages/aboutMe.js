@@ -115,19 +115,19 @@ const Container = styled.div`
     animation-duration: 1s;
     animation-name: fadeInDown;
     margin-bottom: 5%;
-    @media (max-width: 614px) {
-      width: 90%;
-      height: fit-content;
-      margin-right: 5%;
-      margin-left: 5%;
-      margin-top: 12%;
-    }
     @media (max-width: 935px) {
       width: 60%;
       height: fit-content;
       margin-right: 20%;
       margin-left: 20%;
       margin-top: 5%;
+    }
+    @media (max-width: 614px) {
+      width: 90%;
+      height: fit-content;
+      margin-right: 5%;
+      margin-left: 5%;
+      margin-top: 12%;
     }
     @keyframes fadeInDown {
       0% {
@@ -199,11 +199,11 @@ const Container = styled.div`
     }
     img {
       height: 14vw;
-      @media (max-width: 614px) {
-        height: 38vw;
-      }
       @media (max-width: 935px) {
         height: 15vw;
+      }
+      @media (max-width: 614px) {
+        height: 38vw;
       }
     }
     .back-image {
@@ -218,16 +218,16 @@ const Container = styled.div`
       border-radius: 120px;
       margin-bottom: 15%;
       overflow: hidden;
-      @media (max-width: 614px) {
-        margin-top: 0%;
-        width: 25vw;
-        height: 25vw;
-        margin-bottom: 10%;
-      }
       @media (max-width: 935px) {
         margin-top: 0%;
         width: 15vw;
         height: 15vw;
+        margin-bottom: 10%;
+      }
+      @media (max-width: 614px) {
+        margin-top: 0%;
+        width: 25vw;
+        height: 25vw;
         margin-bottom: 10%;
       }
     }
@@ -235,11 +235,11 @@ const Container = styled.div`
       position: relative;
       width: 100%;
       margin-bottom: 2.5vw;
-      @media (max-width: 614px) {
-        margin-bottom: 8.5vw;
-      }
       @media (max-width: 935px) {
         margin-bottom: 4.5vw;
+      }
+      @media (max-width: 614px) {
+        margin-bottom: 8.5vw;
       }
       span {
         font-size: 1em;

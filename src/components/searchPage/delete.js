@@ -93,19 +93,19 @@ const Container = styled.div`
     animation-duration: 1s;
     animation-name: fadeInDown;
     margin-top: 8%;
-    @media (max-width: 614px) {
-      margin-left: 5%;
-      margin-right: 5%;
-      width: 90%;
-      margin-top: 50%;
-      margin-bottom: 10%;
-    }
     @media (max-width: 935px) {
       margin-left: 5%;
       margin-right: 5%;
       width: 40%;
       height: 40%;
       margin-top: 20%;
+      margin-bottom: 10%;
+    }
+    @media (max-width: 614px) {
+      margin-left: 5%;
+      margin-right: 5%;
+      width: 90%;
+      margin-top: 50%;
       margin-bottom: 10%;
     }
     @keyframes fadeInDown {
