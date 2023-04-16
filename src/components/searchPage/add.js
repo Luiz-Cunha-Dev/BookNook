@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { IoIosCloseCircle } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { createNewEntertainment, getAllCategories } from "../../services";
+import { ThreeDots } from 'react-loader-spinner'
 
 export function Add({ setAdd, add, categoryName }) {
   let userData = JSON.parse(localStorage.getItem("userData"));
@@ -13,6 +14,8 @@ export function Add({ setAdd, add, categoryName }) {
   const [category3Id, setCategory3Id] = useState("");
   const [categoryList, setCategoryList] = useState([]);
   const [comment, setComment] = useState("");
+  const [button, setButton] = useState("Salvar");
+  const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
     getAllCategories(userData.token).then((res) => {
@@ -22,6 +25,17 @@ export function Add({ setAdd, add, categoryName }) {
 
   function sendForm(e) {
     e.preventDefault();
+    setDisabled(true);
+    setButton(<ThreeDots
+      height="80"
+      width="80"
+      radius="9"
+      color="white"
+      ariaLabel="three-dots-loading"
+      wrapperStyle={{}}
+      wrapperClassName=""
+      visible={true}
+  />)
 
     if (name !== "" && imageUrl !== "" && grade.length === 1) {
       createNewEntertainment(userData.token, {
@@ -41,8 +55,17 @@ export function Add({ setAdd, add, categoryName }) {
         setCategory3Id("");
         setGrade([]);
         setComment("")
+        setDisabled(false);
+        setButton("Salvar");
         setAdd(true);
-      });
+      })
+      .catch(()=>{
+        setDisabled(false);
+        setButton("Salvar");
+      })
+    }else{
+      setDisabled(false);
+      setButton("Salvar");
     }
   }
 
@@ -121,8 +144,8 @@ export function Add({ setAdd, add, categoryName }) {
               onChange={(e) => setCategory1Id(e.target.value)}
             >
               <option value="">Categoria 1</option>
-              {categoryList.map((c) => (
-                <option value={c.id}>{c.name}</option>
+              {categoryList.map((c, i) => (
+                <option key={i} value={c.id}>{c.name}</option>
               ))}
             </select>
             <select
@@ -130,8 +153,8 @@ export function Add({ setAdd, add, categoryName }) {
               onChange={(e) => setCategory2Id(e.target.value)}
             >
               <option value="">Categoria 2</option>
-              {categoryList.map((c) => (
-                <option value={c.id}>{c.name}</option>
+              {categoryList.map((c, i) => (
+                <option key={i} value={c.id}>{c.name}</option>
               ))}
             </select>
             <select
@@ -139,8 +162,8 @@ export function Add({ setAdd, add, categoryName }) {
               onChange={(e) => setCategory3Id(e.target.value)}
             >
               <option value="">Categoria 3</option>
-              {categoryList.map((c) => (
-                <option value={c.id}>{c.name}</option>
+              {categoryList.map((c, i) => (
+                <option key={i} value={c.id}>{c.name}</option>
               ))}
             </select>
           </div>
@@ -218,7 +241,7 @@ export function Add({ setAdd, add, categoryName }) {
             />
             <i></i>
           </div>
-          <button type="submit">Salvar</button>
+          <button disabled={disabled} type="submit">{button}</button>
         </form>
       </div>
     </Container>
@@ -408,6 +431,9 @@ const Container = styled.div`
         cursor: pointer;
         transition: linear 0.1s;
         margin-bottom: 10%;
+        display: flex;
+      justify-content: center;
+      align-items: center;
         @media (max-width: 614px) {
           width: 50%;
           height: 12vw;

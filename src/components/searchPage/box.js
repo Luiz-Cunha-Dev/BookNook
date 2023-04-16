@@ -20,7 +20,21 @@ const Container = styled.div`
     height: 40vw;
     margin-bottom: 4%;
   }
-  cursor: pointer;
+  .add{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    font-size: 40px;
+    color: darkblue;
+    cursor: pointer;
+    @media (max-width: 614px) {
+    right: 12px;
+    bottom: 12px;
+  }
+    :hover{
+      font-size: 41px;
+    }
+  }
   .back {
     width: 100%;
     height: 100%;

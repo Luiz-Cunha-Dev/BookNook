@@ -6,21 +6,24 @@ import { Header } from "../components/header";
 import { FaSearch } from "react-icons/fa";
 import { MdOutlineAdd } from "react-icons/md";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
-import filme from "../imgs/entretenimentos/filmes.jpg";
 import { Box } from "../components/searchPage/box";
 import { Window } from "../components/searchPage/window";
 import { Add } from "../components/searchPage/add";
+import { HiPlusCircle } from "react-icons/hi";
 import {
+  addExistingEntertainment,
   getAllCategories,
   getAllntertainment,
   getEntertainmentByType,
 } from "../services";
+import load from "../imgs/blocks.gif"
 
 export function SearchPage() {
   const { categoryName } = useParams();
   const [close, setClose] = useState(true);
   const [add, setAdd] = useState(true);
   const [edit, setEdit] = useState(true);
+  const [delet, setDelet] = useState(true);
   const [entertainmentList, setEntertainmentList] = useState([]);
   const [categoryList, setcategoryList] = useState([]);
   const [openEntertainment, setOpenEntertainment] = useState();
@@ -167,63 +170,65 @@ export function SearchPage() {
     }
   }
 
+  /* eslint-disable */
+
   useEffect(() => {
-    load()
-  }, [add, edit]);
-
-  const load = async () => {
-    if (categoryNameCorrection() === "Tudo") {
-      await getAllntertainment(userData.token).then((res) => {
-        setEntertainmentList(res.data);
-      });
-    } else if (categoryNameCorrection() === "Entretenimeto") {
-      let list = [];
-      await getEntertainmentByType(userData.token, "Filme").then((res) => {
-        res.data.forEach((e) => {
-          list.push(e);
-        });
-      });
-
-      await getEntertainmentByType(userData.token, "Série").then((res) => {
-        res.data.forEach((e) => {
-          list.push(e);
-        });
-      });
-
-      await getEntertainmentByType(userData.token, "Anime").then((res) => {
-        res.data.forEach((e) => {
-          list.push(e);
-        });
-      });
-
-      await getEntertainmentByType(userData.token, "Desenho").then((res) => {
-        res.data.forEach((e) => {
-          list.push(e);
-        });
-      });
-
-      await getEntertainmentByType(userData.token, "Livro").then((res) => {
-        res.data.forEach((e) => {
-          list.push(e);
-        });
-      });
-
-      await getEntertainmentByType(userData.token, "Jogo").then((res) => {
-        res.data.forEach((e) => {
-          list.push(e);
-        });
-      });
-
-      setEntertainmentList(list);
-
-    } else {
-      await getEntertainmentByType(userData.token, categoryNameCorrection()).then(
-        (res) => {
+    const load = async () => {
+      if (categoryNameCorrection() === "Tudo") {
+        await getAllntertainment(userData.token).then((res) => {
           setEntertainmentList(res.data);
-        }
-      );
+        });
+      } else if (categoryNameCorrection() === "Entretenimeto") {
+        let list = [];
+        await getEntertainmentByType(userData.token, "Filme").then((res) => {
+          res.data.forEach((e) => {
+            list.push(e);
+          });
+        });
+  
+        await getEntertainmentByType(userData.token, "Série").then((res) => {
+          res.data.forEach((e) => {
+            list.push(e);
+          });
+        });
+  
+        await getEntertainmentByType(userData.token, "Anime").then((res) => {
+          res.data.forEach((e) => {
+            list.push(e);
+          });
+        });
+  
+        await getEntertainmentByType(userData.token, "Desenho").then((res) => {
+          res.data.forEach((e) => {
+            list.push(e);
+          });
+        });
+  
+        await getEntertainmentByType(userData.token, "Livro").then((res) => {
+          res.data.forEach((e) => {
+            list.push(e);
+          });
+        });
+  
+        await getEntertainmentByType(userData.token, "Jogo").then((res) => {
+          res.data.forEach((e) => {
+            list.push(e);
+          });
+        });
+  
+        setEntertainmentList(list);
+  
+      } else {
+        await getEntertainmentByType(userData.token, categoryNameCorrection()).then(
+          (res) => {
+            setEntertainmentList(res.data);
+          }
+        );
+      }
     }
-  }
+    load()
+  }, [add, edit, delet, userData]);
+
 
   useEffect(() => {
     getAllCategories(userData.token).then((res) => {
@@ -247,6 +252,12 @@ export function SearchPage() {
     return;
   }
 
+  function addToYourList(id){
+    addExistingEntertainment(userData.token, id).then((res)=>{
+      alert("Adicionado à sua lista!")
+    })
+  }
+
   return (
     <>
       <Container option={categoryName}>
@@ -260,6 +271,8 @@ export function SearchPage() {
           categoryName={categoryName}
           edit={edit}
           setEdit={setEdit}
+          delet={delet}
+          setDelet={setDelet}
         />
         <div className="board">
           <h2>{categoryName}</h2>
@@ -267,9 +280,9 @@ export function SearchPage() {
             <div className="inputBox">
               <input
                 type="text"
-                required="required"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                required={"required"}
               />
               <span>Busque pelo nome que procura</span>
               <i></i>
@@ -285,10 +298,11 @@ export function SearchPage() {
             </div>
           </form>
           <div className="list">
+            {entertainmentList.length === 0 ? <div className="load"><img src={load} alt="load"/> </div>: ""}
             {categoryNameCorrection() === "Tudo"
               ? entertainmentList.map((e, i) => (
                   <Box key={i}>
-                    <div className="back">
+                    <div key={i} className="back">
                       <div className="img">
                         <img src={e.imageUrl} alt="filme" />
                       </div>
@@ -321,6 +335,7 @@ export function SearchPage() {
                           )}
                         </div>
                         <Stars grade={e.grade}>{getStars(e.grade)}</Stars>
+                        <HiPlusCircle onClick={()=> addToYourList(e.id)} className="add"/>
                       </div>
                     </div>
                   </Box>
@@ -328,11 +343,13 @@ export function SearchPage() {
               : entertainmentList.map((e, i) => (
                   <Box key={i}>
                     <div
+                      key={i}
                       onClick={() => {
                         setOpenEntertainment(e);
                         setClose(false);
                       }}
                       className="back"
+                      style={{cursor: "pointer"}}
                     >
                       <div className="img">
                         <img src={e.entertainments?.imageUrl} alt="filme" />
@@ -431,6 +448,19 @@ const Container = styled.div`
         opacity: 1;
         transform: none;
       }
+    }
+    .load{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: -20px;
+      @media (max-width: 614px) {
+        img{
+          width: 150px;
+        }
+    }
     }
     h2 {
       color: darkblue;

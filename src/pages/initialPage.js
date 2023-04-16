@@ -14,19 +14,23 @@ import tudo from "../imgs/entretenimentos/tudo.png";
 import { useEffect } from "react";
 import { getEntertainmentQuantity } from "../services";
 import { useState } from "react";
+import { ColorRing } from "react-loader-spinner";
 
 export function InitialPage() {
   let userData = JSON.parse(localStorage.getItem("userData"));
   const navigate = useNavigate();
 
-  const [quantity, setQuantity] = useState({})
+  const [quantity, setQuantity] = useState({});
 
-  useEffect(()=>{
-    getEntertainmentQuantity(userData.token).then((res) => {
-      console.log(res);
-      setQuantity(res.data)
-    })
-  }, [])
+  useEffect(() => {
+    getEntertainmentQuantity(userData.token)
+      .then((res) => {
+        setQuantity(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <Container>
@@ -38,7 +42,25 @@ export function InitialPage() {
               <img src={filme} alt="filme" />
             </div>
             Seus Filmes
-            <span>{quantity.movies || 0}</span>
+            <span>
+              {quantity.movies || (
+                <ColorRing
+                  visible={true}
+                  height="20"
+                  width="20"
+                  ariaLabel="blocks-loading"
+                  wrapperStyle={{}}
+                  wrapperClass="blocks-wrapper"
+                  colors={[
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                  ]}
+                />
+              )}
+            </span>
           </div>
         </Option>
         <Option>
@@ -47,7 +69,25 @@ export function InitialPage() {
               <img src={serie} alt="serie" />
             </div>
             Suas Séries
-            <span>{quantity.series || 0}</span>
+            <span>
+              {quantity.series || (
+                <ColorRing
+                  visible={true}
+                  height="20"
+                  width="20"
+                  ariaLabel="blocks-loading"
+                  wrapperStyle={{}}
+                  wrapperClass="blocks-wrapper"
+                  colors={[
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                  ]}
+                />
+              )}
+            </span>
           </div>
         </Option>
         <Option>
@@ -56,7 +96,25 @@ export function InitialPage() {
               <img src={anime} alt="anime" />
             </div>
             Seus Animes
-            <span>{quantity.animes || 0}</span>
+            <span>
+              {quantity.animes || (
+                <ColorRing
+                  visible={true}
+                  height="20"
+                  width="20"
+                  ariaLabel="blocks-loading"
+                  wrapperStyle={{}}
+                  wrapperClass="blocks-wrapper"
+                  colors={[
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                  ]}
+                />
+              )}
+            </span>
           </div>
         </Option>
         <Option>
@@ -65,7 +123,25 @@ export function InitialPage() {
               <img src={desenho} alt="desenho" />
             </div>
             Seus Desenhos
-            <span>{quantity.cartoons || 0}</span>
+            <span>
+              {quantity.cartoons || (
+                <ColorRing
+                  visible={true}
+                  height="20"
+                  width="20"
+                  ariaLabel="blocks-loading"
+                  wrapperStyle={{}}
+                  wrapperClass="blocks-wrapper"
+                  colors={[
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                  ]}
+                />
+              )}
+            </span>
           </div>
         </Option>
         <Option>
@@ -74,7 +150,25 @@ export function InitialPage() {
               <img src={livro} alt="livro" />
             </div>
             Seus Livros
-            <span>{quantity.books || 0}</span>
+            <span>
+              {quantity.books || (
+                <ColorRing
+                  visible={true}
+                  height="20"
+                  width="20"
+                  ariaLabel="blocks-loading"
+                  wrapperStyle={{}}
+                  wrapperClass="blocks-wrapper"
+                  colors={[
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                  ]}
+                />
+              )}
+            </span>
           </div>
         </Option>
         <Option>
@@ -83,7 +177,25 @@ export function InitialPage() {
               <img src={jogo} alt="jogo" />
             </div>
             Seus Jogos
-            <span>{quantity.games || 0}</span>
+            <span>
+              {quantity.games || (
+                <ColorRing
+                  visible={true}
+                  height="20"
+                  width="20"
+                  ariaLabel="blocks-loading"
+                  wrapperStyle={{}}
+                  wrapperClass="blocks-wrapper"
+                  colors={[
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                  ]}
+                />
+              )}
+            </span>
           </div>
         </Option>
         <Option>
@@ -94,7 +206,25 @@ export function InitialPage() {
             Seus
             <br />
             Entretenimentos
-            <span>{quantity.userEntertainments || 0}</span>
+            <span>
+              {quantity.userEntertainments || (
+                <ColorRing
+                  visible={true}
+                  height="20"
+                  width="20"
+                  ariaLabel="blocks-loading"
+                  wrapperStyle={{}}
+                  wrapperClass="blocks-wrapper"
+                  colors={[
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                  ]}
+                />
+              )}
+            </span>
           </div>
         </Option>
         <Option>
@@ -103,7 +233,25 @@ export function InitialPage() {
               <img src={tudo} alt="tudo" />
             </div>
             Tudo
-            <span>{quantity.allEntertainments || 0}</span>
+            <span>
+              {quantity.allEntertainments || (
+                <ColorRing
+                  visible={true}
+                  height="20"
+                  width="20"
+                  ariaLabel="blocks-loading"
+                  wrapperStyle={{}}
+                  wrapperClass="blocks-wrapper"
+                  colors={[
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                  ]}
+                />
+              )}
+            </span>
           </div>
         </Option>
       </div>
@@ -120,10 +268,10 @@ const Container = styled.div`
   background-attachment: fixed;
   background-position: center;
   width: 100vw;
-  height: 100%; 
+  height: 100%;
   @media (max-width: 614px) {
-        overflow: auto;
-      }
+    overflow: auto;
+  }
   .board {
     display: flex;
     justify-content: center;
@@ -136,18 +284,18 @@ const Container = styled.div`
     @media (max-width: 614px) {
       width: 96%;
       padding-left: 3%;
-      margin-top:5%;
+      margin-top: 5%;
       margin-bottom: 10%;
-      }
+    }
     @keyframes fadeInDown {
-    0% {
-      opacity: 0;
-      transform: translate3d(0, 100%, 0);
+      0% {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+      }
+      100% {
+        opacity: 1;
+        transform: none;
+      }
     }
-    100% {
-      opacity: 1;
-      transform: none;
-    }
-  }
   }
 `;

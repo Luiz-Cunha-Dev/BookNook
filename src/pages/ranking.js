@@ -2,15 +2,11 @@ import styled from "styled-components";
 import { useState } from "react";
 import background from "../imgs/w2.jpg";
 import { Header } from "../components/header";
-import filme from "../imgs/entretenimentos/filmes.jpg";
 import { RankingItem } from "../components/popular/rankingItem";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { useEffect } from "react";
-import {
-  getAllCategories,
-  getEntertainmentById,
-  getRanking,
-} from "../services";
+import { getAllCategories, getRanking } from "../services";
+import load from "../imgs/blocks.gif"
 
 export function Ranking() {
   let userData = JSON.parse(localStorage.getItem("userData"));
@@ -19,41 +15,48 @@ export function Ranking() {
   const [scoreList, setScoreList] = useState([]);
   const [viewList, setViewList] = useState([]);
   const [categoryList, setcategoryList] = useState([]);
+  const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
-    getRanking(userData.token).then((res) => {
-      console.log(res);
-      setScoreList(res.data.highestRated);
-      setViewList(res.data.mostViewed);
-      setEntertainmentList(res.data.highestRated);
-    });
+    const ranking = async()=>{
+      await getRanking(userData.token).then((res) => {
+        console.log(res);
+        setScoreList(res.data.highestRated);
+        setViewList(res.data.mostViewed);
+        setEntertainmentList(res.data.highestRated);
+      });
+      setTimeout(()=>{setDisabled(false)}, 2000);
+    }
+    ranking();
   }, []);
 
   useEffect(() => {
-    getAllCategories(userData.token).then((res) => {
-      setcategoryList(res.data);
-    });
+    const categories = async()=>{
+      await getAllCategories(userData.token).then((res) => {
+        setcategoryList(res.data);
+      });
+    }
+    categories();
   }, []);
 
   useEffect(() => {
+    function getScoreList() {
+      setEntertainmentList(scoreList);
+    }
+
+    function getViewList() {
+      setEntertainmentList(viewList);
+    }
     if (scoreList.length !== 0 && viewList.length !== 0) {
-      setEntertainmentList([])
+      setEntertainmentList([]);
       if (filter === "score") {
-        getScoreList()
+        getScoreList();
       }
-      if(filter === "views") {
-        getViewList()
+      if (filter === "views") {
+        getViewList();
       }
     }
   }, [filter]);
-
-  function getScoreList() {
-        setEntertainmentList(scoreList);
-  }
-
-  function getViewList() {
-        setEntertainmentList(viewList );
-  }
 
   function getStars(grade) {
     if (grade === 10) {
@@ -174,10 +177,11 @@ export function Ranking() {
       <div className="board">
         <h2>Os Mais Populares</h2>
         <div className="filter">
-          <button onClick={() => setFilter("score")}>Nota Mais Alta</button>
-          <button onClick={() => setFilter("views")}>Mais Vistos</button>
+          <button disabled={disabled} onClick={() => setFilter("score")}>Nota Mais Alta</button>
+          <button disabled={disabled} onClick={() => setFilter("views")}>Mais Vistos</button>
         </div>
         <div className="list">
+        {entertainmentList.length === 0 ? <div className="load"><img src={load} alt="load"/> </div>: ""}
           {entertainmentList.map((e, i) => (
             <RankingItem>
               <span>{i + 1}°</span>
@@ -187,34 +191,37 @@ export function Ranking() {
               <div className="informations">
                 <h3>{e.name}</h3>
                 <div className="categories">
-                {categoryList[e.category1Id - 1]?.name !==
-                      undefined ? (
-                        <div className="category">
-                          {categoryList[e.category1Id - 1]?.name}
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                {categoryList[e.category2Id - 1]?.name !==
-                      undefined ? (
-                        <div className="category">
-                          {categoryList[e.category2Id - 1]?.name}
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                {categoryList[e.category3Id - 1]?.name !==
-                      undefined ? (
-                        <div className="category">
-                          {categoryList[e.category3Id - 1]?.name}
-                        </div>
-                      ) : (
-                        ""
-                      )}
+                  {categoryList[e.category1Id - 1]?.name !== undefined ? (
+                    <div className="category">
+                      {categoryList[e.category1Id - 1]?.name}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {categoryList[e.category2Id - 1]?.name !== undefined ? (
+                    <div className="category">
+                      {categoryList[e.category2Id - 1]?.name}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {categoryList[e.category3Id - 1]?.name !== undefined ? (
+                    <div className="category">
+                      {categoryList[e.category3Id - 1]?.name}
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </div>
-                <Stars grade={filter === "score" ? (scoreList[i]?._avg.grade) : 0}>
+                <Stars
+                  grade={filter === "score" ? scoreList[i]?._avg.grade : 0}
+                >
                   {filter === "score" ? getStars(scoreList[i]?._avg.grade) : ""}
-                  {filter === "views" ? <p>Views: {viewList[i]?._count.entertainmentId}</p> : ""}
+                  {filter === "views" ? (
+                    <p>Views: {viewList[i]?._count.entertainmentId}</p>
+                  ) : (
+                    ""
+                  )}
                 </Stars>
               </div>
             </RankingItem>
@@ -267,6 +274,18 @@ const Container = styled.div`
         opacity: 1;
         transform: none;
       }
+    }
+    .load{
+      width: 100%;
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @media (max-width: 614px) {
+        img{
+          width: 150px;
+        }
+    }
     }
     .list {
       width: 95%;
@@ -345,18 +364,18 @@ const Stars = styled.div`
     font-size: 6vw;
   }
   .star1 {
-    color: ${props => props.grade >= 1 ? "#faab00" : "gray"};
+    color: ${(props) => (props.grade >= 1 ? "#faab00" : "gray")};
   }
   .star2 {
-    color: ${props => props.grade > 2 ? "#faab00" : "gray"};
+    color: ${(props) => (props.grade > 2 ? "#faab00" : "gray")};
   }
   .star3 {
-    color: ${props => props.grade > 4 ? "#faab00" : "gray"};
+    color: ${(props) => (props.grade > 4 ? "#faab00" : "gray")};
   }
   .star4 {
-    color: ${props => props.grade > 6 ? "#faab00" : "gray"};
+    color: ${(props) => (props.grade > 6 ? "#faab00" : "gray")};
   }
   .star5 {
-    color: ${props => props.grade > 8 ? "#faab00" : "gray"};
+    color: ${(props) => (props.grade > 8 ? "#faab00" : "gray")};
   }
 `;

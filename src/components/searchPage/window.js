@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import filme from "../../imgs/entretenimentos/filmes.jpg";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { MdEditSquare } from "react-icons/md";
 import { IoIosCloseCircle } from "react-icons/io";
 import { FaTrashAlt } from "react-icons/fa";
-import { useState } from "react";
 import { Edit } from "./edit";
 import { Delete } from "../../components/searchPage/delete";
 
@@ -15,9 +13,10 @@ export function Window({
   openEntertainment,
   categoryList,
   edit,
-  setEdit
+  setEdit,
+  delet,
+  setDelet
 }) {
-  const [delet, setDelet] = useState(true);
 
   function getStars(grade) {
     if (grade === 10) {

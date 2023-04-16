@@ -10,15 +10,34 @@ import { AiFillFire } from "react-icons/ai";
 import { ImExit } from "react-icons/im";
 import { RiBookletLine } from "react-icons/ri";
 import { logout } from "../services";
+import { ThreeDots } from 'react-loader-spinner'
 
 export function Header() {
   const navigate = useNavigate();
   const [menu, setMenu] = useState(false);
   const [exit, setExit] = useState(false);
   let userData = JSON.parse(localStorage.getItem("userData"));
+  const [button, setButton] = useState("Sair");
+  const [disabled, setDisabled] = useState(false);
 
   function signout(){
-    logout(userData.token).then(() => { localStorage.removeItem("userData"); navigate("/") })
+    setDisabled(true);
+    setButton(<ThreeDots
+      height="80"
+      width="80"
+      radius="9"
+      color="white"
+      ariaLabel="three-dots-loading"
+      wrapperStyle={{}}
+      wrapperClassName=""
+      visible={true}
+  />)
+    logout(userData.token).then(() => { 
+      localStorage.removeItem("userData"); setDisabled(false); setButton("Sair"); navigate("/") })
+      .catch(()=>{
+        setDisabled(false);
+        setButton("Sair");
+      })
   }
 
   return (
@@ -26,7 +45,7 @@ export function Header() {
       <div className="header">
         <HiOutlineMenu onClick={() => setMenu(!menu)} className="menu" />
         <div onClick={() => navigate("/initial")} className="icone">
-          <img src={icone} />
+          <img src={icone} alt="icon"/>
           <h1>BookNook</h1>
         </div>
       </div>
@@ -71,7 +90,7 @@ export function Header() {
       <div onClick={() => {exit === true ? setMenu(menu) : setMenu(!menu)}} className="rigth-window">
       <div className="exit-window">
         <h2>Tem certeza de que quer sair da sua conta?</h2>
-        <button  onClick={signout}>Sair</button>
+        <button disabled={disabled} onClick={signout}>{button}</button>
         <p onClick={() => setExit(false)}>Cancelar</p>
       </div>
       </div>
@@ -136,6 +155,9 @@ const Container = styled.div`
       margin-top: 30px;
       margin-bottom: 10px;
       cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       transition: linear 0.1s;
       :hover{
         width: 170px;

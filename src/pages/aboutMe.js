@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import background from "../imgs/w2.jpg";
 import { Header } from "../components/header";
@@ -7,7 +6,6 @@ import userPicture from "../imgs/userPicture.png";
 import { putUser } from "../services";
 
 export function AboutMe() {
-  const navigate = useNavigate();
   let userData = JSON.parse(localStorage.getItem("userData"));
   const [email, setEmail] = useState(userData.email);
   const [pictureUrl, setPictureUrl] = useState(userData.pictureUrl);

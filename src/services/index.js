@@ -92,6 +92,16 @@ function createNewEntertainment(token, body) {
   return axios.post(`${BASE_URL}entertainment/create`, body, config);
 }
 
+function addExistingEntertainment(token, entertainmentId) {
+  const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+return axios.post(`${BASE_URL}entertainment/add/${entertainmentId}`, {}, config);
+}
+
 function updateEntertainment(token, body, entertainmentUsersId) {
     const config = {
         headers: {
@@ -111,8 +121,6 @@ function updateEntertainment(token, body, entertainmentUsersId) {
       if(body.comment === "" || body.comment === null || body.comment === 0){
         delete body.comment;
       }
-
-      console.log(body);
 
   return axios.put(`${BASE_URL}entertainment/update/${entertainmentUsersId}`, body, config);
 }
@@ -177,8 +185,8 @@ function putDarkMode(token) {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      };
-  return axios.put(`${BASE_URL}user/darkmode`, config);
+      };  
+  return axios.put(`${BASE_URL}user/darkmode`, {}, config);
 }
 
 //
@@ -199,5 +207,6 @@ export {
   createGoal,
   getRanking,
   putUser,
-  putDarkMode
+  putDarkMode,
+  addExistingEntertainment
 };

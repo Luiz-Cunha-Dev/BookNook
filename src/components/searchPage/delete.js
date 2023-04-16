@@ -1,26 +1,47 @@
 import styled from "styled-components";
 import { deleteEntertainment } from "../../services";
+import { useState } from "react";
+import { ThreeDots } from 'react-loader-spinner'
 
 export function Delete({delet, setDelet, openEntertainment, setClose}) {
   let userData = JSON.parse(localStorage.getItem("userData"));
 
+  const [button, setButton] = useState("Deletar");  
+  const [disabled, setDisabled] = useState(false);
+
   function deleteItem() {
+    setDisabled(true);
+    setButton(<ThreeDots
+      height="80"
+      width="80"
+      radius="9"
+      color="white"
+      ariaLabel="three-dots-loading"
+      wrapperStyle={{}}
+      wrapperClassName=""
+      visible={true}
+  />)
 
       deleteEntertainment(
         userData.token,
         openEntertainment.id
       ).then((res) => {
-        console.log(res);
+        setDisabled(false);
+        setButton("Deletar");
         setDelet(true);
         setClose(true)
-      });
+      })
+      .catch(()=>{
+        setDisabled(false);
+        setButton("Deletar");
+      })
   }
 
   return (
     <Container delet={delet}>
       <div className="board2">
         <h2>Tem certeza que gostaria de deletar esse item?</h2>
-        <button onClick={deleteItem}>Deletar</button>
+        <button disabled={disabled} onClick={deleteItem}>{button}</button>
         <p onClick={() => setDelet(true)}>Cancelar</p>
       </div>
     </Container>
@@ -28,7 +49,7 @@ export function Delete({delet, setDelet, openEntertainment, setClose}) {
 }
 
 const Container = styled.div`
-  z-index: 1;
+  z-index: 3;
   position: fixed;
   left: 0;
   top: 0;
@@ -61,7 +82,7 @@ const Container = styled.div`
       margin-left: 5%;
       margin-right: 5%;
       width: 90%;
-      margin-top: 12%;
+      margin-top: 50%;
       margin-bottom: 10%;
     }
     @keyframes fadeInDown {
@@ -95,6 +116,9 @@ const Container = styled.div`
       margin-bottom: 10px;
       cursor: pointer;
       transition: linear 0.1s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       :hover {
         width: 170px;
         height: 45px;

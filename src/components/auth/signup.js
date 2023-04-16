@@ -1,15 +1,29 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { signUp } from "../../services";
+import { ThreeDots } from 'react-loader-spinner'
 
 export function SignUp({ status, setStatus }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [button, setButton] = useState("Cadastre-se");
+  const [disabled, setDisabled] = useState(false);
 
   function sendForm(e) {
     e.preventDefault(); 
+    setDisabled(true);
+    setButton(<ThreeDots
+      height="80"
+      width="80"
+      radius="9"
+      color="white"
+      ariaLabel="three-dots-loading"
+      wrapperStyle={{}}
+      wrapperClassName=""
+      visible={true}
+  />)
     if (
       password === confirmPassword &&
       password !== "" &&
@@ -18,12 +32,19 @@ export function SignUp({ status, setStatus }) {
     ) {
       signUp({ username, email, password })
       .then((res) => {
-        alert("Cadastrado com Sucesso")
-        setStatus("signin")
+        alert("Cadastrado com Sucesso");
+        setDisabled(false)
+        setButton("Cadastre-se");
+        setStatus("signin");
       })
       .catch(err => {
         alert("Email ja existente")
+        setDisabled(false)
+        setButton("Cadastre-se")
       })
+    }else{
+      setDisabled(false)
+      setButton("Cadastre-se")
     }
   }
 
@@ -73,7 +94,7 @@ export function SignUp({ status, setStatus }) {
             <i></i>
           </div>
           <div className="buttons">
-            <button type="submit">Cadastre-se</button>
+            <button disabled={disabled} type="submit">{button}</button>
             <span onClick={() => setStatus("signin")}>Já Tenho Uma Conta</span>
           </div>
         </form>
@@ -208,7 +229,11 @@ const Container = styled.div`
     font-size: 0.75em;
   }
   .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 20px;
+    width: 100%;
     @media (max-width: 614px) {
       display: flex;
       flex-direction: column;
@@ -226,6 +251,9 @@ const Container = styled.div`
       font-size: 19px;
       cursor: pointer;
       transition: linear 0.1s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       @media (max-width: 614px) {
         margin-right: 0;
         margin-bottom: 10%;

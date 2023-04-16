@@ -10,7 +10,6 @@ export function Config() {
 
    function changeDarkMode(){
     putDarkMode(userData.token).then((res) => {
-      console.log(res.data);
       setDarkMode(!darkMode);
       localStorage.setItem("userData", JSON.stringify({...userData, darkMode: !darkMode}));
     })

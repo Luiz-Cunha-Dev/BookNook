@@ -9,7 +9,6 @@ export function HomePage() {
   const navigate = useNavigate();
 
   useEffect(()=> {
-    console.log(userData);
     if(userData){
       navigate("/initial");
     }

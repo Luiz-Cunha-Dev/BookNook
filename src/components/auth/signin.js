@@ -3,22 +3,43 @@ import userPicture from "../../imgs/userPicture.png";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../services";
 import { useState } from "react";
+import { ThreeDots } from 'react-loader-spinner'
 
 export function SignIn({ status, setStatus }) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [button, setButton] = useState("Entrar");
+  const [disabled, setDisabled] = useState(false);
 
   function sendForm(e) {
     e.preventDefault();
+    setDisabled(true);
+    setButton(<ThreeDots
+      height="80"
+      width="80"
+      radius="9"
+      color="white"
+      ariaLabel="three-dots-loading"
+      wrapperStyle={{}}
+      wrapperClassName=""
+      visible={true}
+  />)
     if (password !== "" && email !== "") {
       login({ email, password }).then((res) => {
         localStorage.setItem("userData", JSON.stringify(res.data));
+        setDisabled(false);
+        setButton("Entrar");
         navigate("/initial");
       })
       .catch((err)=>{
-        alert("Senha ou email incorreto")
+        alert("Senha ou email incorreto");
+        setDisabled(false);
+        setButton("Entrar");
       })
+    }else{
+      setDisabled(false);
+      setButton("Entrar");
     }
   }
 
@@ -49,7 +70,7 @@ export function SignIn({ status, setStatus }) {
               <i></i>
             </div>
             <div className="buttons">
-              <button type="submit">Entrar</button>
+              <button disabled={disabled} type="submit">{button}</button>
               <span onClick={() => setStatus("signup")}>
                 Ainda Não Tenho Uma Conta
               </span>
@@ -190,6 +211,9 @@ const Container = styled.div`
   }
   .buttons {
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     @media (max-width: 614px) {
       display: flex;
       flex-direction: column;
@@ -208,6 +232,9 @@ const Container = styled.div`
       font-size: 19px;
       cursor: pointer;
       transition: linear 0.1s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       @media (max-width: 614px) {
         margin-right: 0;
         margin-bottom: 10%;
