@@ -145,9 +145,11 @@ const Container = styled.div`
     }
   }
   .principal {
+    position: fixed;
+    bottom: 11%;
+    left: 5%;
     padding-left: 5%;
     padding-right: 5%;
-    margin-top: 10vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -155,7 +157,8 @@ const Container = styled.div`
     animation-name: fadeInRigth;
     @media (max-width: 614px) {
       flex-direction: column;
-      margin-top: 5vh;
+      left: 0%;
+      bottom: 20%;
       }
     @keyframes fadeInRigth {
       0% {
@@ -194,14 +197,15 @@ const Container = styled.div`
     width: 43%;
     background-color: white;
     border-radius: 20px;
+    margin-top: -10%;
     @media (max-width: 935px) {
       margin-top: -70px;
       }
     @media (max-width: 614px) {
-      margin-top: 0px;
+      margin-top: 0;
         width: 90%;
         padding: 5%;
-    padding-top: 3% ;
+    padding-top: 2% ;
     margin-bottom: -50px;
       }
     h2 {
