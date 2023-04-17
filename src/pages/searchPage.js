@@ -228,7 +228,7 @@ export function SearchPage() {
       }
     }
     load()
-  }, [add, edit, delet, userData]);
+  }, [add, edit, delet]);
 
 
   useEffect(() => {
