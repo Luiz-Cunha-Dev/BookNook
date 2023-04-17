@@ -146,7 +146,7 @@ const Container = styled.div`
   }
   .principal {
     position: fixed;
-    bottom: 11%;
+    bottom: 9%;
     left: 5%;
     padding-left: 5%;
     padding-right: 5%;
@@ -197,7 +197,7 @@ const Container = styled.div`
     width: 43%;
     background-color: white;
     border-radius: 20px;
-    margin-top: -10%;
+    margin-top: -13%;
     @media (max-width: 935px) {
       margin-top: -70px;
       }
