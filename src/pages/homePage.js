@@ -158,7 +158,7 @@ const Container = styled.div`
     @media (max-width: 614px) {
       flex-direction: column;
       left: 0%;
-      bottom: 20%;
+      bottom: 18%;
       }
     @keyframes fadeInRigth {
       0% {
@@ -202,11 +202,11 @@ const Container = styled.div`
       margin-top: -70px;
       }
     @media (max-width: 614px) {
-      margin-top: 0;
+      margin-top: 0px;
         width: 90%;
         padding: 5%;
     padding-top: 2% ;
-    margin-bottom: -50px;
+    margin-bottom: -25%;
       }
     h2 {
       width: 100%;

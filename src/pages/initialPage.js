@@ -25,6 +25,7 @@ export function InitialPage() {
   useEffect(() => {
     getEntertainmentQuantity(userData.token)
       .then((res) => {
+        console.log(res.data);
         setQuantity(res.data);
       })
       .catch((err) => {
@@ -43,23 +44,24 @@ export function InitialPage() {
             </div>
             Seus Filmes
             <span>
-              {quantity.movies || (
-                <ColorRing
-                  visible={true}
-                  height="20"
-                  width="20"
-                  ariaLabel="blocks-loading"
-                  wrapperStyle={{}}
-                  wrapperClass="blocks-wrapper"
-                  colors={[
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                  ]}
-                />
-              )}
+            {quantity.movies !== undefined ? quantity.movies
+              :
+              <ColorRing
+              visible={true}
+              height="20"
+              width="20"
+              ariaLabel="blocks-loading"
+              wrapperStyle={{}}
+              wrapperClass="blocks-wrapper"
+              colors={[
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+              ]}
+            />
+              }
             </span>
           </div>
         </Option>
@@ -70,23 +72,24 @@ export function InitialPage() {
             </div>
             Suas Séries
             <span>
-              {quantity.series || (
-                <ColorRing
-                  visible={true}
-                  height="20"
-                  width="20"
-                  ariaLabel="blocks-loading"
-                  wrapperStyle={{}}
-                  wrapperClass="blocks-wrapper"
-                  colors={[
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                  ]}
-                />
-              )}
+            {quantity.series !== undefined ? quantity.series
+              :
+              <ColorRing
+              visible={true}
+              height="20"
+              width="20"
+              ariaLabel="blocks-loading"
+              wrapperStyle={{}}
+              wrapperClass="blocks-wrapper"
+              colors={[
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+              ]}
+            />
+              }
             </span>
           </div>
         </Option>
@@ -97,23 +100,24 @@ export function InitialPage() {
             </div>
             Seus Animes
             <span>
-              {quantity.animes || (
-                <ColorRing
-                  visible={true}
-                  height="20"
-                  width="20"
-                  ariaLabel="blocks-loading"
-                  wrapperStyle={{}}
-                  wrapperClass="blocks-wrapper"
-                  colors={[
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                  ]}
-                />
-              )}
+            {quantity.animes !== undefined ? quantity.animes
+              :
+              <ColorRing
+              visible={true}
+              height="20"
+              width="20"
+              ariaLabel="blocks-loading"
+              wrapperStyle={{}}
+              wrapperClass="blocks-wrapper"
+              colors={[
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+              ]}
+            />
+              }
             </span>
           </div>
         </Option>
@@ -124,23 +128,24 @@ export function InitialPage() {
             </div>
             Seus Desenhos
             <span>
-              {quantity.cartoons || (
-                <ColorRing
-                  visible={true}
-                  height="20"
-                  width="20"
-                  ariaLabel="blocks-loading"
-                  wrapperStyle={{}}
-                  wrapperClass="blocks-wrapper"
-                  colors={[
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                  ]}
-                />
-              )}
+            {quantity.cartoons !== undefined ? quantity.cartoons
+              :
+              <ColorRing
+              visible={true}
+              height="20"
+              width="20"
+              ariaLabel="blocks-loading"
+              wrapperStyle={{}}
+              wrapperClass="blocks-wrapper"
+              colors={[
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+              ]}
+            />
+              }
             </span>
           </div>
         </Option>
@@ -151,23 +156,24 @@ export function InitialPage() {
             </div>
             Seus Livros
             <span>
-              {quantity.books || (
-                <ColorRing
-                  visible={true}
-                  height="20"
-                  width="20"
-                  ariaLabel="blocks-loading"
-                  wrapperStyle={{}}
-                  wrapperClass="blocks-wrapper"
-                  colors={[
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                  ]}
-                />
-              )}
+              {quantity.books !== undefined ? quantity.books
+              :
+              <ColorRing
+              visible={true}
+              height="20"
+              width="20"
+              ariaLabel="blocks-loading"
+              wrapperStyle={{}}
+              wrapperClass="blocks-wrapper"
+              colors={[
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+              ]}
+            />
+              }
             </span>
           </div>
         </Option>
@@ -178,23 +184,24 @@ export function InitialPage() {
             </div>
             Seus Jogos
             <span>
-              {quantity.games || (
-                <ColorRing
-                  visible={true}
-                  height="20"
-                  width="20"
-                  ariaLabel="blocks-loading"
-                  wrapperStyle={{}}
-                  wrapperClass="blocks-wrapper"
-                  colors={[
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                  ]}
-                />
-              )}
+            {quantity.games !== undefined ? quantity.games
+              :
+              <ColorRing
+              visible={true}
+              height="20"
+              width="20"
+              ariaLabel="blocks-loading"
+              wrapperStyle={{}}
+              wrapperClass="blocks-wrapper"
+              colors={[
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+              ]}
+            />
+              }
             </span>
           </div>
         </Option>
@@ -207,23 +214,24 @@ export function InitialPage() {
             <br />
             Entretenimentos
             <span>
-              {quantity.userEntertainments || (
-                <ColorRing
-                  visible={true}
-                  height="20"
-                  width="20"
-                  ariaLabel="blocks-loading"
-                  wrapperStyle={{}}
-                  wrapperClass="blocks-wrapper"
-                  colors={[
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                  ]}
-                />
-              )}
+            {quantity.userEntertainments !== undefined ? quantity.userEntertainments
+              :
+              <ColorRing
+              visible={true}
+              height="20"
+              width="20"
+              ariaLabel="blocks-loading"
+              wrapperStyle={{}}
+              wrapperClass="blocks-wrapper"
+              colors={[
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+              ]}
+            />
+              }
             </span>
           </div>
         </Option>
@@ -234,23 +242,24 @@ export function InitialPage() {
             </div>
             Tudo
             <span>
-              {quantity.allEntertainments || (
-                <ColorRing
-                  visible={true}
-                  height="20"
-                  width="20"
-                  ariaLabel="blocks-loading"
-                  wrapperStyle={{}}
-                  wrapperClass="blocks-wrapper"
-                  colors={[
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                    "#ffffff",
-                  ]}
-                />
-              )}
+            {quantity.allEntertainments !== undefined ? quantity.allEntertainments
+              :
+              <ColorRing
+              visible={true}
+              height="20"
+              width="20"
+              ariaLabel="blocks-loading"
+              wrapperStyle={{}}
+              wrapperClass="blocks-wrapper"
+              colors={[
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+                "#ffffff",
+              ]}
+            />
+              }
             </span>
           </div>
         </Option>

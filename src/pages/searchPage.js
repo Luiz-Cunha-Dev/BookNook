@@ -29,6 +29,7 @@ export function SearchPage() {
   const [openEntertainment, setOpenEntertainment] = useState();
   const [search, setSearch] = useState();
   const [disabled, setDisabled] = useState(false);
+  const [loading, setLoading] = useState(true)
   let userData = JSON.parse(localStorage.getItem("userData"));
 
   function categoryNameCorrection() {
@@ -178,6 +179,7 @@ export function SearchPage() {
       if (categoryNameCorrection() === "Tudo") {
         await getAllntertainment(userData.token).then((res) => {
           setEntertainmentList(res.data);
+          setLoading(false)
         });
       } else if (categoryNameCorrection() === "Entretenimeto") {
         let list = [];
@@ -218,11 +220,13 @@ export function SearchPage() {
         });
   
         setEntertainmentList(list);
+        setLoading(false);
   
       } else {
         await getEntertainmentByType(userData.token, categoryNameCorrection()).then(
           (res) => {
             setEntertainmentList(res.data);
+            setLoading(false);
           }
         );
       }
@@ -304,7 +308,7 @@ export function SearchPage() {
             </div>
           </form>
           <div className="list">
-            {entertainmentList.length === 0 ? <div className="load"><img src={load} alt="load"/> </div>: ""}
+            {loading ? <div className="load"><img src={load} alt="load"/> </div>: ""}
             {categoryNameCorrection() === "Tudo"
               ? entertainmentList.map((e, i) => (
                   <Box darkMode={userData.darkMode} key={i}>
