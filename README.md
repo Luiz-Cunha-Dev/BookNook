@@ -16,7 +16,7 @@ BookNook é uma aplicação web para gerenciamento de entretenimento, onde os us
 - Local Storage
 
 ## Instalação e Uso
-1. Clone este repositório: `git clone https://github.com/Luiz-Cunha-Dev/BookNook`
+1. Clone este repositório: `git clone https://github.com/Luiz-Cunha-Dev/BookNook.git`
 2. Instale as dependências: `npm install`
 3. Inicie o servidor de desenvolvimento: `npm start`
 4. Acesse a aplicação em [http://localhost:3000](http://localhost:3000)
