@@ -1,39 +1,39 @@
 # BookNook
 
-## Descrição
-BookNook é uma aplicação web para gerenciamento de entretenimento, onde os usuários podem registrar e avaliar filmes, livros e jogos. A aplicação oferece recursos para acompanhar suas atividades de entretenimento, ver as avaliações de outros usuários e definir metas pessoais.
+## Description
+BookNook is a web application for entertainment management, where users can register and rate movies, books, and games. The application offers features to track your entertainment activities, view other users' reviews, and set personal goals.
 
-## Funcionalidades
-- Registro e login de usuários
-- Adição e avaliação de filmes, livros e jogos
-- Visualização das avaliações de outros usuários
-- Definição de metas pessoais de entretenimento
+## Features
+- User registration and login
+- Addition and rating of movies, books, and games
+- Viewing other users' reviews
+- Setting personal entertainment goals
 
-## Tecnologias Utilizadas
+## Technologies Used
 - React
 - Styled Components
 - React Router
 - Local Storage
 
-## Instalação e Uso
-1. Clone este repositório: `git clone https://github.com/Luiz-Cunha-Dev/BookNook.git`
-2. Instale as dependências: `npm install`
-3. Inicie o servidor de desenvolvimento: `npm start`
-4. Acesse a aplicação em [http://localhost:3000](http://localhost:3000)
+## Installation and Usage
+1. Clone this repository: `git clone https://github.com/Luiz-Cunha-Dev/BookNook.git`
+2. Install dependencies: `npm install`
+3. Start the development server: `npm start`
+4. Access the application at [http://localhost:3000](http://localhost:3000)
 
-## Estrutura do Projeto
-- **`src/`**: Contém os arquivos do código-fonte da aplicação.
-  - **`components/`**: Componentes React da aplicação.
-  - **`imgs/`**: Imagens utilizadas na aplicação.
-  - **`pages/`**: Páginas da aplicação.
-  - **`App.js`**: Componente principal da aplicação.
-  - **`index.js`**: Ponto de entrada da aplicação.
+## Project Structure
+- **`src/`**: Contains the source code files of the application.
+  - **`components/`**: React components of the application.
+  - **`imgs/`**: Images used in the application.
+  - **`pages/`**: Application pages.
+  - **`App.js`**: Main component of the application.
+  - **`index.js`**: Entry point of the application.
 
-## Contribuição
-Contribuições são bem-vindas! Sinta-se à vontade para abrir um PR ou uma issue para discutir novas funcionalidades, melhorias ou correções de bugs.
+## Contribution
+Contributions are welcome! Feel free to open a PR or an issue to discuss new features, improvements, or bug fixes.
 
-## Autor
+## Author
 Luiz Miguel da Cunha
 
-## Licença
-Este projeto está licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT).
+## License
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
